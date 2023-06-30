@@ -1,2 +1,2 @@
-﻿global using FestasInfantis.WinApp.Compartilhado;
-global using FestasInfantis.Dominio.Compartilhado;
+﻿global using GeradorDeTestes.WinApp.Compartilhado;
+global using GeradorDeTestes.Dominio.Compartilhado;

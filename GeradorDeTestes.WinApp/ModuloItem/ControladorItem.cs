@@ -1,6 +1,6 @@
-﻿using FestasInfantis.Dominio.ModuloItem;
+﻿using GeradorDeTestes.Dominio.ModuloItem;
 
-namespace FestasInfantis.WinApp.ModuloItem
+namespace GeradorDeTestes.WinApp.ModuloItem
 {
     public class ControladorItem : ControladorBase
     {

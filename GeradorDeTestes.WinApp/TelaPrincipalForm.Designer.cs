@@ -1,4 +1,4 @@
-﻿namespace FestasInfantis.WinApp
+﻿namespace GeradorDeTestes.WinApp
 {
     partial class TelaPrincipalForm
     {
@@ -30,11 +30,9 @@
         {
             menuStrip1 = new MenuStrip();
             cadastrosMenuItem = new ToolStripMenuItem();
-            clientesMenuItem = new ToolStripMenuItem();
             temasMenuItem = new ToolStripMenuItem();
-            itensToolStripMenuItem = new ToolStripMenuItem();
-            alugueisToolStripMenuItem = new ToolStripMenuItem();
             relatóriosToolStripMenuItem = new ToolStripMenuItem();
+            itensToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             labelRodape = new ToolStripStatusLabel();
             barraFerramentas = new ToolStrip();
@@ -42,13 +40,8 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
-            btnFiltrar = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
-            btnAdicionarItens = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
-            btnVisualizarAlugueisCliente = new ToolStripButton();
-            btnConcluirAluguel = new ToolStripButton();
-            btnConfigurarDescontos = new ToolStripButton();
             toolStripSeparator5 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
@@ -69,45 +62,28 @@
             // 
             // cadastrosMenuItem
             // 
-            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenuItem, temasMenuItem, alugueisToolStripMenuItem });
+            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temasMenuItem });
             cadastrosMenuItem.Name = "cadastrosMenuItem";
             cadastrosMenuItem.Size = new Size(71, 20);
             cadastrosMenuItem.Text = "Cadastros";
             // 
-            // clientesMenuItem
-            // 
-            clientesMenuItem.Name = "clientesMenuItem";
-            clientesMenuItem.Size = new Size(120, 22);
-            clientesMenuItem.Text = "Clientes";
-            clientesMenuItem.Click += clientesMenuItem_Click;
-            // 
             // temasMenuItem
             // 
-            temasMenuItem.DropDownItems.AddRange(new ToolStripItem[] { itensToolStripMenuItem });
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(120, 22);
-            temasMenuItem.Text = "Temas";
-            temasMenuItem.Click += temasMenuItem_Click;
-            // 
-            // itensToolStripMenuItem
-            // 
-            itensToolStripMenuItem.Name = "itensToolStripMenuItem";
-            itensToolStripMenuItem.Size = new Size(99, 22);
-            itensToolStripMenuItem.Text = "Itens";
-            itensToolStripMenuItem.Click += itensToolStripMenuItem_Click;
-            // 
-            // alugueisToolStripMenuItem
-            // 
-            alugueisToolStripMenuItem.Name = "alugueisToolStripMenuItem";
-            alugueisToolStripMenuItem.Size = new Size(120, 22);
-            alugueisToolStripMenuItem.Text = "Aluguéis";
-            alugueisToolStripMenuItem.Click += alugueisToolStripMenuItem_Click;
+            temasMenuItem.Size = new Size(67, 22);
             // 
             // relatóriosToolStripMenuItem
             // 
             relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             relatóriosToolStripMenuItem.Size = new Size(71, 20);
             relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // itensToolStripMenuItem
+            // 
+            itensToolStripMenuItem.Name = "itensToolStripMenuItem";
+            itensToolStripMenuItem.Size = new Size(180, 22);
+            itensToolStripMenuItem.Text = "Itens";
+            itensToolStripMenuItem.Click += itensToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -129,7 +105,7 @@
             // 
             barraFerramentas.Enabled = false;
             barraFerramentas.ImageScalingSize = new Size(20, 20);
-            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnFiltrar, toolStripSeparator3, btnAdicionarItens, toolStripSeparator1, btnVisualizarAlugueisCliente, btnConcluirAluguel, btnConfigurarDescontos, toolStripSeparator5, labelTipoCadastro });
+            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, toolStripSeparator3, toolStripSeparator1, toolStripSeparator5, labelTipoCadastro });
             barraFerramentas.Location = new Point(0, 24);
             barraFerramentas.Name = "barraFerramentas";
             barraFerramentas.Size = new Size(800, 45);
@@ -139,7 +115,7 @@
             // btnInserir
             // 
             btnInserir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnInserir.Image = Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
+            btnInserir.Image = GeradorDeTestes.WinApp.Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
             btnInserir.ImageScaling = ToolStripItemImageScaling.None;
             btnInserir.ImageTransparentColor = Color.Magenta;
             btnInserir.Name = "btnInserir";
@@ -150,7 +126,7 @@
             // btnEditar
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnEditar.Image = Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
+            btnEditar.Image = GeradorDeTestes.WinApp.Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
             btnEditar.ImageScaling = ToolStripItemImageScaling.None;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
@@ -161,7 +137,7 @@
             // btnExcluir
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnExcluir.Image = Properties.Resources.delete_FILL0_wght400_GRAD0_opsz24;
+            btnExcluir.Image = GeradorDeTestes.WinApp.Properties.Resources.delete_FILL0_wght400_GRAD0_opsz24;
             btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";
@@ -174,70 +150,15 @@
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 45);
             // 
-            // btnFiltrar
-            // 
-            btnFiltrar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnFiltrar.Image = Properties.Resources.outline_filter_alt_black_24dp;
-            btnFiltrar.ImageScaling = ToolStripItemImageScaling.None;
-            btnFiltrar.ImageTransparentColor = Color.Magenta;
-            btnFiltrar.Name = "btnFiltrar";
-            btnFiltrar.Padding = new Padding(7);
-            btnFiltrar.Size = new Size(42, 42);
-            btnFiltrar.Click += btnFiltrar_Click;
-            // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 45);
             // 
-            // btnAdicionarItens
-            // 
-            btnAdicionarItens.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnAdicionarItens.Image = Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
-            btnAdicionarItens.ImageScaling = ToolStripItemImageScaling.None;
-            btnAdicionarItens.ImageTransparentColor = Color.Magenta;
-            btnAdicionarItens.Name = "btnAdicionarItens";
-            btnAdicionarItens.Padding = new Padding(7);
-            btnAdicionarItens.Size = new Size(42, 42);
-            btnAdicionarItens.Click += btnAdicionar_Click;
-            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(6, 45);
-            // 
-            // btnVisualizarAlugueisCliente
-            // 
-            btnVisualizarAlugueisCliente.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnVisualizarAlugueisCliente.Image = Properties.Resources.person_search_FILL0_wght400_GRAD0_opsz24;
-            btnVisualizarAlugueisCliente.ImageScaling = ToolStripItemImageScaling.None;
-            btnVisualizarAlugueisCliente.ImageTransparentColor = Color.Magenta;
-            btnVisualizarAlugueisCliente.Name = "btnVisualizarAlugueisCliente";
-            btnVisualizarAlugueisCliente.Padding = new Padding(7);
-            btnVisualizarAlugueisCliente.Size = new Size(42, 42);
-            btnVisualizarAlugueisCliente.Click += btnVisualizarAlugueis_Click;
-            // 
-            // btnConcluirAluguel
-            // 
-            btnConcluirAluguel.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnConcluirAluguel.Image = Properties.Resources.shopping_cart_checkout_FILL0_wght400_GRAD0_opsz24;
-            btnConcluirAluguel.ImageScaling = ToolStripItemImageScaling.None;
-            btnConcluirAluguel.ImageTransparentColor = Color.Magenta;
-            btnConcluirAluguel.Name = "btnConcluirAluguel";
-            btnConcluirAluguel.Padding = new Padding(7);
-            btnConcluirAluguel.Size = new Size(42, 42);
-            btnConcluirAluguel.Click += btnConcluirAluguel_Click;
-            // 
-            // btnConfigurarDescontos
-            // 
-            btnConfigurarDescontos.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnConfigurarDescontos.Image = Properties.Resources.settings_FILL0_wght400_GRAD0_opsz24;
-            btnConfigurarDescontos.ImageScaling = ToolStripItemImageScaling.None;
-            btnConfigurarDescontos.ImageTransparentColor = Color.Magenta;
-            btnConfigurarDescontos.Name = "btnConfigurarDescontos";
-            btnConfigurarDescontos.Padding = new Padding(7);
-            btnConfigurarDescontos.Size = new Size(42, 42);
-            btnConfigurarDescontos.Click += btnConfigurarDescontos_Click;
             // 
             // toolStripSeparator5
             // 
@@ -287,10 +208,8 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem cadastrosMenuItem;
-        private ToolStripMenuItem clientesMenuItem;
         private ToolStripMenuItem temasMenuItem;
         private ToolStripMenuItem tarefasMenuItem;
-        private ToolStripMenuItem alugueisToolStripMenuItem;
         private ToolStripMenuItem relatóriosToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel labelRodape;
@@ -302,13 +221,8 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel labelTipoCadastro;
         private ToolStripSeparator toolStripSeparator2;
-        private ToolStripButton btnFiltrar;
         private ToolStripSeparator toolStripSeparator3;
-        private ToolStripButton btnAdicionarItens;
-        private ToolStripButton btnConfigurarDescontos;
         private ToolStripMenuItem itensToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
-        private ToolStripButton btnVisualizarAlugueisCliente;
-        private ToolStripButton btnConcluirAluguel;
     }
 }

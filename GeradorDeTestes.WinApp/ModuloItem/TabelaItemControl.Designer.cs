@@ -1,4 +1,4 @@
-﻿namespace FestasInfantis.WinApp.ModuloItem
+﻿namespace GeradorDeTestes.WinApp.ModuloItem
 {
     partial class TabelaItemControl
     {

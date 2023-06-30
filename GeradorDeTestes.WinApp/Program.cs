@@ -1,4 +1,4 @@
-namespace FestasInfantis.WinApp
+namespace GeradorDeTestes.WinApp
 {
     internal static class Program
     {

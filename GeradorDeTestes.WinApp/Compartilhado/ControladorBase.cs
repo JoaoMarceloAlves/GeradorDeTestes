@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FestasInfantis.WinApp.Compartilhado
+namespace GeradorDeTestes.WinApp.Compartilhado
 {
     public abstract class ControladorBase
     {

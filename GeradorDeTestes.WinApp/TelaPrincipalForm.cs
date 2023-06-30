@@ -1,23 +1,19 @@
 
-using FestasInfantis.Dominio.ModuloItem;
+using GeradorDeTestes.Dominio.ModuloItem;
 
 
 
+using GeradorDeTestes.WinApp.ModuloItem;
 
 
-using FestasInfantis.WinApp.ModuloItem;
+using GeradorDeTestes.Infra.Dados.Sql.ModuloItem;
 
 
-
-using FestasInfantis.Infra.Dados.Sql.ModuloItem;
-
-
-namespace FestasInfantis.WinApp
+namespace GeradorDeTestes.WinApp
 {
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-
 
         private IRepositorioItem repositorioItem = new RepositorioItemEmSql();
 
@@ -49,12 +45,7 @@ namespace FestasInfantis.WinApp
             }
         }
 
-        private void clientesMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorCliente(repositorioCliente, repositorioAluguel);
 
-            ConfigurarTelaPrincipal(controlador);
-        }
 
         private void itensToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -63,23 +54,9 @@ namespace FestasInfantis.WinApp
             ConfigurarTelaPrincipal(controlador);
         }
 
-        private void temasMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorTema(repositorioTema, repositorioItem, repositorioAluguel);
 
-            ConfigurarTelaPrincipal(controlador);
-        }
 
-        private void alugueisToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorAluguel(
-                repositorioAluguel,
-                repositorioCliente,
-                repositorioTema,
-                repositorioDesconto);
 
-            ConfigurarTelaPrincipal(controlador);
-        }
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
@@ -115,11 +92,6 @@ namespace FestasInfantis.WinApp
             btnInserir.ToolTipText = controlador.ToolTipInserir;
             btnEditar.ToolTipText = controlador.ToolTipEditar;
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
-            btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
-            btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
-            btnVisualizarAlugueisCliente.ToolTipText = controlador.ToolTipVisualizarAlugueis;
-            btnConcluirAluguel.ToolTipText = controlador.ToolTipConcluirAluguel;
-            btnConfigurarDescontos.ToolTipText = controlador.ToolTipConfigurarDescontos;
         }
 
         private void ConfigurarEstados(ControladorBase controlador)
@@ -127,11 +99,6 @@ namespace FestasInfantis.WinApp
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
-            btnFiltrar.Enabled = controlador.FiltrarHabilitado;
-            btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
-            btnVisualizarAlugueisCliente.Enabled = controlador.VisualizarAlugueisHabilitado;
-            btnConcluirAluguel.Enabled = controlador.ConcluirAluguelHabilitado;
-            btnConfigurarDescontos.Enabled = controlador.ConfigurarDescontosHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -159,19 +126,5 @@ namespace FestasInfantis.WinApp
             controlador.Adicionar();
         }
 
-        private void btnConcluirAluguel_Click(object sender, EventArgs e)
-        {
-            (controlador as ControladorAluguel)!.ConcluirAluguel();
-        }
-
-        private void btnVisualizarAlugueis_Click(object sender, EventArgs e)
-        {
-            (controlador as ControladorCliente)!.VisualizarAlugueis();
-        }
-
-        private void btnConfigurarDescontos_Click(object sender, EventArgs e)
-        {
-            (controlador as ControladorAluguel)!.ConfigurarDescontos();
-        }
     }
 }
