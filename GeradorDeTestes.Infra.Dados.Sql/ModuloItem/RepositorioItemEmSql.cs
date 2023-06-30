@@ -6,7 +6,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloItem
     public class RepositorioItemEmSql : IRepositorioItem
     {
         private const string enderecoBanco =
-             @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=FestasInfantisDb;Integrated Security=True";
+             @"Data Source=(localdb)\mssqllocaldb;Initial Catalog=GeradorDeTestesDb;Integrated Security=True";
 
         private const string sqlInserir =
          @"INSERT INTO [TBITEM]
