@@ -70,7 +70,9 @@
             // temasMenuItem
             // 
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(67, 22);
+            temasMenuItem.Size = new Size(180, 22);
+            temasMenuItem.Text = "Item";
+            temasMenuItem.Click += temasMenuItem_Click;
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -83,7 +85,6 @@
             itensToolStripMenuItem.Name = "itensToolStripMenuItem";
             itensToolStripMenuItem.Size = new Size(180, 22);
             itensToolStripMenuItem.Text = "Itens";
-            itensToolStripMenuItem.Click += itensToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -115,7 +116,7 @@
             // btnInserir
             // 
             btnInserir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnInserir.Image = GeradorDeTestes.WinApp.Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
+            btnInserir.Image = Properties.Resources.add_circle_FILL0_wght400_GRAD0_opsz24;
             btnInserir.ImageScaling = ToolStripItemImageScaling.None;
             btnInserir.ImageTransparentColor = Color.Magenta;
             btnInserir.Name = "btnInserir";
@@ -126,7 +127,7 @@
             // btnEditar
             // 
             btnEditar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnEditar.Image = GeradorDeTestes.WinApp.Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
+            btnEditar.Image = Properties.Resources.edit_FILL0_wght400_GRAD0_opsz24;
             btnEditar.ImageScaling = ToolStripItemImageScaling.None;
             btnEditar.ImageTransparentColor = Color.Magenta;
             btnEditar.Name = "btnEditar";
@@ -137,7 +138,7 @@
             // btnExcluir
             // 
             btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnExcluir.Image = GeradorDeTestes.WinApp.Properties.Resources.delete_FILL0_wght400_GRAD0_opsz24;
+            btnExcluir.Image = Properties.Resources.delete_FILL0_wght400_GRAD0_opsz24;
             btnExcluir.ImageScaling = ToolStripItemImageScaling.None;
             btnExcluir.ImageTransparentColor = Color.Magenta;
             btnExcluir.Name = "btnExcluir";

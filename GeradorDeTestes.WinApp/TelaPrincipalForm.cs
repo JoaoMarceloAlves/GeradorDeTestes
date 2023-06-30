@@ -46,18 +46,6 @@ namespace GeradorDeTestes.WinApp
         }
 
 
-
-        private void itensToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            controlador = new ControladorItem(repositorioItem);
-
-            ConfigurarTelaPrincipal(controlador);
-        }
-
-
-
-
-
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
@@ -126,5 +114,11 @@ namespace GeradorDeTestes.WinApp
             controlador.Adicionar();
         }
 
+        private void temasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorItem(repositorioItem);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
     }
 }
