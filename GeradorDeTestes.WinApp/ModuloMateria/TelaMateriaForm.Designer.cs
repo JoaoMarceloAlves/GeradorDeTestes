@@ -71,7 +71,7 @@
             // lbserie
             // 
             lbserie.AutoSize = true;
-            lbserie.Location = new Point(42, 139);
+            lbserie.Location = new Point(42, 143);
             lbserie.Name = "lbserie";
             lbserie.Size = new Size(35, 15);
             lbserie.TabIndex = 3;
@@ -103,6 +103,7 @@
             // 
             // btnGravar
             // 
+            btnGravar.DialogResult = DialogResult.OK;
             btnGravar.Location = new Point(281, 187);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(97, 40);
@@ -113,6 +114,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.DialogResult = DialogResult.Cancel;
             btnCancelar.Location = new Point(397, 187);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(97, 40);
