@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloMateria;
+﻿using GeradorDeTestes.Dominio.ModuloItem;
+using GeradorDeTestes.Dominio.ModuloMateria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,23 +20,83 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
         public override string ToolTipInserir { get { return "Inserir nova Matéria"; } }
 
-        public override string ToolTipEditar { get { return "Editar Matéria Existente"; } }
+        public override string ToolTipEditar { get { return "Editar Matérias Existentes"; } }
 
-        public override string ToolTipExcluir { get { return "Excluir Matéria Existente"; } }
+        public override string ToolTipExcluir { get { return "Excluir Matérias Existentes"; } }
 
         public override void Inserir()
         {
-            throw new NotImplementedException();
-        }
+            TelaMateriaForm telaMateria = new TelaMateriaForm();
 
+            DialogResult opcaoEscolhida = telaMateria.ShowDialog();
+
+            if(opcaoEscolhida == DialogResult.OK)
+            {
+                Materia materia = telaMateria.ObterMateria();
+
+                repositorioMateria.Inserir(materia);
+            }
+
+            CarregarMaterias();
+        }
+     
         public override void Editar()
         {
-            throw new NotImplementedException();
+            Materia materia = ObterMateriaSelecionada();
+
+            if(materia == null)
+            {
+                MessageBox.Show($"Selecione uma Matéria primeiro!",
+                    "Edição de Matérias",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            TelaMateriaForm telaMateria = new TelaMateriaForm();
+            telaMateria.ConfigurarTela(materia);
+
+            DialogResult opcaoEscolhida = telaMateria.ShowDialog();
+
+            if(opcaoEscolhida == DialogResult.OK )
+            {
+                Materia materiaAtualizada = telaMateria.ObterMateria();
+
+                repositorioMateria.Editar(materiaAtualizada.id, materiaAtualizada);
+            }
+
+            CarregarMaterias();
+        }
+
+        private Materia ObterMateriaSelecionada()
+        {
+            int id = tabelaMateria.ObterIdSelecionado();
+
+            return repositorioMateria.SelecionarPorId(id);
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            Materia materia = ObterMateriaSelecionada();
+
+            if (materia == null)
+            {
+                MessageBox.Show($"Selecione uma Matéria primeiro!",
+                    "Exclusão de Matérias",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+            DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Matéria {materia.nome}?", "Exclusão de Matérias",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if(opcaoEscolhida == DialogResult.OK)
+            {
+                repositorioMateria.Excluir(materia);
+            }
+
+            CarregarMaterias();
         }       
 
         public override UserControl ObterListagem()
@@ -45,6 +106,12 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
            return tabelaMateria;
             
+        }
+        private void CarregarMaterias()
+        {
+            List<Materia> materias = repositorioMateria.SelecionarTodos();
+
+            tabelaMateria.AtualizarRegistros(materias);
         }
 
         public override string ObterTipoCadastro()
