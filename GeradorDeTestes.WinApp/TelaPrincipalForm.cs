@@ -7,7 +7,9 @@ using GeradorDeTestes.WinApp.ModuloItem;
 
 
 using GeradorDeTestes.Infra.Dados.Sql.ModuloItem;
-
+using GeradorDeTestes.WinApp.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Infra.Dados.Sql.ModuloMateria;
 
 namespace GeradorDeTestes.WinApp
 {
@@ -16,6 +18,7 @@ namespace GeradorDeTestes.WinApp
         private ControladorBase controlador;
 
         private IRepositorioItem repositorioItem = new RepositorioItemEmSql();
+        private IRepositorioMateria repositorioMateria = new RepositorioMateriaEmSql();
 
 
 
@@ -117,6 +120,13 @@ namespace GeradorDeTestes.WinApp
         private void temasMenuItem_Click(object sender, EventArgs e)
         {
             controlador = new ControladorItem(repositorioItem);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void matériasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorMateria(repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);
         }
