@@ -20,17 +20,19 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
 
         public override Materia ConverterRegistro(SqlDataReader leitorRegistros)
         {
-            Disciplina disciplina = new MapeadorDisciplina().ConverterRegistro(leitorRegistros);
+            //Disciplina disciplina = new MapeadorDisciplina().ConverterRegistro(leitorRegistros);
 
-            int idDisciplina = Convert.ToInt32(leitorRegistros["DISCIPLINA_ID"]);
+            //int idDisciplina = Convert.ToInt32(leitorRegistros["DISCIPLINA_ID"]);
 
-            string nome = Convert.ToString(leitorRegistros["NOME"]);
+            //string nome = Convert.ToString(leitorRegistros["NOME"]);
 
-            string serie = Convert.ToString(leitorRegistros["SERIE"]);
+            //string serie = Convert.ToString(leitorRegistros["SERIE"]);
 
-            Materia materia = new Materia(nome, disciplina, serie);
+            //Materia materia = new Materia(nome, disciplina, serie);
 
-            return materia;
+            //return materia;
+
+            return null;
         }
     }
 }
