@@ -45,6 +45,7 @@
             toolStripSeparator5 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
+            matériasToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             barraFerramentas.SuspendLayout();
@@ -62,7 +63,7 @@
             // 
             // cadastrosMenuItem
             // 
-            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temasMenuItem });
+            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temasMenuItem, matériasToolStripMenuItem });
             cadastrosMenuItem.Name = "cadastrosMenuItem";
             cadastrosMenuItem.Size = new Size(71, 20);
             cadastrosMenuItem.Text = "Cadastros";
@@ -181,6 +182,13 @@
             panelRegistros.Size = new Size(800, 359);
             panelRegistros.TabIndex = 3;
             // 
+            // matériasToolStripMenuItem
+            // 
+            matériasToolStripMenuItem.Name = "matériasToolStripMenuItem";
+            matériasToolStripMenuItem.Size = new Size(180, 22);
+            matériasToolStripMenuItem.Text = "Matérias";
+            matériasToolStripMenuItem.Click += matériasToolStripMenuItem_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -225,5 +233,6 @@
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem itensToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem matériasToolStripMenuItem;
     }
 }

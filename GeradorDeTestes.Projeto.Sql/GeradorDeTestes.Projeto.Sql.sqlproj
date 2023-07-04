@@ -62,6 +62,7 @@
   <ItemGroup>
     <Build Include="dbo\Tables\TbItem.sql" />
     <Build Include="dbo\Tables\TbDisciplina.sql" />
+    <Build Include="dbo\Tables\TbMateria.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="GeradorDeTestes.Projeto.Sql.refactorlog" />
