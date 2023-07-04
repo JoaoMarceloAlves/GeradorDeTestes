@@ -6,12 +6,15 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
     public partial class TelaMateriaForm : Form
     {
         public List<Disciplina> disciplinas;
+        public List<Materia> materias;
 
         public TelaMateriaForm()
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
+
+            CarregarDisciplinas(disciplinas);
 
         }
 
@@ -63,6 +66,15 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
             if (erros.Length > 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+
+            int numero = materias.FindAll(m => m.nome == txtNome.Text && m.id != materia.id).Count();
+
+            if (numero > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Nome da 'Matéria' já existe");
 
                 DialogResult = DialogResult.None;
             }
