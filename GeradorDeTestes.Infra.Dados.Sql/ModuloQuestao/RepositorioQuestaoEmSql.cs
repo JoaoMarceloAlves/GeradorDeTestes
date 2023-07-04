@@ -70,7 +70,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
               Q.[MATERIA_ID] = M.[ID]
             INNER JOIN [TBDISCIPLINA] AS D
             ON
-              M.[TEMA_ID] = D.[ID]
+              M.[DISCIPLINA_ID] = D.[ID]
             WHERE 
                 [ID] = @ID";
 
@@ -97,6 +97,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
               Q.[MATERIA_ID] = M.[ID]
            INNER JOIN [TBDISCIPLINA] AS D
            ON
-              M.[TEMA_ID] = D.[ID]";
+              M.[DISCIPLINA_ID] = D.[ID]";
     }
 }
