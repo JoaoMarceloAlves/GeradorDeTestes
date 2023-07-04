@@ -23,7 +23,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
             Disciplina disciplina = (Disciplina)cmbDisciplina.SelectedItem;
 
-            string serie = radiobtn2serie.Text;
+            string serie = grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text;
 
             Materia materia = new Materia(nome, disciplina, serie);
 

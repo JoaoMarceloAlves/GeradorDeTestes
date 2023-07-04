@@ -39,6 +39,8 @@
             btnCancelar = new Button();
             radiobtn1Serie = new RadioButton();
             radiobtn2serie = new RadioButton();
+            grpboxSerie = new GroupBox();
+            grpboxSerie.SuspendLayout();
             SuspendLayout();
             // 
             // lbId
@@ -125,7 +127,7 @@
             // radiobtn1Serie
             // 
             radiobtn1Serie.AutoSize = true;
-            radiobtn1Serie.Location = new Point(96, 139);
+            radiobtn1Serie.Location = new Point(20, 21);
             radiobtn1Serie.Name = "radiobtn1Serie";
             radiobtn1Serie.Size = new Size(36, 19);
             radiobtn1Serie.TabIndex = 9;
@@ -136,7 +138,7 @@
             // radiobtn2serie
             // 
             radiobtn2serie.AutoSize = true;
-            radiobtn2serie.Location = new Point(160, 139);
+            radiobtn2serie.Location = new Point(91, 20);
             radiobtn2serie.Name = "radiobtn2serie";
             radiobtn2serie.Size = new Size(36, 19);
             radiobtn2serie.TabIndex = 10;
@@ -144,13 +146,22 @@
             radiobtn2serie.Text = "2ª";
             radiobtn2serie.UseVisualStyleBackColor = true;
             // 
+            // grpboxSerie
+            // 
+            grpboxSerie.Controls.Add(radiobtn1Serie);
+            grpboxSerie.Controls.Add(radiobtn2serie);
+            grpboxSerie.Location = new Point(96, 123);
+            grpboxSerie.Name = "grpboxSerie";
+            grpboxSerie.Size = new Size(200, 47);
+            grpboxSerie.TabIndex = 11;
+            grpboxSerie.TabStop = false;
+            // 
             // TelaMateriaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(506, 246);
-            Controls.Add(radiobtn2serie);
-            Controls.Add(radiobtn1Serie);
+            Controls.Add(grpboxSerie);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
             Controls.Add(cmbDisciplina);
@@ -163,6 +174,8 @@
             Name = "TelaMateriaForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cadastro de Matérias";
+            grpboxSerie.ResumeLayout(false);
+            grpboxSerie.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,5 +193,6 @@
         private Button btnCancelar;
         private RadioButton radiobtn1Serie;
         private RadioButton radiobtn2serie;
+        private GroupBox grpboxSerie;
     }
 }
