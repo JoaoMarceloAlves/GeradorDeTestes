@@ -38,27 +38,36 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
                                                     WHERE 
                                                          [ID] = @ID";
 
-        protected override string sqlSelecionarTodos => @"SELECT M.[ID]
-                                                                  ,M.[NOME]
-                                                                  ,M.[DISCIPLINA_ID]
-                                                                  ,M.[SERIE]
-                                                         FROM
-                                                          [TBMATERIA] AS M
-                                                          INNER JOIN
-                                                          [TBDISCIPLINA] AS D 
-                                                          ON M.DISCIPLINA_ID = D.ID";
+        protected override string sqlSelecionarTodos => @"SELECT 
+                                                               A.[ID]                MATERIA_ID
+                                                              ,A.[NOME]              MATERIA_NOME
+                                                              ,A.[DISCIPLINA_ID]     MATERIA_DISCIPLINA_ID
+                                                              ,A.[SERIE]             MATERIA_SERIE
 
-        protected override string sqlSelecionarPorId => @"SELECT M.[ID]
-                                                          ,M.[NOME]
-                                                          ,M.[DISCIPLINA_ID]
-                                                          ,M.[SERIE]
-                                                     FROM
-                                                      [TBMATERIA] AS M
-                                                   INNER JOIN
-                                                      [TBDISCIPLINA] AS D 
-                                                      ON 
-                                                      M.DISCIPLINA_ID = D.ID
+	                                                          ,D.[ID]                DISCIPLINA_ID
+	                                                          ,D.[NOME]              DISCIPLINA_NOME	  
 
-                                                      WHERE M.[ID] = @ID";
+                                                                  FROM 
+
+                                                                  [TBMATERIA] AS A INNER JOIN [TBDISCIPLINA] AS D
+                                                                  ON
+                                                                  A.[DISCIPLINA_ID] = D.[ID]";
+
+        protected override string sqlSelecionarPorId => @"SELECT 
+                                                                   A.[ID]                MATERIA_ID
+                                                                  ,A.[NOME]              MATERIA_NOME
+                                                                  ,A.[DISCIPLINA_ID]     MATERIA_DISCIPLINA_ID
+                                                                  ,A.[SERIE]             MATERIA_SERIE
+
+	                                                              ,D.[ID]                DISCIPLINA_ID
+	                                                              ,D.[NOME]              DISCIPLINA_NOME
+																											
+                                                                  FROM 
+                                                                  [TBMATERIA] AS A INNER JOIN [TBDISCIPLINA] AS D
+                                                                  ON
+                                                                  A.[DISCIPLINA_ID] = D.[ID]
+                                                                 
+                                                                    WHERE
+                                                                     [ID] = @ID";
     }
 }
