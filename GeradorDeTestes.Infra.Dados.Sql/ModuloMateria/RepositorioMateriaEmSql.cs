@@ -68,6 +68,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
                                                                   A.[DISCIPLINA_ID] = D.[ID]
                                                                  
                                                                     WHERE
-                                                                     [ID] = @ID";
+                                                                     A.[ID] = @ID";
     }
 }
