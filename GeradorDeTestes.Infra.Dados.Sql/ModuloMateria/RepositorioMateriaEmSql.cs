@@ -12,7 +12,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
     {
         protected override string sqlInserir => @"INSERT INTO [TBMATERIA]
                                                        (
-		                                               [NOME]
+		                                                [NOME]
                                                        ,[DISCIPLINA_ID]
                                                        ,[SERIE]
 		                                               )

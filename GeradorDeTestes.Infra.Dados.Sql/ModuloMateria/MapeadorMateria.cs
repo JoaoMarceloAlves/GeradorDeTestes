@@ -1,7 +1,6 @@
 ﻿using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Infra.Dados.Sql.Compartilhado;
 using Microsoft.Data.SqlClient;
-using static GeradorDeTestes.Dominio.ModuloMateria.Materia;
 
 namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
 {
