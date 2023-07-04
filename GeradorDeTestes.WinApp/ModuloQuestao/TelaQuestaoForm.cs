@@ -14,6 +14,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
             this.ConfigurarDialog();
             this.alternativas = new List<Alternativa>();
             this.materias = materias;
+            CarregarMaterias();
         }
 
         private void CarregarMaterias()
@@ -89,6 +90,15 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
+            if(this.alternativas.Count > 3)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(
+                    "Número máximo de alternativas é 4"
+                    );
+
+                return;
+            }
+
             this.alternativas.Add(alternativa);
             txtAlternativas.Items.Add(alternativa.descricao);
         }
@@ -115,7 +125,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         public string[] Validar()
         {
-            List<String> erros = new List<String>();
+            List<string> erros = new List<string>();
 
             if (txtAlternativas.CheckedItems.Count == 0)
             {
