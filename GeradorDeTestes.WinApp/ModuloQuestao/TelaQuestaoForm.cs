@@ -6,11 +6,22 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
     {
         private List<Alternativa> alternativas;
         private Alternativa resposta;
-        public TelaQuestaoForm()
+        private List<Materia> materias;
+        public TelaQuestaoForm(List<Materia> materias)
         {
             InitializeComponent();
             this.ConfigurarDialog();
             this.alternativas = new List<Alternativa>();
+            this.materias = materias;
+        }
+
+        private void CarregarMaterias()
+        {
+            foreach(Materia materia in this.materias)
+            {
+                cmbMateria.Items.Add(materia.nome);
+            }
+            cmbMateria.SelectedIndex = 0;
         }
 
         public Questao ObterQuestao()
@@ -21,7 +32,9 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             Alternativa resposta = new Alternativa((string)txtAlternativas.CheckedItems[0]);
 
-            Questao questao = new Questao(enunciado, resposta, this.alternativas);
+            Materia materia = materias.Find(m => m.nome == (string)cmbMaterias.SelectedItem);
+
+            Questao questao = new Questao(enunciado, resposta, this.alternativas, materia);
 
             if (id > 0)
                 questao.id = id;
@@ -46,12 +59,14 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             this.alternativas = questao.alternativas;
 
+            cmbMateria.SelectedItem = questao.materia.nome;
+
             CarregarLista();
         }
 
         private void CarregarLista()
         {
-            foreach(Alternativa alternativa in this.alternativas)
+            foreach (Alternativa alternativa in this.alternativas)
             {
                 txtAlternativas.Items.Add(alternativa.descricao);
             }
@@ -101,7 +116,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
         {
             List<String> erros = new List<String>();
 
-            if(txtAlternativas.CheckedItems.Count == 0)
+            if (txtAlternativas.CheckedItems.Count == 0)
             {
                 erros.Add("É obrigatório marcar uma resposta");
             }

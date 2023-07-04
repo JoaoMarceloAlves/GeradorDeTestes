@@ -6,10 +6,12 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
     {
         private TabelaQuestaoControl tabelaQuestao;
         private readonly IRepositorioQuestao repositorioQuestao;
+        private readonly IRepositorioMateria repositorioMateria;
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao)
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
         {
             this.repositorioQuestao = repositorioQuestao;
+            this.repositorioMateria = repositorioMateria;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Questão"; } }
@@ -20,7 +22,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         public override void Inserir()
         {
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm();
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria);
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
 
@@ -47,7 +49,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm();
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria);
             telaQuestao.ConfigurarTela(questao);
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();

@@ -32,6 +32,11 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 {
                     Name = "resposta",
                     HeaderText = "Resposta"
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    Name = "materia",
+                    HeaderText = "Materia"
                 }
             };
 
@@ -44,7 +49,9 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             foreach (Questao questao in questoes)
             {
-                gridQuestoes.Rows.Add(questao.id, questao.enunciado, questao.resposta.descricao);
+                gridQuestoes.Rows.Add(
+                    questao.id, questao.enunciado, questao.resposta.descricao, questao.materia.nome
+                    );
             }
         }
 

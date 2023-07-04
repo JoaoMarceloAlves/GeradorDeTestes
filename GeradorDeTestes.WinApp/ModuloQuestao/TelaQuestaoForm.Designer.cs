@@ -40,13 +40,15 @@
             groupBox1 = new GroupBox();
             txtAlternativas = new CheckedListBox();
             btnRemover = new Button();
+            label4 = new Label();
+            cmbMateria = new ComboBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(14, 54);
+            label2.Location = new Point(14, 89);
             label2.Name = "label2";
             label2.Size = new Size(66, 15);
             label2.TabIndex = 18;
@@ -96,15 +98,15 @@
             // 
             // txtEnunciado
             // 
-            txtEnunciado.Location = new Point(86, 51);
+            txtEnunciado.Location = new Point(86, 86);
             txtEnunciado.Name = "txtEnunciado";
-            txtEnunciado.Size = new Size(400, 78);
+            txtEnunciado.Size = new Size(400, 53);
             txtEnunciado.TabIndex = 20;
             txtEnunciado.Text = "";
             // 
             // txtResposta
             // 
-            txtResposta.Location = new Point(86, 135);
+            txtResposta.Location = new Point(86, 145);
             txtResposta.Name = "txtResposta";
             txtResposta.Size = new Size(241, 39);
             txtResposta.TabIndex = 22;
@@ -113,7 +115,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(23, 135);
+            label3.Location = new Point(23, 145);
             label3.Name = "label3";
             label3.Size = new Size(57, 15);
             label3.TabIndex = 21;
@@ -121,7 +123,7 @@
             // 
             // btnAdicionar
             // 
-            btnAdicionar.Location = new Point(354, 135);
+            btnAdicionar.Location = new Point(354, 145);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(99, 39);
             btnAdicionar.TabIndex = 23;
@@ -158,11 +160,31 @@
             btnRemover.UseVisualStyleBackColor = true;
             btnRemover.Click += btnRemover_Click;
             // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(30, 56);
+            label4.Name = "label4";
+            label4.Size = new Size(50, 15);
+            label4.TabIndex = 25;
+            label4.Text = "Matéria:";
+            // 
+            // cmbMateria
+            // 
+            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMateria.FormattingEnabled = true;
+            cmbMateria.Location = new Point(86, 53);
+            cmbMateria.Name = "cmbMateria";
+            cmbMateria.Size = new Size(241, 23);
+            cmbMateria.TabIndex = 26;
+            // 
             // TelaQuestaoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(498, 477);
+            Controls.Add(cmbMateria);
+            Controls.Add(label4);
             Controls.Add(groupBox1);
             Controls.Add(btnAdicionar);
             Controls.Add(txtResposta);
@@ -193,5 +215,7 @@
         private GroupBox groupBox1;
         private CheckedListBox txtAlternativas;
         private Button btnRemover;
+        private Label label4;
+        private ComboBox cmbMateria;
     }
 }

@@ -29,6 +29,8 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
             else
                 comando.Parameters.AddWithValue("ALTERNATIVA_D", DBNull.Value);
+
+            comando.Parameters.AddWithValue("MATERIA_ID", registro.materia.id);
         }
 
         public override Questao ConverterRegistro(SqlDataReader leitorRegistros)
@@ -41,7 +43,9 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
             Alternativa resposta = ConverterAlternativa(leitorRegistros);
 
-            return new Questao(id, enunciado, alternativas);
+            Materia materia = new MapeadorMateria.ConverterMateria(leitorRegistros);
+
+            return new Questao(id, enunciado, resposta, alternativas, materia);
         }
 
         public Alternativa ConverterAlternativa(SqlDataReader leitorRegistros)

@@ -14,6 +14,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
                     ,[ALTERNATIVA_B]
                     ,[ALTERNATIVA_C]
                     ,[ALTERNATIVA_D]
+                    ,[MATERIA_ID]
                 )
                 VALUES
                 (
@@ -23,6 +24,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
                     ,@ALTERNATIVA_B
                     ,@ALTERNATIVA_C
                     ,@ALTERNATIVA_D
+                    ,@MATERIA_ID
                 )
 
             SELECT SCOPE_IDENTITY();";
@@ -36,6 +38,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
                ,[ALTERNATIVA_B] = @ALTERNATIVA_B
                ,[ALTERNATIVA_C] = @ALTERNATIVA_C
                ,[ALTERNATIVA_D] = @ALTERNATIVA_D
+               ,[MATERIA_ID]    = @MATERIA_ID
 
 	            WHERE 
 		            [ID] = @ID";
@@ -47,25 +50,40 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
         protected override string sqlSelecionarPorId =>
            @"SELECT 
-                [ID]            QUESTAO_ID
-	           ,[ENUNCIADO]     QUESTAO_ENUNCIADO
-               ,[RESPOSTA]      QUESTA0_RESPOSTA
-               ,[ALTERNATIVA_A] QUESTAO_ALTERNATIVA_A
-               ,[ALTERNATIVA_B] QUESTAO_ALTERNATIVA_B
-               ,[ALTERNATIVA_C] QUESTAO_ALTERNATIVA_C
-               ,[ALTERNATIVA_D] QUESTAO_ALTERNATIVA_D
-	  
+                Q.[ID]            QUESTAO_ID
+	           ,Q.[ENUNCIADO]     QUESTAO_ENUNCIADO
+               ,Q.[RESPOSTA]      QUESTA0_RESPOSTA
+               ,Q.[ALTERNATIVA_A] QUESTAO_ALTERNATIVA_A
+               ,Q.[ALTERNATIVA_B] QUESTAO_ALTERNATIVA_B
+               ,Q.[ALTERNATIVA_C] QUESTAO_ALTERNATIVA_C
+               ,Q.[ALTERNATIVA_D] QUESTAO_ALTERNATIVA_D
+
+               ,M.[ID]            MATERIA_ID
+               ,M.[NOME]          MATERIA_ID
+               ,M.[TEMA_ID]       MATERIA_TEMA_ID
+            FROM
+                [TBQUESTAO] AS Q INNER JOIN [TBMATERIA] AS M
+            ON
+              Q.[MATERIA_ID] = M.[ID]
             WHERE 
                 [ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
           @"SELECT 
-                [ID]            QUESTAO_ID
-	           ,[ENUNCIADO]     QUESTAO_ENUNCIADO
-               ,[RESPOSTA]      QUESTA0_RESPOSTA
-               ,[ALTERNATIVA_A] QUESTAO_ALTERNATIVA_A
-               ,[ALTERNATIVA_B] QUESTAO_ALTERNATIVA_B
-               ,[ALTERNATIVA_C] QUESTAO_ALTERNATIVA_C
-               ,[ALTERNATIVA_D] QUESTAO_ALTERNATIVA_D";
+                Q.[ID]            QUESTAO_ID
+	           ,Q.[ENUNCIADO]     QUESTAO_ENUNCIADO
+               ,Q.[RESPOSTA]      QUESTA0_RESPOSTA
+               ,Q.[ALTERNATIVA_A] QUESTAO_ALTERNATIVA_A
+               ,Q.[ALTERNATIVA_B] QUESTAO_ALTERNATIVA_B
+               ,Q.[ALTERNATIVA_C] QUESTAO_ALTERNATIVA_C
+               ,Q.[ALTERNATIVA_D] QUESTAO_ALTERNATIVA_D
+
+               ,M.[ID]            MATERIA_ID
+               ,M.[NOME]          MATERIA_ID
+               ,M.[TEMA_ID]       MATERIA_TEMA_ID
+            FROM
+                [TBQUESTAO] AS Q INNER JOIN [TBMATERIA] AS M
+            ON
+              Q.[MATERIA_ID] = M.[ID]";
     }
 }

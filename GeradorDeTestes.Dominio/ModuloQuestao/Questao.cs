@@ -6,25 +6,28 @@
         public string enunciado;
         public List<Alternativa> alternativas;
         public Alternativa resposta;
+        public Materia materia;
 
         public Questao()
         {
             
         }
 
-        public Questao(string enunciado, Alternativa resposta, List<Alternativa> alternativas)
+        public Questao(string enunciado, Alternativa resposta, List<Alternativa> alternativas, Materia materia)
         {
             this.enunciado = enunciado;
             this.resposta = resposta;
             this.alternativas = alternativas;
+            this.materia = materia;
         }
 
-        public Questao(int id, string enunciado, Alternativa resposta, List<Alternativa> alternativas)
+        public Questao(int id, string enunciado, Alternativa resposta, List<Alternativa> alternativas, Materia materia)
         {
             this.id = id;
             this.enunciado = enunciado;
             this.resposta = resposta;
             this.alternativas = alternativas;
+            this.materia = materia;
         }
 
         public override void AtualizarInformacoes(Questao registroAtualizado)
@@ -33,6 +36,7 @@
             this.enunciado = registroAtualizado.enunciado;
             this.alternativas = registroAtualizado.alternativas;
             this.resposta = registroAtualizado.resposta;
+            this.materia = materia;
         }
 
         public override string[] Validar()
@@ -53,7 +57,8 @@
 
         public override string ToString()
         {
-            return $"Id: {id} Enunciado: {enunciado} Resposta: {resposta.descricao}";
+            return $"Id: {id} Enunciado: {enunciado}, Materia: {materia}, " +
+                $"Resposta: {resposta.descricao}";
         }
 
         public override bool Equals(object? obj)
@@ -62,7 +67,8 @@
                    id == questao.id &&
                    enunciado == questao.enunciado &&
                    EqualityComparer<List<Alternativa>>.Default.Equals(alternativas, questao.alternativas) &&
-                   EqualityComparer<Alternativa>.Default.Equals(resposta, questao.resposta);
+                   EqualityComparer<Alternativa>.Default.Equals(resposta, questao.resposta) &&
+                   EqualityComparer<Materia>.Default.Equals(materia, questao.materia);
         }
     }
 }
