@@ -1,4 +1,6 @@
-﻿namespace GeradorDeTestes.Dominio.ModuloQuestao
+﻿using GeradorDeTestes.Dominio.ModuloMateria;
+
+namespace GeradorDeTestes.Dominio.ModuloQuestao
 {
     [Serializable]
     public class Questao : EntidadeBase<Questao>

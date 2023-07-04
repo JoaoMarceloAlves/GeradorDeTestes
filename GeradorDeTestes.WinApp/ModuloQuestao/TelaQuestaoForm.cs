@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloQuestao;
+﻿using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp.ModuloQuestao
 {
@@ -32,7 +33,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             Alternativa resposta = new Alternativa((string)txtAlternativas.CheckedItems[0]);
 
-            Materia materia = materias.Find(m => m.nome == (string)cmbMaterias.SelectedItem);
+            Materia materia = materias.Find(m => m.nome == (string)cmbMateria.SelectedItem);
 
             Questao questao = new Questao(enunciado, resposta, this.alternativas, materia);
 

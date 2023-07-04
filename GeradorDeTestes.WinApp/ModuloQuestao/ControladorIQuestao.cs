@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloQuestao;
+﻿using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp.ModuloQuestao
 {
@@ -22,7 +23,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         public override void Inserir()
         {
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria);
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
 
@@ -49,7 +50,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria);
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(rrepositorioMateria.SelecionarTodos());
             telaQuestao.ConfigurarTela(questao);
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();

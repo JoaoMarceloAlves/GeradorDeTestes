@@ -1,5 +1,7 @@
-﻿using GeradorDeTestes.Dominio.ModuloQuestao;
+﻿using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Infra.Dados.Sql.Compartilhado;
+using GeradorDeTestes.Infra.Dados.Sql.ModuloMateria;
 using Microsoft.Data.SqlClient;
 
 namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
@@ -43,7 +45,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
             Alternativa resposta = ConverterAlternativa(leitorRegistros);
 
-            Materia materia = new MapeadorMateria.ConverterMateria(leitorRegistros);
+            Materia materia = new MapeadorMateria().ConverterRegistro(leitorRegistros);
 
             return new Questao(id, enunciado, resposta, alternativas, materia);
         }
