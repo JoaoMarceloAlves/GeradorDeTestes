@@ -50,7 +50,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
-            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(rrepositorioMateria.SelecionarTodos());
+            TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria.SelecionarTodos());
             telaQuestao.ConfigurarTela(questao);
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
