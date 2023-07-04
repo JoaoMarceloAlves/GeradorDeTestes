@@ -60,11 +60,17 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
                ,M.[ID]            MATERIA_ID
                ,M.[NOME]          MATERIA_ID
-               ,M.[TEMA_ID]       MATERIA_TEMA_ID
+               ,M.[SERIE]         MATERIA_SERIE
+
+               ,D.[ID]            DISCIPLINA_ID
+               ,D.[NOME]          DISCIPLINA_NOME
             FROM
                 [TBQUESTAO] AS Q INNER JOIN [TBMATERIA] AS M
             ON
               Q.[MATERIA_ID] = M.[ID]
+            INNER JOIN [TBDISCIPLINA] AS D
+            ON
+              M.[TEMA_ID] = D.[ID]
             WHERE 
                 [ID] = @ID";
 
@@ -78,12 +84,19 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
                ,Q.[ALTERNATIVA_C] QUESTAO_ALTERNATIVA_C
                ,Q.[ALTERNATIVA_D] QUESTAO_ALTERNATIVA_D
 
+          
                ,M.[ID]            MATERIA_ID
                ,M.[NOME]          MATERIA_ID
-               ,M.[TEMA_ID]       MATERIA_TEMA_ID
-            FROM
+               ,M.[SERIE]         MATERIA_SERIE
+
+               ,D.[ID]            DISCIPLINA_ID
+               ,D.[NOME]          DISCIPLINA_NOME
+           FROM
                 [TBQUESTAO] AS Q INNER JOIN [TBMATERIA] AS M
-            ON
-              Q.[MATERIA_ID] = M.[ID]";
+           ON
+              Q.[MATERIA_ID] = M.[ID]
+           INNER JOIN [TBDISCIPLINA] AS D
+           ON
+              M.[TEMA_ID] = D.[ID]";
     }
 }
