@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TbQuestao]
 (
-	[Id] INT NOT NULL, 
+	[Id] INT NOT NULL IDENTITY, 
     [Enunciado] VARCHAR(MAX) NOT NULL, 
     [Resposta] VARCHAR(200) NOT NULL, 
     [Alternativa_A] VARCHAR(200) NOT NULL, 

@@ -72,7 +72,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
             ON
               M.[DISCIPLINA_ID] = D.[ID]
             WHERE 
-                [ID] = @ID";
+                Q.[ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
           @"SELECT 
