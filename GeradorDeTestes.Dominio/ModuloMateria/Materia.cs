@@ -67,7 +67,17 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
 
         public override string? ToString()
         {
-            return base.ToString();
+            return $"Id: {id} Nome: {nome}, Disciplina: {disciplina}, " +
+               $"Série: {serie}";
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Materia materia &&
+                   id == materia.id &&
+                   nome == materia.nome &&
+                   EqualityComparer<Disciplina>.Default.Equals(disciplina, materia.disciplina) &&
+                   serie == materia.serie;
         }
     }
 }
