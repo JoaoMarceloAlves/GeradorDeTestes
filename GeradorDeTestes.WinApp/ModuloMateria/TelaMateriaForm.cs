@@ -5,7 +5,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 {
     public partial class TelaMateriaForm : Form
     {
-        public List<Disciplina> disciplinas;
+        public List<Disciplina> disciplinas = new List<Disciplina>();
         public List<Materia> materias;
 
         public TelaMateriaForm()
