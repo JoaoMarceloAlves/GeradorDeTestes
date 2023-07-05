@@ -19,19 +19,21 @@ namespace GeradorDeTestes.Dominio.ModuloTeste
             
         }
 
-        public Teste(string titulo, bool ehRecuperacao, Disciplina disciplina, Materia materia, List<Questao> questoes)
+        public Teste(string titulo, bool ehRecuperacao, int quantidadeQuestoes, Disciplina disciplina, Materia materia, List<Questao> questoes)
         {
             this.titulo = titulo;
+            this.quantidadeQuestoes = quantidadeQuestoes;
             this.ehRecuperacao = ehRecuperacao;
             this.disciplina = disciplina;
             this.materia = materia;
             this.questoes = questoes;
         }
 
-        public Teste(int id, string titulo, bool ehRecuperacao, Disciplina disciplina, Materia materia, List<Questao> questoes)
+        public Teste(int id, string titulo, bool ehRecuperacao, int quantidadeQuestoes, Disciplina disciplina, Materia materia, List<Questao> questoes)
         {
             this.titulo = titulo;
             this.ehRecuperacao = ehRecuperacao;
+            this.quantidadeQuestoes = quantidadeQuestoes;
             this.disciplina = disciplina;
             this.materia = materia;
             this.questoes = questoes;
