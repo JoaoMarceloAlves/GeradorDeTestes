@@ -1,4 +1,11 @@
 {
-  "ExpandedNodes": [],
+  "ExpandedNodes": [
+    "",
+    "\\GeradorDeTestes.Dominio\\ModuloDisciplina",
+    "\\GeradorDeTestes.Infra.Dados.Sql",
+    "\\GeradorDeTestes.Infra.Dados.Sql\\ModuloDisciplina",
+    "\\GeradorDeTestes.Projeto.Sql",
+    "\\GeradorDeTestes.WinApp"
+  ],
   "PreviewInSolutionExplorer": false
 }
