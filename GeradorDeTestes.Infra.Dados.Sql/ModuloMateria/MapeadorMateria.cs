@@ -1,5 +1,7 @@
-﻿using GeradorDeTestes.Dominio.ModuloMateria;
+﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Infra.Dados.Sql.Compartilhado;
+using GeradorDeTestes.Infra.Dados.Sql.ModuloDisciplina;
 using Microsoft.Data.SqlClient;
 
 namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
@@ -19,19 +21,15 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
 
         public override Materia ConverterRegistro(SqlDataReader leitorRegistros)
         {
-            //Disciplina disciplina = new MapeadorDisciplina().ConverterRegistro(leitorRegistros);
+            int id = Convert.ToInt32(leitorRegistros["MATERIA_ID"]);
 
-            //int idDisciplina = Convert.ToInt32(leitorRegistros["DISCIPLINA_ID"]);
+            string nome = Convert.ToString(leitorRegistros["MATERIA_NOME"]);
 
-            //string nome = Convert.ToString(leitorRegistros["NOME"]);
+            string serie = Convert.ToString(leitorRegistros["MATERIA_SERIE"]);
+        
+            Disciplina disciplina = new MapeadorDisciplina().ConverterRegistro(leitorRegistros);
 
-            //string serie = Convert.ToString(leitorRegistros["SERIE"]);
-
-            //Materia materia = new Materia(nome, disciplina, serie);
-
-            //return materia;
-
-            return null;
-        }
+            return new Materia(id, nome, disciplina, serie);
+        }     
     }
 }
