@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloMateria;
+﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloMateria;
 using static GeradorDeTestes.Dominio.ModuloMateria.Materia;
 
 namespace GeradorDeTestes.WinApp.ModuloMateria

@@ -1,3 +1,5 @@
+using GeradorDeTestes.Dominio.ModuloDisciplina;
+
 namespace GeradorDeTestes.Dominio.ModuloMateria
 {
     public class Materia : EntidadeBase<Materia>
