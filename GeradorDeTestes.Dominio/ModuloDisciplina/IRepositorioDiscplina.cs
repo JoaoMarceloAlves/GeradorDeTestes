@@ -12,7 +12,7 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
         void Inserir(Disciplina novaDisciplina);
         void Editar(int id, Disciplina disciplina);
         void Excluir(Disciplina DisciplinaSelecionado);
-        List<Item> SelecionarTodos();
+        List<Disciplina> SelecionarTodos();
         Disciplina SelecionarPorId(int id);
 
 
