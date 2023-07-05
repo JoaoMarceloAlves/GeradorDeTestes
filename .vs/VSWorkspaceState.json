@@ -1,11 +1,14 @@
 {
   "ExpandedNodes": [
     "",
+    "\\GeradorDeTestes.Dominio",
+    "\\GeradorDeTestes.Dominio\\Compartilhado",
     "\\GeradorDeTestes.Dominio\\ModuloDisciplina",
+    "\\GeradorDeTestes.Dominio\\ModuloItem",
     "\\GeradorDeTestes.Infra.Dados.Sql",
     "\\GeradorDeTestes.Infra.Dados.Sql\\ModuloDisciplina",
-    "\\GeradorDeTestes.Projeto.Sql",
-    "\\GeradorDeTestes.WinApp"
+    "\\GeradorDeTestes.Infra.Dados.Sql\\ModuloMateria"
   ],
+  "SelectedNode": "\\GeradorDeTestes.sln",
   "PreviewInSolutionExplorer": false
 }
