@@ -2,30 +2,7 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
 {
     public class Materia : EntidadeBase<Materia>
     {
-        public class Disciplina : EntidadeBase<Disciplina>
-        {
-            public string nome { get; set; }
-            public Materia materia { get; set; }
-
-            public Disciplina(string nome, Materia materia)
-            {
-                this.nome = nome;
-                this.materia = materia;
-            }
-
-            public override void AtualizarInformacoes(Disciplina registroAtualizado)
-            {
-                this.nome = registroAtualizado.nome;
-                this.materia = registroAtualizado.materia;
-            }
-
-            public override string[] Validar()
-            {
-                List<string> erros = new List<string>();
-
-                return erros.ToArray();
-            }
-        }
+        
         public string nome { get; set; }
         public Disciplina disciplina { get; set; }
         public string serie { get; set; }
