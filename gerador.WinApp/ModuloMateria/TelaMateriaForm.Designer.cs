@@ -64,7 +64,7 @@
             // lbdisciplina
             // 
             lbdisciplina.AutoSize = true;
-            lbdisciplina.Location = new Point(24, 102);
+            lbdisciplina.Location = new Point(24, 97);
             lbdisciplina.Name = "lbdisciplina";
             lbdisciplina.Size = new Size(61, 15);
             lbdisciplina.TabIndex = 2;
@@ -98,7 +98,7 @@
             // cmbDisciplina
             // 
             cmbDisciplina.FormattingEnabled = true;
-            cmbDisciplina.Location = new Point(96, 94);
+            cmbDisciplina.Location = new Point(96, 89);
             cmbDisciplina.Name = "cmbDisciplina";
             cmbDisciplina.Size = new Size(100, 23);
             cmbDisciplina.TabIndex = 6;
@@ -129,10 +129,10 @@
             radiobtn1Serie.AutoSize = true;
             radiobtn1Serie.Location = new Point(20, 21);
             radiobtn1Serie.Name = "radiobtn1Serie";
-            radiobtn1Serie.Size = new Size(36, 19);
+            radiobtn1Serie.Size = new Size(39, 19);
             radiobtn1Serie.TabIndex = 9;
             radiobtn1Serie.TabStop = true;
-            radiobtn1Serie.Text = "1ª";
+            radiobtn1Serie.Text = "1ª ";
             radiobtn1Serie.UseVisualStyleBackColor = true;
             // 
             // radiobtn2serie
@@ -140,17 +140,17 @@
             radiobtn2serie.AutoSize = true;
             radiobtn2serie.Location = new Point(91, 20);
             radiobtn2serie.Name = "radiobtn2serie";
-            radiobtn2serie.Size = new Size(36, 19);
+            radiobtn2serie.Size = new Size(39, 19);
             radiobtn2serie.TabIndex = 10;
             radiobtn2serie.TabStop = true;
-            radiobtn2serie.Text = "2ª";
+            radiobtn2serie.Text = "2ª ";
             radiobtn2serie.UseVisualStyleBackColor = true;
             // 
             // grpboxSerie
             // 
             grpboxSerie.Controls.Add(radiobtn1Serie);
             grpboxSerie.Controls.Add(radiobtn2serie);
-            grpboxSerie.Location = new Point(96, 123);
+            grpboxSerie.Location = new Point(96, 118);
             grpboxSerie.Name = "grpboxSerie";
             grpboxSerie.Size = new Size(200, 47);
             grpboxSerie.TabIndex = 11;

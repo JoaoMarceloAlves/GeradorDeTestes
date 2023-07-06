@@ -9,12 +9,13 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         public List<Disciplina> disciplinas;
         public List<Materia> materias = new List<Materia>();
 
-        public TelaMateriaForm()
+        public TelaMateriaForm(List<Materia> materias)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
-      
+            this.materias = materias;
+
         }
 
         public Materia ObterMateria()
@@ -77,6 +78,31 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
                 DialogResult = DialogResult.None;
             }
+
+            string[] outrosErros = ValidarOutros();
+
+            if (outrosErros.Length > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(outrosErros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+        }
+
+        public string[] ValidarOutros()
+        {
+            List<string> erros = new List<string>();
+
+            if(grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text == null)
+            {
+                erros.Add("Obrigatório selecionar uma Série");
+            }
+            if(cmbDisciplina.SelectedItem == null) 
+            {
+                erros.Add("Obrigatório selecionar uma Disciplina");
+            }
+
+            return erros.ToArray();
         }
     }
 }

@@ -97,7 +97,7 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
                 return;
             }
 
-            if (repositorioMateria.SelecionarTodos().Find(a=> a.disciplina.id == Disciplina.id)!= null)
+            if (repositorioMateria.SelecionarTodos().Find(a=> a.Disciplina.id == Disciplina.id)!= null)
             {
                 MessageBox.Show($"Não foi possivel excluir a disciplina a uma matéria vinculada",
                     "Exclusão de Disciplinas",

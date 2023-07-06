@@ -5,6 +5,7 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
     public class Materia : EntidadeBase<Materia>
     {
         
+
         public string Nome { get; set; }
         public Disciplina Disciplina { get; set; }
         public string Serie { get; set; }
@@ -40,7 +41,7 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
                 erros.Add("O campo 'Nome' é obrigatório");
             if (string.IsNullOrEmpty(Serie))
                 erros.Add("O campo 'Série' é obrigatório");
-           
+                   
             return erros.ToArray();
         }
 
