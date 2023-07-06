@@ -13,11 +13,14 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 {
     public partial class TelaDisciplinaForm : Form
     {
-        public TelaDisciplinaForm()
+        List<Disciplina> disciplinas = new List<Disciplina>();
+
+        public TelaDisciplinaForm(List<Disciplina> disciplinaa)
         {
             InitializeComponent();
             this.ConfigurarDialog();
-
+            this.disciplinas = disciplinaa;
+            
         }
 
         public Disciplina ObterDisciplina()
@@ -56,6 +59,16 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             if (erros.Length > 0)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+
+            int numero = disciplinas.FindAll(c => c.nome == txt_Nome.Text && c.id != Disciplina.id).Count();
+
+
+            if (numero > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Nome de 'Disciplina' já existente");
 
                 DialogResult = DialogResult.None;
             }

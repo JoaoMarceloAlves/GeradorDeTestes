@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
     {
         public string nome;
        public List<Materia> materias = new List<Materia>();
-
+        public List<Disciplina> disciplina = new List<Disciplina>();
         public Disciplina()
         {
            
@@ -46,14 +47,15 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
+            
 
             if (string.IsNullOrEmpty(nome))
                 erros.Add("O campo nome é obrigatório");
 
 
-
             if (nome.Count() < 4)
                 erros.Add("O campo nome deve ter 4 caracteres");
+
 
             return erros.ToArray();
         }

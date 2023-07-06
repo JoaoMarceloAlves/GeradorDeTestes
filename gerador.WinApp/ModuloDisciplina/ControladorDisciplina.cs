@@ -26,7 +26,7 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 
         public override void Inserir()
         {
-            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm();
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos()) ;
 
             DialogResult opcaoEscolhida = telaDisciplina.ShowDialog();
 
@@ -53,7 +53,7 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 
                 return;
             }
-            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm();
+            TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos());
             telaDisciplina.ConfigurarTela(Disciplina);
 
             DialogResult opcaoEscolhida = telaDisciplina.ShowDialog();

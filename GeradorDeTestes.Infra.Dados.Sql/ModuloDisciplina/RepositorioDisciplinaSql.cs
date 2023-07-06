@@ -123,5 +123,17 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloDisciplina
             return disciplina;
 
         }
+
+        public  List<Disciplina> SelecionarTodosCarregados()
+        {
+           List<Disciplina> disciplinas = base.SelecionarTodos();
+
+            foreach (Disciplina disciplina in disciplinas)
+            {
+                disciplina.materias = SelecionarMaterias(disciplina.id);
+
+            }
+             return disciplinas; 
+        }
     }
 }
