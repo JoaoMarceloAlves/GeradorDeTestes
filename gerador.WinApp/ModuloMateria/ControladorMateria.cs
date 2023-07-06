@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloItem;
+﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloItem;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
     {
         private TabelaMateriaControl tabelaMateria;
         private readonly IRepositorioMateria repositorioMateria;
+        private readonly IRepositorioDisciplina repositorioDisciplina;
 
-        public ControladorMateria(IRepositorioMateria repositorioMateria)
+        public ControladorMateria(IRepositorioMateria repositorioMateria/* IRepositorioDisciplina repositorioDisciplina*/)
         {
             this.repositorioMateria = repositorioMateria;
+            //this.repositorioDisciplina = repositorioDisciplina;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Matéria"; } }
@@ -29,7 +32,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
             TelaMateriaForm telaMateria = new TelaMateriaForm();
 
             DialogResult opcaoEscolhida = telaMateria.ShowDialog();
-
+            telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
             if(opcaoEscolhida == DialogResult.OK)
             {
                 Materia materia = telaMateria.ObterMateria();
@@ -55,6 +58,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
             }
             TelaMateriaForm telaMateria = new TelaMateriaForm();
             telaMateria.ConfigurarTela(materia);
+            telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaMateria.ShowDialog();
 

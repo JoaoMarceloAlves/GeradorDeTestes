@@ -39,7 +39,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
             return materia;
         }
 
-        private void CarregarDisciplinas(List<Disciplina> disciplinas)
+        public void CarregarDisciplinas(List<Disciplina> disciplinas)
         {
             this.disciplinas = disciplinas;
 
