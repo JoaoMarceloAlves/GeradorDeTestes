@@ -12,11 +12,11 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloMateria
         {
             comando.Parameters.AddWithValue("ID", registro.id);
 
-            comando.Parameters.AddWithValue("NOME", registro.nome);
+            comando.Parameters.AddWithValue("NOME", registro.Nome);
 
-            comando.Parameters.AddWithValue("DISCIPLINA_ID", registro.disciplina);
+            comando.Parameters.AddWithValue("DISCIPLINA_ID", registro.Disciplina);
 
-            comando.Parameters.AddWithValue("SERIE", registro.serie);
+            comando.Parameters.AddWithValue("SERIE", registro.Serie);
         }
 
         public override Materia ConverterRegistro(SqlDataReader leitorRegistros)

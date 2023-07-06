@@ -6,17 +6,15 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 {
     public partial class TelaMateriaForm : Form
     {
-        public List<Disciplina> disciplinas = new List<Disciplina>();
-        public List<Materia> materias;
+        public List<Disciplina> disciplinas;
+        public List<Materia> materias = new List<Materia>();
 
         public TelaMateriaForm()
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
-
-            CarregarDisciplinas(disciplinas);
-
+      
         }
 
         public Materia ObterMateria()
@@ -53,9 +51,9 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         {
             txtId.Text = materia.id.ToString();
 
-            txtNome.Text = materia.nome;
+            txtNome.Text = materia.Nome;
 
-            cmbDisciplina.SelectedItem = materia.disciplina;
+            cmbDisciplina.SelectedItem = materia.Disciplina;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -71,7 +69,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
                 DialogResult = DialogResult.None;
             }
 
-            int numero = materias.FindAll(m => m.nome == txtNome.Text && m.id != materia.id).Count();
+            int numero = materias.FindAll(m => m.Nome == txtNome.Text && m.id != materia.id).Count();
 
             if (numero > 0)
             {

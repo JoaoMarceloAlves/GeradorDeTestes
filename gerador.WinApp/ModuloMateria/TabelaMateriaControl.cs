@@ -58,7 +58,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
             foreach (Materia materia in materias)
             {            
-                gridMateria.Rows.Add(materia.id, materia.nome, materia.disciplina, materia.serie);
+                gridMateria.Rows.Add(materia.id, materia.Nome, materia.Disciplina, materia.Serie);
             }
         }
 

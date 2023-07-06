@@ -5,40 +5,40 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
     public class Materia : EntidadeBase<Materia>
     {
         
-        public string nome { get; set; }
-        public Disciplina disciplina { get; set; }
-        public string serie { get; set; }
+        public string Nome { get; set; }
+        public Disciplina Disciplina { get; set; }
+        public string Serie { get; set; }
 
         public Materia(string nome, Disciplina disciplina, string serie)
         {
-            this.nome = nome;
-            this.disciplina = disciplina;
-            this.serie = serie;
+            this.Nome = nome;
+            this.Disciplina = disciplina;
+            this.Serie = serie;
         }
         public Materia(int id,string nome, Disciplina disciplina, string serie)
         {
             this.id = id;
-            this.nome = nome;
-            this.disciplina = disciplina;
-            this.serie = serie;
+            this.Nome = nome;
+            this.Disciplina = disciplina;
+            this.Serie = serie;
         }
 
 
         public override void AtualizarInformacoes(Materia registroAtualizado)
         {
             this.id = registroAtualizado.id;
-            this.nome = registroAtualizado.nome;
-            this.serie = registroAtualizado.serie;
-            this.disciplina = registroAtualizado.disciplina;          
+            this.Nome = registroAtualizado.Nome;
+            this.Serie = registroAtualizado.Serie;
+            this.Disciplina = registroAtualizado.Disciplina;          
         }
 
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
 
-            if(string.IsNullOrEmpty(nome))
+            if(string.IsNullOrEmpty(Nome))
                 erros.Add("O campo 'Nome' é obrigatório");
-            if (string.IsNullOrEmpty(serie))
+            if (string.IsNullOrEmpty(Serie))
                 erros.Add("O campo 'Série' é obrigatório");
            
             return erros.ToArray();
@@ -46,17 +46,22 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
 
         public override string? ToString()
         {
-            return $"Id: {id} Nome: {nome}, Disciplina: {disciplina}, " +
-               $"Série: {serie}";
+            return $"Id: {id} Nome: {Nome}, Disciplina: {Disciplina}, " +
+               $"Série: {Serie}";
         }
 
         public override bool Equals(object? obj)
         {
             return obj is Materia materia &&
                    id == materia.id &&
-                   nome == materia.nome &&
-                   EqualityComparer<Disciplina>.Default.Equals(disciplina, materia.disciplina) &&
-                   serie == materia.serie;
+                   Nome == materia.Nome &&
+                   EqualityComparer<Disciplina>.Default.Equals(Disciplina, materia.Disciplina) &&
+                   Serie == materia.Serie;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(id, Nome, Disciplina, Serie);
         }
     }
 }
