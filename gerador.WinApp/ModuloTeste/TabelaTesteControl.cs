@@ -15,6 +15,42 @@ namespace gerador.WinApp.ModuloTeste
         public TabelaTesteControl()
         {
             InitializeComponent();
+
+            ConfigurarColunas();
+
+        }
+        private void ConfigurarColunas()
+        {
+            DataGridViewColumn[] colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn()
+                {
+                    Name = "id",
+                    HeaderText = "Id"
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    Name = "titulo",
+                    HeaderText = "Título"
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    Name = "disciplina",
+                    HeaderText = "Disciplina"
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    Name = "materia",
+                    HeaderText = "Matéria"
+                },
+                new DataGridViewTextBoxColumn()
+                {
+                    Name = "quantidade de questoes",
+                    HeaderText = "Quantidade de Questões"
+                }
+            };
+
+            gridTeste.Columns.AddRange(colunas);
         }
     }
 }
