@@ -54,14 +54,14 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
   
                 Q.[ID]                   QUESTAO_ID
 	           ,Q.[ENUNCIADO]            QUESTAO_ENUNCIADO
-               ,Q.[RESPOSTA]             QUESTA0_RESPOSTA
+               ,Q.[RESPOSTA]             QUESTAO_RESPOSTA
                ,Q.[ALTERNATIVA_A]        QUESTAO_ALTERNATIVA_A
                ,Q.[ALTERNATIVA_B]        QUESTAO_ALTERNATIVA_B
                ,Q.[ALTERNATIVA_C]        QUESTAO_ALTERNATIVA_C
                ,Q.[ALTERNATIVA_D]        QUESTAO_ALTERNATIVA_D
 
                ,M.[ID]                   MATERIA_ID
-               ,M.[NOME]                 MATERIA_ID
+               ,M.[NOME]                 MATERIA_NOME
                ,M.[SERIE]                MATERIA_SERIE
 
                ,D.[ID]                   DISCIPLINA_ID
@@ -88,14 +88,14 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
   
                 Q.[ID]                   QUESTAO_ID
 	           ,Q.[ENUNCIADO]            QUESTAO_ENUNCIADO
-               ,Q.[RESPOSTA]             QUESTA0_RESPOSTA
+               ,Q.[RESPOSTA]             QUESTAO_RESPOSTA
                ,Q.[ALTERNATIVA_A]        QUESTAO_ALTERNATIVA_A
                ,Q.[ALTERNATIVA_B]        QUESTAO_ALTERNATIVA_B
                ,Q.[ALTERNATIVA_C]        QUESTAO_ALTERNATIVA_C
                ,Q.[ALTERNATIVA_D]        QUESTAO_ALTERNATIVA_D
 
                ,M.[ID]                   MATERIA_ID
-               ,M.[NOME]                 MATERIA_ID
+               ,M.[NOME]                 MATERIA_NOME
                ,M.[SERIE]                MATERIA_SERIE
 
                ,D.[ID]                   DISCIPLINA_ID

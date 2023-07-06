@@ -1,4 +1,7 @@
 ﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloQuestao;
+using GeradorDeTestes.Dominio.ModuloTeste;
 using GeradorDeTestes.WinApp.ModuloDisciplina;
 using System;
 using System.Collections.Generic;
@@ -12,17 +15,20 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
     {
         private TabelaDisciplinaControl tabelaDisciplina;
         private readonly IRepositorioDisciplina repositorioDisciplina;
-
-        public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina)
+        private readonly IRepositorioMateria repositorioMateria;
+        private readonly IRepositorioTeste repositorioTeste;
+        public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina, IRepositorioMateria repositorioMateria, IRepositorioTeste repositorioTeste)
         {
             this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioMateria = repositorioMateria;
+            this.repositorioTeste = repositorioTeste;
         }
 
-        public override string ToolTipInserir { get { return "Inserir nova Matéria"; } }
+        public override string ToolTipInserir { get { return "Inserir nova Disciplina"; } }
 
-        public override string ToolTipEditar { get { return "Editar Matérias Existentes"; } }
+        public override string ToolTipEditar { get { return "Editar Disciplina Existentes"; } }
 
-        public override string ToolTipExcluir { get { return "Excluir Matérias Existentes"; } }
+        public override string ToolTipExcluir { get { return "Excluir Disciplina Existentes"; } }
 
         public override void Inserir()
         {
@@ -53,6 +59,8 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 
                 return;
             }
+
+
             TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos());
             telaDisciplina.ConfigurarTela(Disciplina);
 
@@ -81,13 +89,33 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 
             if (Disciplina == null)
             {
-                MessageBox.Show($"Selecione uma Matéria primeiro!",
-                    "Exclusão de Matérias",
+                MessageBox.Show($"Selecione uma Disciplina primeiro!",
+                    "Exclusão de Disciplinas",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
                 return;
             }
+
+            if (repositorioMateria.SelecionarTodos().Find(a=> a.disciplina.id == Disciplina.id)!= null)
+            {
+                MessageBox.Show($"Não foi possivel excluir a disciplina a uma matéria vinculada",
+                    "Exclusão de Disciplinas",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+
+                return;
+            }
+           //if (repositorioTeste.SelecionarTodos().Find(a => a.disciplina.id == Disciplina.id) != null)
+           // {
+           //    MessageBox.Show($"Não foi possivel excluir a disciplina a uma questão vinculada",
+           //      "Exclusão de Disciplinas",
+           //         MessageBoxButtons.OK,
+           //         MessageBoxIcon.Exclamation);
+
+           //     return;
+           // }
+
             DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Disciplina {Disciplina.nome}?", "Exclusão de Matérias",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
