@@ -41,9 +41,9 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
             string enunciado = Convert.ToString(leitorRegistros["QUESTAO_ENUNCIADO"]);
 
-            List<Alternativa> alternativas = CarregarAlternativas(leitorRegistros);
-
             Alternativa resposta = ConverterAlternativa(leitorRegistros);
+
+            List<Alternativa> alternativas = CarregarAlternativas(leitorRegistros);
 
             Materia materia = new MapeadorMateria().ConverterRegistro(leitorRegistros);
 
@@ -52,7 +52,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
         public Alternativa ConverterAlternativa(SqlDataReader leitorRegistros)
         {
-            string descricao = Convert.ToString(leitorRegistros["QUESTAO_DESCRICAO"]);
+            string descricao = Convert.ToString(leitorRegistros["QUESTAO_RESPOSTA"]);
 
             return new Alternativa(descricao);
         }

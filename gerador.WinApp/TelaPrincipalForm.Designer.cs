@@ -46,6 +46,7 @@
             toolStripSeparator5 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
+            btnQuestoes = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             barraFerramentas.SuspendLayout();
@@ -63,7 +64,7 @@
             // 
             // cadastrosMenuItem
             // 
-            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temasMenuItem, matériasToolStripMenuItem });
+            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temasMenuItem, matériasToolStripMenuItem, btnQuestoes });
             cadastrosMenuItem.Name = "cadastrosMenuItem";
             cadastrosMenuItem.Size = new Size(71, 20);
             cadastrosMenuItem.Text = "Cadastros";
@@ -71,14 +72,14 @@
             // temasMenuItem
             // 
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(119, 22);
+            temasMenuItem.Size = new Size(180, 22);
             temasMenuItem.Text = "Item";
             temasMenuItem.Click += temasMenuItem_Click;
             // 
             // matériasToolStripMenuItem
             // 
             matériasToolStripMenuItem.Name = "matériasToolStripMenuItem";
-            matériasToolStripMenuItem.Size = new Size(119, 22);
+            matériasToolStripMenuItem.Size = new Size(180, 22);
             matériasToolStripMenuItem.Text = "Matérias";
             matériasToolStripMenuItem.Click += matériasToolStripMenuItem_Click;
             // 
@@ -189,6 +190,13 @@
             panelRegistros.Size = new Size(800, 359);
             panelRegistros.TabIndex = 3;
             // 
+            // btnQuestoes
+            // 
+            btnQuestoes.Name = "btnQuestoes";
+            btnQuestoes.Size = new Size(180, 22);
+            btnQuestoes.Text = "Questões";
+            btnQuestoes.Click += btnQuestoes_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -234,5 +242,6 @@
         private ToolStripMenuItem itensToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem matériasToolStripMenuItem;
+        private ToolStripMenuItem btnQuestoes;
     }
 }
