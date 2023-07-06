@@ -62,7 +62,7 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
 
         public override string ToString()
         {
-            return $"Id: {id} Descrição: {nome}";
+            return $"{nome}";
         }
 
         public override bool Equals(object? obj)

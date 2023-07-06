@@ -1,6 +1,7 @@
 ﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloItem;
 using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloQuestao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         private TabelaMateriaControl tabelaMateria;
         private readonly IRepositorioMateria repositorioMateria;
         private readonly IRepositorioDisciplina repositorioDisciplina;
+        private readonly IRepositorioQuestao repositorioQuestao;
 
         public ControladorMateria(IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
         {
@@ -29,7 +31,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
         public override void Inserir()
         {
-            TelaMateriaForm telaMateria = new TelaMateriaForm();
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioMateria.SelecionarTodos());
             telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
             DialogResult opcaoEscolhida = telaMateria.ShowDialog();
             
@@ -56,7 +58,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
                 return;
             }
-            TelaMateriaForm telaMateria = new TelaMateriaForm();
+            TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioMateria.SelecionarTodos());
             telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
             telaMateria.ConfigurarTela(materia);
             
@@ -92,6 +94,16 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
                 return;
             }
+
+            if(repositorioQuestao.SelecionarTodos().Find(q => q.materia.id == materia.id) != null)
+            {
+                MessageBox.Show("A Matéria não pode ser Excluída pois esta em uma Questão", "Exclusão de Matérias",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                return;
+            }
+
+
             DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Matéria {materia.Nome}?", "Exclusão de Matérias",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
@@ -116,6 +128,8 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
             List<Materia> materias = repositorioMateria.SelecionarTodos();
 
             tabelaMateria.AtualizarRegistros(materias);
+
+            TelaPrincipalForm.Instancia.AtualizarRodape("Visualizando" + " " + materias.Count + " " + "Matérias");
         }
 
         public override string ObterTipoCadastro()
