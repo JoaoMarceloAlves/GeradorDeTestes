@@ -1,5 +1,6 @@
 ﻿using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Infra.Dados.Sql.Compartilhado;
+using Microsoft.Data.SqlClient;
 
 namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 {
