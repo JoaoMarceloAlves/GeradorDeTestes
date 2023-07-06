@@ -13,7 +13,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                     ,[QUANTIDADE_QUESTOES]
                     ,[DISCIPLINA_ID]
                     ,[MATERIA_ID]
-                    ,[QUESTAO_ID]
                 )
                 VALUES
                 (
@@ -22,7 +21,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                     ,@QUANTIDADE_QUESTOES
                     ,@DISPCIPLINA_ID
                     ,@MATERIA_ID
-                    ,@QUESTAO_ID
                 )
 
             SELECT SCOPE_IDENTITY();";
@@ -35,7 +33,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                     ,[QUANTIDADE_QUESTOES] = @QUANTIDADE_QUESTOES
                     ,[DISCIPLINA_ID]       = @DISCIPLINA_ID
                     ,[MATERIA_ID]          = @MATERIA_ID
-                    ,[QUESTAO_ID]          = @QUESTAO_ID
 
 	            WHERE 
 		            [ID] = @ID";
@@ -51,14 +48,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                 ,T.[TITULO]              TESTE_TITULO
                 ,T.[RECUPERACAO]         TESTE_RECUPERACAO
                 ,T.[QUANTIDADE_QUESTOES] TESTE_QUANTIDADE_QUESTOES
-  
-                Q.[ID]                   QUESTAO_ID
-	           ,Q.[ENUNCIADO]            QUESTAO_ENUNCIADO
-               ,Q.[RESPOSTA]             QUESTAO_RESPOSTA
-               ,Q.[ALTERNATIVA_A]        QUESTAO_ALTERNATIVA_A
-               ,Q.[ALTERNATIVA_B]        QUESTAO_ALTERNATIVA_B
-               ,Q.[ALTERNATIVA_C]        QUESTAO_ALTERNATIVA_C
-               ,Q.[ALTERNATIVA_D]        QUESTAO_ALTERNATIVA_D
 
                ,M.[ID]                   MATERIA_ID
                ,M.[NOME]                 MATERIA_NOME
@@ -67,12 +56,9 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                ,D.[ID]                   DISCIPLINA_ID
                ,D.[NOME]                 DISCIPLINA_NOME
             FROM
-                [TBTESTE] AS T INNER JOIN [TBQUESTAO] AS Q
-            ON 
-              T.[QUESTAO_ID] = Q.[ID]
-            INNER JOIN [TBMATERIA] AS M
+                [TBTESTE] AS T INNER JOIN [TBMATERIA] AS M
             ON
-              Q.[MATERIA_ID] = M.[ID]
+              T.[MATERIA_ID] = M.[ID]
             INNER JOIN [TBDISCIPLINA] AS D
             ON
               M.[DISCIPLINA_ID] = D.[ID]
@@ -85,14 +71,6 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                 ,T.[TITULO]              TESTE_TITULO
                 ,T.[RECUPERACAO]         TESTE_RECUPERACAO
                 ,T.[QUANTIDADE_QUESTOES] TESTE_QUANTIDADE_QUESTOES
-  
-                Q.[ID]                   QUESTAO_ID
-	           ,Q.[ENUNCIADO]            QUESTAO_ENUNCIADO
-               ,Q.[RESPOSTA]             QUESTAO_RESPOSTA
-               ,Q.[ALTERNATIVA_A]        QUESTAO_ALTERNATIVA_A
-               ,Q.[ALTERNATIVA_B]        QUESTAO_ALTERNATIVA_B
-               ,Q.[ALTERNATIVA_C]        QUESTAO_ALTERNATIVA_C
-               ,Q.[ALTERNATIVA_D]        QUESTAO_ALTERNATIVA_D
 
                ,M.[ID]                   MATERIA_ID
                ,M.[NOME]                 MATERIA_NOME
@@ -101,12 +79,9 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                ,D.[ID]                   DISCIPLINA_ID
                ,D.[NOME]                 DISCIPLINA_NOME
             FROM
-                [TBTESTE] AS T INNER JOIN [TBQUESTAO] AS Q
-            ON 
-              T.[QUESTAO_ID] = Q.[ID]
-            INNER JOIN [TBMATERIA] AS M
+                [TBTESTE] AS T INNER JOIN [TBMATERIA] AS M
             ON
-              Q.[MATERIA_ID] = M.[ID]
+              T.[MATERIA_ID] = M.[ID]
             INNER JOIN [TBDISCIPLINA] AS D
             ON
               M.[DISCIPLINA_ID] = D.[ID]";
