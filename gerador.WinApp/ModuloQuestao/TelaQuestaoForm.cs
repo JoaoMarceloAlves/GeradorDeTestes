@@ -21,7 +21,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
         {
             foreach(Materia materia in this.materias)
             {
-                cmbMateria.Items.Add(materia.nome);
+                cmbMateria.Items.Add(materia.Nome);
             }
             cmbMateria.SelectedIndex = 0;
         }
@@ -34,7 +34,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             Alternativa resposta = new Alternativa((string)txtAlternativas.CheckedItems[0]);
 
-            Materia materia = materias.Find(m => m.nome == (string)cmbMateria.SelectedItem);
+            Materia materia = materias.Find(m => m.Nome == (string)cmbMateria.SelectedItem);
 
             Questao questao = new Questao(enunciado, resposta, this.alternativas, materia);
 
@@ -61,7 +61,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             this.alternativas = questao.alternativas;
 
-            cmbMateria.SelectedItem = questao.materia.nome;
+            cmbMateria.SelectedItem = questao.materia.Nome;
 
             CarregarLista();
         }

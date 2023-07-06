@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloItem;
+﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloItem;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,12 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
     {
         private TabelaMateriaControl tabelaMateria;
         private readonly IRepositorioMateria repositorioMateria;
+        private readonly IRepositorioDisciplina repositorioDisciplina;
 
-        public ControladorMateria(IRepositorioMateria repositorioMateria)
+        public ControladorMateria(IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
         {
             this.repositorioMateria = repositorioMateria;
+            this.repositorioDisciplina = repositorioDisciplina;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Matéria"; } }
@@ -27,9 +30,9 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         public override void Inserir()
         {
             TelaMateriaForm telaMateria = new TelaMateriaForm();
-
+            telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
             DialogResult opcaoEscolhida = telaMateria.ShowDialog();
-
+            
             if(opcaoEscolhida == DialogResult.OK)
             {
                 Materia materia = telaMateria.ObterMateria();
@@ -54,8 +57,9 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
                 return;
             }
             TelaMateriaForm telaMateria = new TelaMateriaForm();
+            telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
             telaMateria.ConfigurarTela(materia);
-
+            
             DialogResult opcaoEscolhida = telaMateria.ShowDialog();
 
             if(opcaoEscolhida == DialogResult.OK )
@@ -88,7 +92,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
                 return;
             }
-            DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Matéria {materia.nome}?", "Exclusão de Matérias",
+            DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Matéria {materia.Nome}?", "Exclusão de Matérias",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if(opcaoEscolhida == DialogResult.OK)
