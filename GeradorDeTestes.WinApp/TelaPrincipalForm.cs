@@ -10,6 +10,9 @@ using GeradorDeTestes.Infra.Dados.Sql.ModuloItem;
 using GeradorDeTestes.WinApp.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Infra.Dados.Sql.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Infra.Dados.Sql.ModuloDisciplina;
+using GeradorDeTestes.WinApp.ModuloDisciplina;
 
 namespace GeradorDeTestes.WinApp
 {
@@ -19,7 +22,7 @@ namespace GeradorDeTestes.WinApp
 
         private IRepositorioItem repositorioItem = new RepositorioItemEmSql();
         private IRepositorioMateria repositorioMateria = new RepositorioMateriaEmSql();
-
+        private IRepositorioDisciplina repositorioDisciplina = new RepositorioDisciplinaSql();
 
 
 
@@ -128,6 +131,12 @@ namespace GeradorDeTestes.WinApp
         {
             controlador = new ControladorMateria(repositorioMateria);
 
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void disciToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorDisciplina(repositorioDisciplina);
             ConfigurarTelaPrincipal(controlador);
         }
     }

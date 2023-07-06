@@ -8,6 +8,7 @@ namespace GeradorDeTestes.WinApp.ModuloItem
         {
             InitializeComponent();
             this.ConfigurarDialog();
+
         }
 
         public Item ObterItem()

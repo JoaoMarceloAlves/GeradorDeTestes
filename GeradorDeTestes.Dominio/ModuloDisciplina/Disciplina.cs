@@ -1,4 +1,5 @@
 ﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloMateria;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
     public class Disciplina : EntidadeBase<Disciplina>
     {
         public string nome;
-       
+       public List<Materia> materias = new List<Materia>();
 
         public Disciplina()
         {
@@ -38,6 +39,7 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
         {
             this.id = registroAtualizado.id;
             this.nome = registroAtualizado.nome;
+            this.materias = registroAtualizado.materias;
           
         }
 
@@ -51,7 +53,7 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
 
 
             if (nome.Count() < 4)
-                erros.Add("O campo 'Valor' não pode receber o valor 0");
+                erros.Add("O campo nome deve ter 4 caracteres");
 
             return erros.ToArray();
         }
@@ -63,13 +65,10 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
 
         public override bool Equals(object? obj)
         {
-            return obj is Disciplina Disciplina &&
-                   id == Disciplina.id &&
-                   nome == Disciplina.nome;
-               
+            return obj is Disciplina disciplina &&
+                   id == disciplina.id &&
+                   nome == disciplina.nome &&
+                   EqualityComparer<List<Materia>>.Default.Equals(materias, disciplina.materias);
         }
-
-    
-  
     }
 }

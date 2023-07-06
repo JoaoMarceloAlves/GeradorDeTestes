@@ -17,7 +17,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloDisciplina
         {
             comando.Parameters.AddWithValue("ID", registro.id);
 
-            comando.Parameters.AddWithValue("DESCRICAO", registro.nome);
+            comando.Parameters.AddWithValue("NOME", registro.nome);
 
           
         }
