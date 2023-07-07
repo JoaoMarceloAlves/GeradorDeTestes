@@ -138,7 +138,7 @@ namespace GeradorDeTestes.WinApp
 
         private void matériasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina,repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
