@@ -20,7 +20,7 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             InitializeComponent();
             this.ConfigurarDialog();
             this.disciplinas = disciplinaa;
-            
+
         }
 
         public Disciplina ObterDisciplina()

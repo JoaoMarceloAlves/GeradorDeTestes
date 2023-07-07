@@ -154,9 +154,9 @@
             // 
             btnRemover.Location = new Point(9, 22);
             btnRemover.Name = "btnRemover";
-            btnRemover.Size = new Size(75, 25);
+            btnRemover.Size = new Size(98, 32);
             btnRemover.TabIndex = 25;
-            btnRemover.Text = "Remover";
+            btnRemover.Text = "Remover Todas";
             btnRemover.UseVisualStyleBackColor = true;
             btnRemover.Click += btnRemover_Click;
             // 

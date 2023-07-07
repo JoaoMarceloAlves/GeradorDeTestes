@@ -106,15 +106,17 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 
                 return;
             }
-           //if (repositorioTeste.SelecionarTodos().Find(a => a.disciplina.id == Disciplina.id) != null)
-           // {
-           //    MessageBox.Show($"Não foi possivel excluir a disciplina a uma questão vinculada",
-           //      "Exclusão de Disciplinas",
-           //         MessageBoxButtons.OK,
-           //         MessageBoxIcon.Exclamation);
 
-           //     return;
-           // }
+
+          if (repositorioTeste.SelecionarTodos().Find(a => a.disciplina.id == Disciplina.id) != null)
+            {
+              MessageBox.Show($"Não foi possivel excluir a disciplina a uma questão vinculada",
+                "Exclusão de Disciplinas",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+
+               return;
+            }
 
             DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Disciplina {Disciplina.nome}?", "Exclusão de Matérias",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -127,10 +129,14 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             CarregarDisciplinas();
         }
 
+
         public override UserControl ObterListagem()
         {
             if (tabelaDisciplina == null)
                 tabelaDisciplina = new TabelaDisciplinaControl();
+
+            CarregarDisciplinas();
+
 
             return tabelaDisciplina;
 
@@ -140,6 +146,8 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             List<Disciplina> Disciplinas = repositorioDisciplina.SelecionarTodos();
 
             tabelaDisciplina.AtualizarRegistros(Disciplinas);
+           
+            TelaPrincipalForm.Instancia.AtualizarRodape("Visualizando" + " "+  Disciplinas.Count + " " + "Disciplinas");
         }
 
         public override string ObterTipoCadastro()

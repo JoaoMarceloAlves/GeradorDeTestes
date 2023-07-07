@@ -30,6 +30,7 @@ namespace GeradorDeTestes.Dominio.ModuloTeste
 
         public Teste(int id, string titulo, bool ehRecuperacao, int quantidadeQuestoes, Disciplina disciplina, Materia materia, List<Questao> questoes)
         {
+            this.id = id;
             this.titulo = titulo;
             this.ehRecuperacao = ehRecuperacao;
             this.quantidadeQuestoes = quantidadeQuestoes;

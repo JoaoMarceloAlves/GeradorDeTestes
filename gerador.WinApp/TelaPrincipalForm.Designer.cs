@@ -131,8 +131,7 @@
             // labelRodape
             // 
             labelRodape.Name = "labelRodape";
-            labelRodape.Size = new Size(52, 17);
-            labelRodape.Text = "[rodape]";
+            labelRodape.Size = new Size(0, 17);
             // 
             // barraFerramentas
             // 
@@ -201,8 +200,7 @@
             // labelTipoCadastro
             // 
             labelTipoCadastro.Name = "labelTipoCadastro";
-            labelTipoCadastro.Size = new Size(75, 42);
-            labelTipoCadastro.Text = "tipoCadastro";
+            labelTipoCadastro.Size = new Size(0, 42);
             // 
             // panelRegistros
             // 

@@ -46,7 +46,7 @@
             // btn_Gravar
             // 
             btn_Gravar.DialogResult = DialogResult.OK;
-            btn_Gravar.Location = new Point(320, 112);
+            btn_Gravar.Location = new Point(161, 112);
             btn_Gravar.Name = "btn_Gravar";
             btn_Gravar.Size = new Size(75, 39);
             btn_Gravar.TabIndex = 1;
@@ -57,7 +57,7 @@
             // button2
             // 
             button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(401, 112);
+            button2.Location = new Point(250, 112);
             button2.Name = "button2";
             button2.Size = new Size(75, 39);
             button2.TabIndex = 2;
@@ -96,7 +96,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(477, 152);
+            ClientSize = new Size(337, 154);
             Controls.Add(txtId);
             Controls.Add(label1);
             Controls.Add(txtNome);
@@ -104,7 +104,7 @@
             Controls.Add(btn_Gravar);
             Controls.Add(txt_Nome);
             Name = "TelaDisciplinaForm";
-            Text = "\\";
+            Text = "Cadastro De Disciplinas";
             ResumeLayout(false);
             PerformLayout();
         }

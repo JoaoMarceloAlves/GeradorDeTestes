@@ -16,16 +16,17 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                     [TITULO]
                     ,[RECUPERACAO]
                     ,[QUANTIDADE_QUESTOES]
+                     ,[MATERIA_ID]
                     ,[DISCIPLINA_ID]
-                    ,[MATERIA_ID]
+                   
                 )
                 VALUES
                 (
                     @TITULO
                     ,@RECUPERACAO
                     ,@QUANTIDADE_QUESTOES
-                    ,@DISPCIPLINA_ID
                     ,@MATERIA_ID
+                    ,@DISCIPLINA_ID
                 )
 
             SELECT SCOPE_IDENTITY();";
@@ -36,8 +37,8 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                      [TITULO]              = @TITULO
                     ,[RECUPERACAO]         = @RECUPERACAO
                     ,[QUANTIDADE_QUESTOES] = @QUANTIDADE_QUESTOES
-                    ,[DISCIPLINA_ID]       = @DISCIPLINA_ID
                     ,[MATERIA_ID]          = @MATERIA_ID
+                    ,[DISCIPLINA_ID]       = @DISCIPLINA_ID
 
 	            WHERE 
 		            [ID] = @ID";
@@ -76,6 +77,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                 ,T.[TITULO]              TESTE_TITULO
                 ,T.[RECUPERACAO]         TESTE_RECUPERACAO
                 ,T.[QUANTIDADE_QUESTOES] TESTE_QUANTIDADE_QUESTOES
+                ,T.[DISCIPLINA_ID]       TESTE_DISCIPLINA_ID
 
                ,M.[ID]                   MATERIA_ID
                ,M.[NOME]                 MATERIA_NOME
@@ -86,7 +88,9 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
             FROM
                 [TBTESTE] AS T INNER JOIN [TBMATERIA] AS M
             ON
+         
               T.[MATERIA_ID] = M.[ID]
+              
             INNER JOIN [TBDISCIPLINA] AS D
             ON
               M.[DISCIPLINA_ID] = D.[ID]";
@@ -139,7 +143,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
             base.Inserir(teste);
             foreach(Questao questao in teste.questoes)
             {
-                InserirQuestao(questao.id, teste.id);
+                InserirQuestao(teste.id, questao.id);
             }
         }
 
@@ -147,7 +151,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
         {
             foreach (Questao questao in teste.questoes)
             {
-                InserirQuestao(questao.id, teste.id);
+                InserirQuestao(teste.id,questao.id);
             }
             base.Excluir(teste);
         }

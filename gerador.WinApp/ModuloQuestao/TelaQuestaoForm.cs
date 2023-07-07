@@ -19,7 +19,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         private void CarregarMaterias()
         {
-            foreach(Materia materia in this.materias)
+            foreach (Materia materia in this.materias)
             {
                 cmbMateria.Items.Add(materia.Nome);
             }
@@ -90,7 +90,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
-            if(this.alternativas.Count > 3)
+            if (this.alternativas.Count > 3)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(
                     "Número máximo de alternativas é 4"
@@ -111,6 +111,15 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            string[] errosTela = Validar();
+            if (errosTela.Length > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(errosTela[0]);
+
+                DialogResult = DialogResult.None;
+
+                return;
+            }
             Questao questao = ObterQuestao();
 
             string[] erros = questao.Validar();
@@ -121,6 +130,9 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
                 DialogResult = DialogResult.None;
             }
+
+
+
         }
 
         public string[] Validar()

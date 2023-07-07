@@ -21,9 +21,11 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
 
             comando.Parameters.AddWithValue("QUANTIDADE_QUESTOES", registro.quantidadeQuestoes);
 
-            comando.Parameters.AddWithValue("DISCIPLINA_ID", registro.disciplina);
-
             comando.Parameters.AddWithValue("MATERIA_ID", registro.materia.id);
+
+            comando.Parameters.AddWithValue("DISCIPLINA_ID", registro.disciplina.id);
+            
+            comando.Parameters.AddWithValue("TESTE_ID", registro.id);
         }
 
         public override Teste ConverterRegistro(SqlDataReader leitorRegistros)

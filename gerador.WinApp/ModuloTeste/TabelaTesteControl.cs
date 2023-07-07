@@ -39,6 +39,11 @@ namespace gerador.WinApp.ModuloTeste
                     Name = "titulo",
                     HeaderText = "Título"
                 },
+                  new DataGridViewTextBoxColumn()
+                {
+                    Name = "recuperacao",
+                    HeaderText = "Recuperação"
+                },
                 new DataGridViewTextBoxColumn()
                 {
                     Name = "disciplina",
@@ -54,6 +59,7 @@ namespace gerador.WinApp.ModuloTeste
                     Name = "quantidade de questoes",
                     HeaderText = "Quantidade de Questões"
                 }
+
             };
 
             gridTeste.Columns.AddRange(colunas);
@@ -65,7 +71,7 @@ namespace gerador.WinApp.ModuloTeste
 
             foreach (Teste teste in testes)
             {
-                gridTeste.Rows.Add(teste.id, teste.titulo, teste.disciplina.nome, teste.materia.Nome,teste.questoes.Count);
+                gridTeste.Rows.Add(teste.id, teste.titulo, teste.ehRecuperacao, teste.disciplina.nome, teste.materia.Nome,teste.questoes.Count);
             }
         }
 

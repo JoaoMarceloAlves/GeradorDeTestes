@@ -46,7 +46,7 @@ namespace gerador.WinApp.ModuloTeste
 
             Disciplina disciplina = (Disciplina)cmbDisciplina.SelectedItem;
 
-            Materia materia = (Materia)cmbDisciplina.SelectedItem;
+            Materia materia = (Materia)cmbMateria.SelectedItem;
 
             bool ehRecuperacao = checkProva.Checked;
 
@@ -129,9 +129,9 @@ namespace gerador.WinApp.ModuloTeste
         private void btnSortear_Click(object sender, EventArgs e)
         {
 
-            Materia materia = (Materia)cmbDisciplina.SelectedItem;
+            Materia materia = (Materia)cmbMateria.SelectedItem;
             this.questoesAleatorias = EmbaralharQuestoes(
-                questoes.FindAll(q => q.id == q.materia.id), (int)numericQtdQuestoes.Value);
+                questoes.FindAll(q => materia.id == q.materia.id), (int)numericQtdQuestoes.Value);
             listboxQuestoes.Items.Clear();
             foreach (Questao questao in questoes)
             {
