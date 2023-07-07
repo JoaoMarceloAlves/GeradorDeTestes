@@ -31,7 +31,7 @@ namespace GeradorDeTestes.WinApp
         private IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql();
         private IRepositorioDisciplina repositorioDisciplina = new RepositorioDisciplinaSql();
         private IRepositorioTeste repositorioTeste = new RepositorioTesteEmSql();
-       
+
 
 
         private static TelaPrincipalForm telaPrincipal;
@@ -87,6 +87,7 @@ namespace GeradorDeTestes.WinApp
             panelRegistros.Controls.Clear();
 
             panelRegistros.Controls.Add(listagem);
+
         }
 
         private void ConfigurarToolTips(ControladorBase controlador)
@@ -158,7 +159,7 @@ namespace GeradorDeTestes.WinApp
 
         private void testesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTeste(repositorioTeste,repositorioDisciplina,repositorioMateria);
+            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }

@@ -34,6 +34,7 @@
             matériasToolStripMenuItem = new ToolStripMenuItem();
             btnQuestoes = new ToolStripMenuItem();
             btnDisciplinas = new ToolStripMenuItem();
+            testesToolStripMenuItem = new ToolStripMenuItem();
             relatóriosToolStripMenuItem = new ToolStripMenuItem();
             itensToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
@@ -48,7 +49,6 @@
             toolStripSeparator5 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
-            testesToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             barraFerramentas.SuspendLayout();
@@ -74,30 +74,37 @@
             // temasMenuItem
             // 
             temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(180, 22);
+            temasMenuItem.Size = new Size(130, 22);
             temasMenuItem.Text = "Item";
             temasMenuItem.Click += temasMenuItem_Click;
             // 
             // matériasToolStripMenuItem
             // 
             matériasToolStripMenuItem.Name = "matériasToolStripMenuItem";
-            matériasToolStripMenuItem.Size = new Size(180, 22);
+            matériasToolStripMenuItem.Size = new Size(130, 22);
             matériasToolStripMenuItem.Text = "Matérias";
             matériasToolStripMenuItem.Click += matériasToolStripMenuItem_Click;
             // 
             // btnQuestoes
             // 
             btnQuestoes.Name = "btnQuestoes";
-            btnQuestoes.Size = new Size(180, 22);
+            btnQuestoes.Size = new Size(130, 22);
             btnQuestoes.Text = "Questões";
             btnQuestoes.Click += btnQuestoes_Click;
             // 
             // btnDisciplinas
             // 
             btnDisciplinas.Name = "btnDisciplinas";
-            btnDisciplinas.Size = new Size(180, 22);
+            btnDisciplinas.Size = new Size(130, 22);
             btnDisciplinas.Text = "Disciplinas";
             btnDisciplinas.Click += btnDisciplinas_Click;
+            // 
+            // testesToolStripMenuItem
+            // 
+            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
+            testesToolStripMenuItem.Size = new Size(130, 22);
+            testesToolStripMenuItem.Text = "Testes";
+            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -206,13 +213,6 @@
             panelRegistros.Size = new Size(800, 359);
             panelRegistros.TabIndex = 3;
             // 
-            // testesToolStripMenuItem
-            // 
-            testesToolStripMenuItem.Name = "testesToolStripMenuItem";
-            testesToolStripMenuItem.Size = new Size(180, 22);
-            testesToolStripMenuItem.Text = "Testes";
-            testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
-            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -226,7 +226,7 @@
             Name = "TelaPrincipalForm";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Festas Infantis 1.0";
+            Text = "Gerador de Testes";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);

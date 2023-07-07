@@ -17,14 +17,17 @@ namespace gerador.WinApp.ModuloTeste
         private IRepositorioTeste repositorioTeste;
         private IRepositorioDisciplina repositorioDisciplina;
         private IRepositorioMateria repositorioMateria;
+        private IRepositorioQuestao repositorioQuestao;
 
         public ControladorTeste(IRepositorioTeste repositorioTeste, 
             IRepositorioDisciplina repositorioDisciplina,
-            IRepositorioMateria repositorioMateria)
+            IRepositorioMateria repositorioMateria,
+            IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioTeste = repositorioTeste;
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioMateria = repositorioMateria;
+            this.repositorioQuestao = repositorioQuestao;
         }
 
         public override string ToolTipInserir { get { return "Inserir novo Teste"; } }
@@ -35,7 +38,11 @@ namespace gerador.WinApp.ModuloTeste
 
         public override void Inserir()
         {
-            TelaTesteForm telaTeste = new TelaTesteForm(repositorioMateria.SelecionarTodos(),repositorioDisciplina.SelecionarTodos());
+            TelaTesteForm telaTeste = new TelaTesteForm(
+                repositorioMateria.SelecionarTodos(),
+                repositorioDisciplina.SelecionarTodos(),
+                repositorioQuestao.SelecionarTodos(),
+                repositorioTeste.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaTeste.ShowDialog();
 

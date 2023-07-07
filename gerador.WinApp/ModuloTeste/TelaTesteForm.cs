@@ -2,6 +2,7 @@
 using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Dominio.ModuloTeste;
+using GeradorDeTestes.WinApp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,16 @@ namespace gerador.WinApp.ModuloTeste
 {
     public partial class TelaTesteForm : Form
     {
-        private List<Materia> materias;
+        public List<Teste> testes;
+        public List<Materia> materias;
         public List<Disciplina> disciplinas;
+        public List<Questao> questoes;
+        public List<Questao> questoesAleatorias;
 
-        public TelaTesteForm(List<Materia> materias, List<Disciplina> disciplinas)
+        public TelaTesteForm(List<Materia> materias, 
+            List<Disciplina> disciplinas, 
+            List<Questao> questoes,
+            List<Teste> testes)
         {
             InitializeComponent();
 
@@ -27,6 +34,8 @@ namespace gerador.WinApp.ModuloTeste
 
             this.materias = materias;
             this.disciplinas = disciplinas;
+            this.questoes = questoes;
+            this.testes = testes;
 
             CarregarComboBoxes(disciplinas, materias);
         }
@@ -45,12 +54,14 @@ namespace gerador.WinApp.ModuloTeste
 
             Teste teste = new Teste(titulo, ehRecuperacao, quantidadeDeQuestoes, disciplina, materia);
 
+            teste.questoes = questoesAleatorias;
+
             return teste;
         }
 
         public void ConfigurarTela(Teste teste)
         {
-            
+
         }
 
         public List<Questao> EmbaralharQuestoes(List<Questao> questoes, int numeroQuestoes)
@@ -78,7 +89,7 @@ namespace gerador.WinApp.ModuloTeste
         {
             foreach (Disciplina disciplina in disciplinas)
             {
-                cmbDisciplina.Items.Add(disciplina.nome);
+                cmbDisciplina.Items.Add(disciplina);
             }
 
             if (cmbDisciplina.Items.Count > 0)
@@ -86,7 +97,7 @@ namespace gerador.WinApp.ModuloTeste
 
             foreach (Materia materia in materias)
             {
-                cmbMateria.Items.Add(materia.Nome);
+                cmbMateria.Items.Add(materia);
             }
             if (cmbMateria.Items.Count > 0)
                 cmbMateria.SelectedIndex = 0;
@@ -94,11 +105,38 @@ namespace gerador.WinApp.ModuloTeste
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            Teste teste = ObterTeste();
 
+            string[] erros = teste.Validar();
+
+            if (erros.Length > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }
+
+            int numero = testes.FindAll(c => c.titulo == txtTitulo.Text && c.id != teste.id).Count();
+
+
+            if (numero > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Título de 'Teste' já existente");
+
+                DialogResult = DialogResult.None;
+            }
         }
         private void btnSortear_Click(object sender, EventArgs e)
         {
 
+            Materia materia = (Materia)cmbDisciplina.SelectedItem;
+            this.questoesAleatorias = EmbaralharQuestoes(
+                questoes.FindAll(q => q.id == q.materia.id), (int)numericQtdQuestoes.Value);
+            listboxQuestoes.Items.Clear();
+            foreach (Questao questao in questoes)
+            {
+                listboxQuestoes.Items.Add(questao);
+            }
         }
     }
 }
