@@ -59,6 +59,13 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (radiobtn1Serie.Checked == false && radiobtn2serie.Checked == false)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Obrigatório selecionar uma Série");
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             Materia materia = ObterMateria();
 
             string[] erros = materia.Validar();
@@ -93,11 +100,11 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         {
             List<string> erros = new List<string>();
 
-            if(grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text == null)
+            if (grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text == null)
             {
                 erros.Add("Obrigatório selecionar uma Série");
             }
-            if(cmbDisciplina.SelectedItem == null) 
+            if (cmbDisciplina.SelectedItem == null)
             {
                 erros.Add("Obrigatório selecionar uma Disciplina");
             }

@@ -17,10 +17,13 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         private readonly IRepositorioDisciplina repositorioDisciplina;
         private readonly IRepositorioQuestao repositorioQuestao;
 
-        public ControladorMateria(IRepositorioMateria repositorioMateria, IRepositorioDisciplina repositorioDisciplina)
+        public ControladorMateria(IRepositorioMateria repositorioMateria,
+            IRepositorioDisciplina repositorioDisciplina,
+            IRepositorioQuestao repositorioQuestao)
         {
             this.repositorioMateria = repositorioMateria;
             this.repositorioDisciplina = repositorioDisciplina;
+            this.repositorioQuestao = repositorioQuestao;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Matéria"; } }
@@ -120,8 +123,9 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
            if(tabelaMateria == null)
                 tabelaMateria = new TabelaMateriaControl();
 
-           return tabelaMateria;
-            
+            CarregarMaterias();
+
+           return tabelaMateria;           
         }
         private void CarregarMaterias()
         {

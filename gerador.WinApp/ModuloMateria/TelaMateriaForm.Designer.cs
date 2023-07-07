@@ -97,6 +97,7 @@
             // 
             // cmbDisciplina
             // 
+            cmbDisciplina.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbDisciplina.FormattingEnabled = true;
             cmbDisciplina.Location = new Point(96, 89);
             cmbDisciplina.Name = "cmbDisciplina";
