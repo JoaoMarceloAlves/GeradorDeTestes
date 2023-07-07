@@ -77,7 +77,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
                 DialogResult = DialogResult.None;
             }
 
-            int numero = materias.FindAll(m => m.Nome == txtNome.Text && m.id != materia.id).Count();
+            int numero = materias.FindAll(m => m.Nome.ToLower() == txtNome.Text.ToLower() && m.id != materia.id).Count();
 
             if (numero > 0)
             {

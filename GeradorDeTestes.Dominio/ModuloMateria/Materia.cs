@@ -39,9 +39,13 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
 
             if(string.IsNullOrEmpty(Nome))
                 erros.Add("O campo 'Nome' é obrigatório");
+           
             if (string.IsNullOrEmpty(Serie))
                 erros.Add("O campo 'Série' é obrigatório");
-                   
+           
+            if (Nome.Length < 5)
+                erros.Add("O campo 'Nome' deve ter 5 caracteres");
+
             return erros.ToArray();
         }
 
