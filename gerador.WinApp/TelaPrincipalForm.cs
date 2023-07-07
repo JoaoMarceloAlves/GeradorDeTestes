@@ -18,6 +18,7 @@ using GeradorDeTestes.Infra.Dados.Sql.ModuloDisciplina;
 using GeradorDeTestes.WinApp.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloTeste;
 using GeradorDeTestes.Infra.Dados.Sql.ModuloTeste;
+using gerador.WinApp.ModuloTeste;
 
 namespace GeradorDeTestes.WinApp
 {
@@ -30,6 +31,7 @@ namespace GeradorDeTestes.WinApp
         private IRepositorioQuestao repositorioQuestao = new RepositorioQuestaoEmSql();
         private IRepositorioDisciplina repositorioDisciplina = new RepositorioDisciplinaSql();
         private IRepositorioTeste repositorioTeste = new RepositorioTesteEmSql();
+       
 
 
         private static TelaPrincipalForm telaPrincipal;
@@ -135,7 +137,7 @@ namespace GeradorDeTestes.WinApp
 
         private void matériasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria,repositorioDisciplina);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -149,7 +151,14 @@ namespace GeradorDeTestes.WinApp
 
         private void btnDisciplinas_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDisciplina(repositorioDisciplina,repositorioMateria,repositorioTeste);
+            controlador = new ControladorDisciplina(repositorioDisciplina, repositorioMateria, repositorioTeste);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void testesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorTeste(repositorioTeste,repositorioDisciplina,repositorioMateria);
 
             ConfigurarTelaPrincipal(controlador);
         }

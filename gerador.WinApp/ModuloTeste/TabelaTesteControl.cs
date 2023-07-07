@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.Dominio.ModuloTeste;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +20,11 @@ namespace gerador.WinApp.ModuloTeste
 
             ConfigurarColunas();
 
+            gridTeste.ConfigurarGridSomenteLeitura();
+
+            gridTeste.ConfigurarGridZebrado();
         }
+
         private void ConfigurarColunas()
         {
             DataGridViewColumn[] colunas = new DataGridViewColumn[]
@@ -51,6 +57,26 @@ namespace gerador.WinApp.ModuloTeste
             };
 
             gridTeste.Columns.AddRange(colunas);
+        }
+
+        public void AtualizarRegistros(List<Teste> testes)
+        {
+            gridTeste.Rows.Clear();
+
+            foreach (Teste teste in testes)
+            {
+                gridTeste.Rows.Add(teste.id, teste.titulo, teste.disciplina.nome, teste.materia.Nome,teste.questoes.Count);
+            }
+        }
+
+        public int ObterIdSelecionado()
+        {
+            if (gridTeste.SelectedRows.Count == 0)
+                return -1;
+
+            int id = Convert.ToInt32(gridTeste.SelectedRows[0].Cells["id"].Value);
+
+            return id;
         }
     }
 }

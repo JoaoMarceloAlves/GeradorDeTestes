@@ -41,8 +41,8 @@
             btnGravar = new Button();
             btnCancelar = new Button();
             groupBox1 = new GroupBox();
-            btnSortear = new Button();
             listboxQuestoes = new ListBox();
+            btnSortear = new Button();
             ((System.ComponentModel.ISupportInitialize)numericQtdQuestoes).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -130,6 +130,7 @@
             numericQtdQuestoes.Name = "numericQtdQuestoes";
             numericQtdQuestoes.Size = new Size(62, 23);
             numericQtdQuestoes.TabIndex = 9;
+            numericQtdQuestoes.ThousandsSeparator = true;
             // 
             // btnGravar
             // 
@@ -140,6 +141,7 @@
             btnGravar.TabIndex = 10;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // btnCancelar
             // 
@@ -162,15 +164,6 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Questões Selecionadas:";
             // 
-            // btnSortear
-            // 
-            btnSortear.Location = new Point(21, 22);
-            btnSortear.Name = "btnSortear";
-            btnSortear.Size = new Size(108, 33);
-            btnSortear.TabIndex = 0;
-            btnSortear.Text = "Sortear Questões";
-            btnSortear.UseVisualStyleBackColor = true;
-            // 
             // listboxQuestoes
             // 
             listboxQuestoes.FormattingEnabled = true;
@@ -179,6 +172,16 @@
             listboxQuestoes.Name = "listboxQuestoes";
             listboxQuestoes.Size = new Size(386, 229);
             listboxQuestoes.TabIndex = 1;
+            // 
+            // btnSortear
+            // 
+            btnSortear.Location = new Point(21, 22);
+            btnSortear.Name = "btnSortear";
+            btnSortear.Size = new Size(108, 33);
+            btnSortear.TabIndex = 0;
+            btnSortear.Text = "Sortear Questões";
+            btnSortear.UseVisualStyleBackColor = true;
+            btnSortear.Click += btnSortear_Click;
             // 
             // TelaTesteForm
             // 

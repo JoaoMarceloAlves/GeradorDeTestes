@@ -19,14 +19,13 @@ namespace GeradorDeTestes.Dominio.ModuloTeste
             
         }
 
-        public Teste(string titulo, bool ehRecuperacao, int quantidadeQuestoes, Disciplina disciplina, Materia materia, List<Questao> questoes)
+        public Teste(string titulo, bool ehRecuperacao, int quantidadeQuestoes, Disciplina disciplina, Materia materia)
         {
             this.titulo = titulo;
             this.quantidadeQuestoes = quantidadeQuestoes;
             this.ehRecuperacao = ehRecuperacao;
             this.disciplina = disciplina;
-            this.materia = materia;
-            this.questoes = questoes;
+            this.materia = materia;        
         }
 
         public Teste(int id, string titulo, bool ehRecuperacao, int quantidadeQuestoes, Disciplina disciplina, Materia materia, List<Questao> questoes)
@@ -38,6 +37,7 @@ namespace GeradorDeTestes.Dominio.ModuloTeste
             this.materia = materia;
             this.questoes = questoes;
         }
+
 
         public override void AtualizarInformacoes(Teste registroAtualizado)
         {
