@@ -128,10 +128,22 @@ namespace gerador.WinApp.ModuloTeste
         }
         private void btnSortear_Click(object sender, EventArgs e)
         {
+            int qtdQuestoes = (int)numericQtdQuestoes.Value;
 
             Materia materia = (Materia)cmbMateria.SelectedItem;
-            this.questoesAleatorias = EmbaralharQuestoes(
-                questoes.FindAll(q => materia.id == q.materia.id), (int)numericQtdQuestoes.Value);
+
+            List<Questao> materiaQuestoes;
+
+            materiaQuestoes = questoes.FindAll(q => materia.id == q.materia.id);
+            
+            if(qtdQuestoes > materiaQuestoes.Count)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape("Escolhar um número menor de questões");
+                return;
+            }
+
+            this.questoesAleatorias = EmbaralharQuestoes(materiaQuestoes, qtdQuestoes);
+
             listboxQuestoes.Items.Clear();
             foreach (Questao questao in questoes)
             {

@@ -60,6 +60,12 @@ namespace GeradorDeTestes.Dominio.ModuloTeste
             if (titulo.Length < 5 )
                 erros.Add("O campo 'Título' deve conter no mínimo 5 caracteres");
 
+            if (questoes.Count == 0)
+                erros.Add("O teste precisa conter questões");
+
+            if (materia.Disciplina.id != disciplina.id)
+                erros.Add("O campo 'Matéria' precisa ser da disciplina selecionada");
+
             return erros.ToArray();
         }
 
