@@ -23,6 +23,15 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         public override void Inserir()
         {
+            if (repositorioMateria.SelecionarTodos().Count == 0)
+            {
+                MessageBox.Show($"Não há matérias cadastradas!",
+                   "Adição de Questões",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+
+                return;
+            }
             TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
