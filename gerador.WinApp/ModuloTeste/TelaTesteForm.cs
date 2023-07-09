@@ -116,8 +116,7 @@ namespace gerador.WinApp.ModuloTeste
                 DialogResult = DialogResult.None;
             }
 
-            int numero = testes.FindAll(c => c.titulo == txtTitulo.Text && c.id != teste.id).Count();
-
+            int numero = testes.FindAll(t => t.titulo == txtTitulo.Text && t.id != teste.id).Count();
 
             if (numero > 0)
             {
@@ -132,9 +131,22 @@ namespace gerador.WinApp.ModuloTeste
 
             Materia materia = (Materia)cmbMateria.SelectedItem;
 
-            List<Questao> materiaQuestoes;
+            Disciplina disciplina = (Disciplina)cmbDisciplina.SelectedItem;
 
-            materiaQuestoes = questoes.FindAll(q => materia.id == q.materia.id);
+            List<Questao> materiaQuestoes = new List<Questao>();
+
+            if(checkProva.Checked)
+            {
+                foreach(Materia materiaDisciplina in materias)
+                {
+                    if (materiaDisciplina.Disciplina.id == disciplina.id)
+                        materiaQuestoes.AddRange(
+                            questoes.FindAll(q => materia.id == q.materia.id));
+                }
+            }
+            else
+                materiaQuestoes = questoes.FindAll(q => materia.id == q.materia.id);
+
             
             if(qtdQuestoes > materiaQuestoes.Count)
             {
