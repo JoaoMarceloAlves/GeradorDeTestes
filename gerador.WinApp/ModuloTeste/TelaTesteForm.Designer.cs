@@ -116,6 +116,7 @@
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(185, 23);
             cmbMateria.TabIndex = 7;
+            cmbMateria.SelectedIndexChanged += cmbMateria_SelectedIndexChanged;
             // 
             // cmbDisciplina
             // 
@@ -125,6 +126,7 @@
             cmbDisciplina.Name = "cmbDisciplina";
             cmbDisciplina.Size = new Size(184, 23);
             cmbDisciplina.TabIndex = 8;
+            cmbDisciplina.SelectedIndexChanged += cmbDisciplina_SelectedIndexChanged;
             // 
             // numericQtdQuestoes
             // 

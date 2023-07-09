@@ -23,8 +23,8 @@ namespace gerador.WinApp.ModuloTeste
         public List<Questao> questoes;
         public List<Questao> questoesAleatorias;
 
-        public TelaTesteForm(List<Materia> materias, 
-            List<Disciplina> disciplinas, 
+        public TelaTesteForm(List<Materia> materias,
+            List<Disciplina> disciplinas,
             List<Questao> questoes,
             List<Teste> testes)
         {
@@ -38,6 +38,19 @@ namespace gerador.WinApp.ModuloTeste
             this.testes = testes;
 
             CarregarComboBoxes(disciplinas, materias);
+        }
+
+        public void AtualizarMaterias(Disciplina disciplina)
+        {
+            questoesAleatorias = new List<Questao>();
+            listboxQuestoes.Items.Clear();
+
+            cmbMateria.Items.Clear();
+            foreach (Materia materia in disciplina.materias)
+            {
+                cmbMateria.Items.Add(materia);
+            }
+            cmbMateria.SelectedIndex = 0;
         }
 
         public Teste ObterTeste()
@@ -101,6 +114,8 @@ namespace gerador.WinApp.ModuloTeste
             }
             if (cmbMateria.Items.Count > 0)
                 cmbMateria.SelectedIndex = 0;
+
+            AtualizarMaterias(disciplinas[0]);
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -135,20 +150,19 @@ namespace gerador.WinApp.ModuloTeste
 
             List<Questao> materiaQuestoes = new List<Questao>();
 
-            if(checkProva.Checked)
+            if (checkProva.Checked)
             {
-                foreach(Materia materiaDisciplina in materias)
+                foreach (Materia materiaDisciplina in disciplina.materias)
                 {
-                    if (materiaDisciplina.Disciplina.id == disciplina.id)
-                        materiaQuestoes.AddRange(
-                            questoes.FindAll(q => materia.id == q.materia.id));
+                    materiaQuestoes.AddRange(
+                        questoes.FindAll(q => materia.id == q.materia.id));
                 }
             }
             else
                 materiaQuestoes = questoes.FindAll(q => materia.id == q.materia.id);
 
-            
-            if(qtdQuestoes > materiaQuestoes.Count)
+
+            if (qtdQuestoes > materiaQuestoes.Count)
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape("Escolhar um número menor de questões");
                 return;
@@ -157,10 +171,25 @@ namespace gerador.WinApp.ModuloTeste
             this.questoesAleatorias = EmbaralharQuestoes(materiaQuestoes, qtdQuestoes);
 
             listboxQuestoes.Items.Clear();
-            foreach (Questao questao in questoes)
+            foreach (Questao questao in questoesAleatorias)
             {
                 listboxQuestoes.Items.Add(questao);
             }
+        }
+
+        private void cmbDisciplina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AtualizarMaterias((Disciplina)cmbDisciplina.SelectedItem);
+        }
+
+        private void cmbMateria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (checkProva.Checked)
+                return;
+
+            questoesAleatorias = new List<Questao>();
+
+            listboxQuestoes.Items.Clear();
         }
     }
 }

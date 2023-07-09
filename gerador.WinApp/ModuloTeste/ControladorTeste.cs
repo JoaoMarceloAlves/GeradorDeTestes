@@ -40,7 +40,7 @@ namespace gerador.WinApp.ModuloTeste
         {
             TelaTesteForm telaTeste = new TelaTesteForm(
                 repositorioMateria.SelecionarTodos(),
-                repositorioDisciplina.SelecionarTodos(),
+                repositorioDisciplina.SelecionarTodosCarregados(),
                 repositorioQuestao.SelecionarTodos(),
                 repositorioTeste.SelecionarTodos());
 

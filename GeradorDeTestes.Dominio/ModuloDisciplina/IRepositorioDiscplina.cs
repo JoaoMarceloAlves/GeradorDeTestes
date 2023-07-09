@@ -14,7 +14,6 @@ namespace GeradorDeTestes.Dominio.ModuloDisciplina
         void Excluir(Disciplina DisciplinaSelecionado);
         List<Disciplina> SelecionarTodos();
         Disciplina SelecionarPorId(int id);
-
-
+        List<Disciplina> SelecionarTodosCarregados();
     }
 }

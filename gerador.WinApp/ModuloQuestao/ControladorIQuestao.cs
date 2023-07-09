@@ -95,7 +95,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
-            if (repositorioQuestao.SelecionarQuestoes(questao.id).Count == 0)
+            if (repositorioQuestao.SelecionarQuestoes(questao.id).Count > 0)
             {
                 MessageBox.Show($"Não é possível remover questões vinculadas a testes!",
                    "Exclusão de Questões",

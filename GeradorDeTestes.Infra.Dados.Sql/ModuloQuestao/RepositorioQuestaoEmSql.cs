@@ -102,7 +102,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
         private const string sqlSelecionarQuestoes =
        @"SELECT 
-                Q.[ID]            QUESTAO_ID
+               Q.[ID]            QUESTAO_ID
 	           ,Q.[ENUNCIADO]     QUESTAO_ENUNCIADO
                ,Q.[RESPOSTA]      QUESTAO_RESPOSTA
                ,Q.[ALTERNATIVA_A] QUESTAO_ALTERNATIVA_A
@@ -116,6 +116,8 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
 
                ,D.[ID]            DISCIPLINA_ID
                ,D.[NOME]          DISCIPLINA_NOME
+
+               ,T.[ID]            TESTE_ID
             FROM
                 [TBQUESTAO] AS Q INNER JOIN [TBMATERIA] AS M
             ON
@@ -123,9 +125,12 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
             INNER JOIN [TBDISCIPLINA] AS D
             ON
               M.[DISCIPLINA_ID] = D.[ID]
+            INNER JOIN [TBTESTE] AS T
+            ON
+                T.[DISCIPLINA_ID] = D.[ID]
             INNER JOIN [TBTESTE_TBQUESTAO] AS TQ 
             ON 
-              Q.[ID] = @ID AND 
+              TQ.[QUESTAO_ID] = @ID AND 
               TQ.[TESTE_ID] = T.[ID]";
 
         public List<Questao> SelecionarQuestoes(int id)
