@@ -36,6 +36,10 @@ namespace gerador.WinApp.ModuloTeste
 
         public override string ToolTipExcluir { get { return "Excluir Teste Existente"; } }
 
+        public override string ToolTipVisualizarTestes { get { return "Visualizar Detalhes do Teste"; } }
+
+        public override bool VisualizarTestesHabilitado { get { return true; } }
+
         public override void Inserir()
         {
             TelaTesteForm telaTeste = new TelaTesteForm(
@@ -99,5 +103,26 @@ namespace gerador.WinApp.ModuloTeste
         {
             return "Cadastro de Testes";
         }
+
+        public override void VisualizarDetalhesTeste()
+        {
+            Teste teste = ObterTesteSelecionado();
+
+            TelaVisualizarTesteForm telaListagem = new TelaVisualizarTesteForm();
+
+            if (teste == null)
+            {
+                ApresentarMensagem("Selecione um teste primeiro!", "Listagem de teste");
+                return;
+            }
+
+            telaListagem.CarregarLabel(teste);
+
+            telaListagem.CarregarLista(teste.ListQuestoes);
+
+            telaListagem.ShowDialog();
+        }
+       
+
     }
 }

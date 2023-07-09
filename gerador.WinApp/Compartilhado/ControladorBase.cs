@@ -24,6 +24,8 @@ namespace GeradorDeTestes.WinApp.Compartilhado
 
         public virtual string ToolTipConfigurarDescontos { get; }
 
+        public virtual string? ToolTipVisualizarTestes { get; }
+
             
 
         public virtual bool InserirHabilitado { get { return true; } }
@@ -35,6 +37,7 @@ namespace GeradorDeTestes.WinApp.Compartilhado
         public virtual bool VisualizarAlugueisHabilitado { get { return false; } }
         public virtual bool ConcluirAluguelHabilitado { get { return false; } }
         public virtual bool ConfigurarDescontosHabilitado { get { return false; } }
+        public virtual bool VisualizarTestesHabilitado { get { return false; } }
 
         public abstract void Inserir();
 
@@ -52,6 +55,11 @@ namespace GeradorDeTestes.WinApp.Compartilhado
 
         public virtual void ConcluirItens()
         {
+        }
+
+        public virtual void VisualizarDetalhesTeste()
+        {
+
         }
 
         public abstract UserControl ObterListagem();

@@ -95,6 +95,7 @@ namespace GeradorDeTestes.WinApp
             btnInserir.ToolTipText = controlador.ToolTipInserir;
             btnEditar.ToolTipText = controlador.ToolTipEditar;
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
+            btnVisualizarTestes.ToolTipText = controlador.ToolTipVisualizarTestes;
         }
 
         private void ConfigurarEstados(ControladorBase controlador)
@@ -102,6 +103,7 @@ namespace GeradorDeTestes.WinApp
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
+            btnVisualizarTestes.Enabled = controlador.VisualizarTestesHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -138,7 +140,7 @@ namespace GeradorDeTestes.WinApp
 
         private void matériasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina,repositorioQuestao);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -162,6 +164,11 @@ namespace GeradorDeTestes.WinApp
             controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void btnVisualizarTestes_Click(object sender, EventArgs e)
+        {
+            controlador.VisualizarDetalhesTeste();
         }
     }
 }
