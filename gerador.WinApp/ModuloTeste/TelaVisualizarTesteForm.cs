@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GeradorDeTestes.Dominio.ModuloQuestao;
+using GeradorDeTestes.Dominio.ModuloTeste;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +19,28 @@ namespace gerador.WinApp.ModuloTeste
             InitializeComponent();
 
             this.ConfigurarDialog();
+        }
+
+        public void AtualizarLista(List<Questao> questoes)
+        {
+            listQuestoes.Items.Clear();
+
+            foreach (Questao questao in questoes)
+            {
+                listQuestoes.Items.Add(" * " + questao);
+            }
+        }
+
+        public void CarregarLista(List<Questao> questoes)
+        {
+            AtualizarLista(questoes);
+        }
+
+        public void CarregarLabel(Teste testes)
+        {
+            labelTitulo.Text = testes.disciplina.ToString();
+            labelDisciplina.Text = testes.titulo;
+            labelMateria.Text = testes.materia.ToString();
         }
 
     }

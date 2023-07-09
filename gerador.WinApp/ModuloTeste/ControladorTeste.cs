@@ -112,13 +112,17 @@ namespace gerador.WinApp.ModuloTeste
 
             if (teste == null)
             {
-                ApresentarMensagem("Selecione um teste primeiro!", "Listagem de teste");
+                MessageBox.Show($"Selecione um Teste Primeiro!",
+                   "Visualição de Testes",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+
                 return;
             }
 
             telaListagem.CarregarLabel(teste);
 
-            telaListagem.CarregarLista(teste.ListQuestoes);
+            telaListagem.CarregarLista(teste.questoes);
 
             telaListagem.ShowDialog();
         }

@@ -31,16 +31,19 @@
             lbtitulo = new Label();
             lbMateria = new Label();
             lbDisciplina = new Label();
+            labelTitulo = new Label();
+            labelDisciplina = new Label();
+            labelMateria = new Label();
             listQuestoes = new ListBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
+            groupBox1 = new GroupBox();
+            btnFechar = new Button();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lbtitulo
             // 
             lbtitulo.AutoSize = true;
-            lbtitulo.Location = new Point(113, 32);
+            lbtitulo.Location = new Point(54, 18);
             lbtitulo.Name = "lbtitulo";
             lbtitulo.Size = new Size(40, 15);
             lbtitulo.TabIndex = 0;
@@ -49,7 +52,7 @@
             // lbMateria
             // 
             lbMateria.AutoSize = true;
-            lbMateria.Location = new Point(103, 102);
+            lbMateria.Location = new Point(44, 88);
             lbMateria.Name = "lbMateria";
             lbMateria.Size = new Size(50, 15);
             lbMateria.TabIndex = 1;
@@ -58,63 +61,85 @@
             // lbDisciplina
             // 
             lbDisciplina.AutoSize = true;
-            lbDisciplina.Location = new Point(92, 64);
+            lbDisciplina.Location = new Point(33, 53);
             lbDisciplina.Name = "lbDisciplina";
             lbDisciplina.Size = new Size(61, 15);
             lbDisciplina.TabIndex = 2;
             lbDisciplina.Text = "Disciplina:";
             // 
+            // labelTitulo
+            // 
+            labelTitulo.AutoSize = true;
+            labelTitulo.Location = new Point(100, 18);
+            labelTitulo.Name = "labelTitulo";
+            labelTitulo.Size = new Size(52, 15);
+            labelTitulo.TabIndex = 4;
+            labelTitulo.Text = "---------";
+            // 
+            // labelDisciplina
+            // 
+            labelDisciplina.AutoSize = true;
+            labelDisciplina.Location = new Point(100, 53);
+            labelDisciplina.Name = "labelDisciplina";
+            labelDisciplina.Size = new Size(52, 15);
+            labelDisciplina.TabIndex = 5;
+            labelDisciplina.Text = "---------";
+            // 
+            // labelMateria
+            // 
+            labelMateria.AutoSize = true;
+            labelMateria.Location = new Point(100, 88);
+            labelMateria.Name = "labelMateria";
+            labelMateria.Size = new Size(52, 15);
+            labelMateria.TabIndex = 6;
+            labelMateria.Text = "---------";
+            // 
             // listQuestoes
             // 
             listQuestoes.FormattingEnabled = true;
             listQuestoes.ItemHeight = 15;
-            listQuestoes.Location = new Point(113, 193);
+            listQuestoes.Location = new Point(9, 22);
             listQuestoes.Name = "listQuestoes";
-            listQuestoes.Size = new Size(252, 304);
-            listQuestoes.TabIndex = 3;
+            listQuestoes.Size = new Size(416, 244);
+            listQuestoes.TabIndex = 7;
             // 
-            // label1
+            // groupBox1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(172, 32);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 4;
-            label1.Text = "label1";
+            groupBox1.Controls.Add(listQuestoes);
+            groupBox1.Location = new Point(24, 122);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(431, 282);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Lista De Questões:";
             // 
-            // label2
+            // btnFechar
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(172, 64);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 5;
-            label2.Text = "label2";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(172, 102);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 6;
-            label3.Text = "label3";
+            btnFechar.DialogResult = DialogResult.Cancel;
+            btnFechar.Location = new Point(343, 410);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(112, 40);
+            btnFechar.TabIndex = 9;
+            btnFechar.Text = "Fechar";
+            btnFechar.UseVisualStyleBackColor = true;
             // 
             // TelaVisualizarTesteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 550);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(listQuestoes);
+            ClientSize = new Size(476, 462);
+            Controls.Add(btnFechar);
+            Controls.Add(groupBox1);
+            Controls.Add(labelMateria);
+            Controls.Add(labelDisciplina);
+            Controls.Add(labelTitulo);
             Controls.Add(lbDisciplina);
             Controls.Add(lbMateria);
             Controls.Add(lbtitulo);
             Name = "TelaVisualizarTesteForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Visualização de Testes";
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,9 +149,11 @@
         private Label lbtitulo;
         private Label lbMateria;
         private Label lbDisciplina;
+        private Label labelTitulo;
+        private Label labelDisciplina;
+        private Label labelMateria;
         private ListBox listQuestoes;
-        private Label label1;
-        private Label label2;
-        private Label label3;
+        private GroupBox groupBox1;
+        private Button btnFechar;
     }
 }
