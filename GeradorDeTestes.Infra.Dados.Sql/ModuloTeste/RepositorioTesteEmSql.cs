@@ -16,7 +16,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
                     [TITULO]
                     ,[RECUPERACAO]
                     ,[QUANTIDADE_QUESTOES]
-                     ,[MATERIA_ID]
+                    ,[MATERIA_ID]
                     ,[DISCIPLINA_ID]
                    
                 )
@@ -136,7 +136,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
 
         private const string sqlRemoverQuestao =
            @"DELETE FROM TBTESTE_TBQUESTAO 
-                WHERE TESTE_ID = @TESTE_ID AND QUESTAO_ID = @QUESTAO_ID";
+                WHERE TESTE_ID = @Teste_Id AND Questao_Id = @Questao_Id";
 
         public override void Inserir(Teste teste)
         {

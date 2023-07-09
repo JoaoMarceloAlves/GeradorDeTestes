@@ -7,5 +7,6 @@
         void Excluir(Questao questaoSelecionada);
         List<Questao> SelecionarTodos();
         Questao SelecionarPorId(int id);
+        List<Questao> SelecionarQuestoes(int id);
     }
 }

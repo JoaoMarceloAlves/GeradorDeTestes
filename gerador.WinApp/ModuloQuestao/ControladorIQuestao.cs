@@ -32,6 +32,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
                 return;
             }
+
             TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
@@ -90,6 +91,16 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                     "Exclusão de Questões",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            if (repositorioQuestao.SelecionarQuestoes(questao.id).Count == 0)
+            {
+                MessageBox.Show($"Não é possível remover questões vinculadas a testes!",
+                   "Exclusão de Questões",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
 
                 return;
             }
