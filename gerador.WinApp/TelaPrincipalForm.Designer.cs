@@ -42,6 +42,7 @@
             btnInserir = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
+            btnVisualizarTestes = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
             btnDuplicar = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
@@ -131,7 +132,7 @@
             // 
             barraFerramentas.Enabled = false;
             barraFerramentas.ImageScalingSize = new Size(20, 20);
-            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnDuplicar, toolStripSeparator3, btnGerar, toolStripSeparator1, toolStripSeparator5, labelTipoCadastro });
+            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnDuplicar, toolStripSeparator3, btnGerar, toolStripSeparator1, btnVisualizarTestes, toolStripSeparator5, labelTipoCadastro });
             barraFerramentas.Location = new Point(0, 24);
             barraFerramentas.Name = "barraFerramentas";
             barraFerramentas.Size = new Size(800, 45);
@@ -170,6 +171,15 @@
             btnExcluir.Padding = new Padding(7);
             btnExcluir.Size = new Size(42, 42);
             btnExcluir.Click += btnExcluir_Click;
+            // 
+            // btnVisualizarTestes
+            // 
+            btnVisualizarTestes.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnVisualizarTestes.Image = gerador.WinApp.Properties.Resources.key_visualizer_FILL0_wght400_GRAD0_opsz48__1_;
+            btnVisualizarTestes.ImageTransparentColor = Color.Magenta;
+            btnVisualizarTestes.Name = "btnVisualizarTestes";
+            btnVisualizarTestes.Size = new Size(24, 42);
+            btnVisualizarTestes.Click += btnVisualizarTestes_Click;
             // 
             // toolStripSeparator2
             // 
@@ -276,5 +286,6 @@
         private ToolStripMenuItem testesToolStripMenuItem;
         private ToolStripButton btnDuplicar;
         private ToolStripButton btnGerar;
+        private ToolStripButton btnVisualizarTestes;
     }
 }

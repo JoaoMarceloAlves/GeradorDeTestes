@@ -87,6 +87,7 @@ namespace GeradorDeTestes.WinApp
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
             btnDuplicar.ToolTipText = controlador.ToolTipExcluir;
             btnGerar.ToolTipText = controlador.ToolTipGerarPdf;
+            btnVisualizarTestes.ToolTipText = controlador.ToolTipVisualizarTestes;
         }
 
         private void ConfigurarEstados(ControladorBase controlador)
@@ -96,6 +97,7 @@ namespace GeradorDeTestes.WinApp
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
             btnDuplicar.Enabled = controlador.DuplicarHabilitado;
             btnGerar.Enabled = controlador.GerarPdfHabilitado;
+            btnVisualizarTestes.Enabled = controlador.VisualizarTestesHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -149,6 +151,11 @@ namespace GeradorDeTestes.WinApp
             controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
+        }
+
+        private void btnVisualizarTestes_Click(object sender, EventArgs e)
+        {
+            controlador.VisualizarDetalhesTeste();
         }
     }
 }

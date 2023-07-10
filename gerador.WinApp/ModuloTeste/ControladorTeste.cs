@@ -34,7 +34,10 @@ namespace gerador.WinApp.ModuloTeste
         public override string ToolTipDuplicar { get { return "Duplicar Teste Existente"; } }
 
         public override string ToolTipGerarPdf { get { return "Gerar PDF de Teste Existente"; } }
+        
+        public override string ToolTipVisualizarTestes { get { return "Visualizar Detalhes do Teste"; } }
 
+        public override bool VisualizarTestesHabilitado { get { return true; } }
         public override bool EditarHabilitado { get { return false; } }
         public override bool DuplicarHabilitado { get { return false; } }
         public override bool GerarPdfHabilitado { get { return false; } }
@@ -194,5 +197,30 @@ namespace gerador.WinApp.ModuloTeste
         {
             return "Cadastro de Testes";
         }
+
+        public override void VisualizarDetalhesTeste()
+        {
+            Teste teste = ObterTesteSelecionado();
+
+            TelaVisualizarTesteForm telaListagem = new TelaVisualizarTesteForm();
+
+            if (teste == null)
+            {
+                MessageBox.Show($"Selecione um Teste Primeiro!",
+                   "Visualição de Testes",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+
+                return;
+            }
+
+            telaListagem.CarregarLabel(teste);
+
+            telaListagem.CarregarLista(teste.questoes);
+
+            telaListagem.ShowDialog();
+        }
+       
+
     }
 }

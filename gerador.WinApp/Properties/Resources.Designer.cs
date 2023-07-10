@@ -173,6 +173,16 @@ namespace gerador.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap key_visualizer_FILL0_wght400_GRAD0_opsz48__1_ {
+            get {
+                object obj = ResourceManager.GetObject("key_visualizer_FILL0_wght400_GRAD0_opsz48 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap library_add_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("library_add_FILL0_wght400_GRAD0_opsz24", resourceCulture);
