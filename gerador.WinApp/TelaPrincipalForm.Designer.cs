@@ -30,7 +30,6 @@
         {
             menuStrip1 = new MenuStrip();
             cadastrosMenuItem = new ToolStripMenuItem();
-            temasMenuItem = new ToolStripMenuItem();
             matériasToolStripMenuItem = new ToolStripMenuItem();
             btnQuestoes = new ToolStripMenuItem();
             btnDisciplinas = new ToolStripMenuItem();
@@ -44,13 +43,13 @@
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
             toolStripSeparator2 = new ToolStripSeparator();
+            btnDuplicar = new ToolStripButton();
             toolStripSeparator3 = new ToolStripSeparator();
+            btnGerar = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             toolStripSeparator5 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
-            btnDuplicar = new ToolStripButton();
-            btnGerar = new ToolStripButton();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             barraFerramentas.SuspendLayout();
@@ -68,43 +67,36 @@
             // 
             // cadastrosMenuItem
             // 
-            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { temasMenuItem, matériasToolStripMenuItem, btnQuestoes, btnDisciplinas, testesToolStripMenuItem });
+            cadastrosMenuItem.DropDownItems.AddRange(new ToolStripItem[] { matériasToolStripMenuItem, btnQuestoes, btnDisciplinas, testesToolStripMenuItem });
             cadastrosMenuItem.Name = "cadastrosMenuItem";
             cadastrosMenuItem.Size = new Size(71, 20);
             cadastrosMenuItem.Text = "Cadastros";
             // 
-            // temasMenuItem
-            // 
-            temasMenuItem.Name = "temasMenuItem";
-            temasMenuItem.Size = new Size(130, 22);
-            temasMenuItem.Text = "Item";
-            temasMenuItem.Click += temasMenuItem_Click;
-            // 
             // matériasToolStripMenuItem
             // 
             matériasToolStripMenuItem.Name = "matériasToolStripMenuItem";
-            matériasToolStripMenuItem.Size = new Size(130, 22);
+            matériasToolStripMenuItem.Size = new Size(180, 22);
             matériasToolStripMenuItem.Text = "Matérias";
             matériasToolStripMenuItem.Click += matériasToolStripMenuItem_Click;
             // 
             // btnQuestoes
             // 
             btnQuestoes.Name = "btnQuestoes";
-            btnQuestoes.Size = new Size(130, 22);
+            btnQuestoes.Size = new Size(180, 22);
             btnQuestoes.Text = "Questões";
             btnQuestoes.Click += btnQuestoes_Click;
             // 
             // btnDisciplinas
             // 
             btnDisciplinas.Name = "btnDisciplinas";
-            btnDisciplinas.Size = new Size(130, 22);
+            btnDisciplinas.Size = new Size(180, 22);
             btnDisciplinas.Text = "Disciplinas";
             btnDisciplinas.Click += btnDisciplinas_Click;
             // 
             // testesToolStripMenuItem
             // 
             testesToolStripMenuItem.Name = "testesToolStripMenuItem";
-            testesToolStripMenuItem.Size = new Size(130, 22);
+            testesToolStripMenuItem.Size = new Size(180, 22);
             testesToolStripMenuItem.Text = "Testes";
             testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
@@ -184,10 +176,32 @@
             toolStripSeparator2.Name = "toolStripSeparator2";
             toolStripSeparator2.Size = new Size(6, 45);
             // 
+            // btnDuplicar
+            // 
+            btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDuplicar.Image = gerador.WinApp.Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
+            btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
+            btnDuplicar.ImageTransparentColor = Color.Magenta;
+            btnDuplicar.Name = "btnDuplicar";
+            btnDuplicar.Padding = new Padding(7);
+            btnDuplicar.Size = new Size(42, 42);
+            btnDuplicar.Click += btnDuplicar_Click;
+            // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
             toolStripSeparator3.Size = new Size(6, 45);
+            // 
+            // btnGerar
+            // 
+            btnGerar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnGerar.Image = gerador.WinApp.Properties.Resources.view_kanban_FILL0_wght400_GRAD0_opsz24;
+            btnGerar.ImageScaling = ToolStripItemImageScaling.None;
+            btnGerar.ImageTransparentColor = Color.Magenta;
+            btnGerar.Name = "btnGerar";
+            btnGerar.Padding = new Padding(7);
+            btnGerar.Size = new Size(42, 42);
+            btnGerar.Click += btnGerar_Click;
             // 
             // toolStripSeparator1
             // 
@@ -212,28 +226,6 @@
             panelRegistros.Name = "panelRegistros";
             panelRegistros.Size = new Size(800, 359);
             panelRegistros.TabIndex = 3;
-            // 
-            // btnDuplicar
-            // 
-            btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnDuplicar.Image = gerador.WinApp.Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
-            btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
-            btnDuplicar.ImageTransparentColor = Color.Magenta;
-            btnDuplicar.Name = "btnDuplicar";
-            btnDuplicar.Padding = new Padding(7);
-            btnDuplicar.Size = new Size(42, 42);
-            btnDuplicar.Click += btnDuplicar_Click;
-            // 
-            // btnGerar
-            // 
-            btnGerar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnGerar.Image = gerador.WinApp.Properties.Resources.view_kanban_FILL0_wght400_GRAD0_opsz24;
-            btnGerar.ImageScaling = ToolStripItemImageScaling.None;
-            btnGerar.ImageTransparentColor = Color.Magenta;
-            btnGerar.Name = "btnGerar";
-            btnGerar.Padding = new Padding(7);
-            btnGerar.Size = new Size(42, 42);
-            btnGerar.Click += btnGerar_Click;
             // 
             // TelaPrincipalForm
             // 
@@ -263,7 +255,6 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem cadastrosMenuItem;
-        private ToolStripMenuItem temasMenuItem;
         private ToolStripMenuItem tarefasMenuItem;
         private ToolStripMenuItem relatóriosToolStripMenuItem;
         private StatusStrip statusStrip1;

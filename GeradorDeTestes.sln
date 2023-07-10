@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql", "Sql", "{CA8373E7-899
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeradorDeTestes.Infra.Dados.Sql", "GeradorDeTestes.Infra.Dados.Sql\GeradorDeTestes.Infra.Dados.Sql.csproj", "{8370C9F2-F79A-422F-886E-DBB485525509}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gerador.WinApp", "gerador.WinApp\gerador.WinApp.csproj", "{7AAF71F2-3EED-4597-BE41-8B9ADCD5BB9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gerador.WinApp", "gerador.WinApp\gerador.WinApp.csproj", "{7AAF71F2-3EED-4597-BE41-8B9ADCD5BB9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +48,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{DCD26449-301C-42AC-AE0E-888713049822} = {CA8373E7-8998-4910-AE42-DC2AC1BCB291}
 		{BBA14DD1-7113-494D-B21E-FB2234BE51EC} = {DACB633F-3C8B-495A-9D91-051D443B1939}
 		{CA8373E7-8998-4910-AE42-DC2AC1BCB291} = {5B3E3DA4-6CAD-48EF-AA58-9AA022CBBCF6}
 		{8370C9F2-F79A-422F-886E-DBB485525509} = {CA8373E7-8998-4910-AE42-DC2AC1BCB291}
