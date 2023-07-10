@@ -111,7 +111,7 @@ namespace gerador.WinApp.ModuloTeste
             if (teste == null)
             {
                 MessageBox.Show($"Selecione um teste primeiro!",
-                    "Exclusão de Testes",
+                    "Geração de Pdf de Testes",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
 
@@ -126,6 +126,11 @@ namespace gerador.WinApp.ModuloTeste
             {
                 bool ehGabarito = telaTeste.ObterTipoTeste() == TipoTesteEnum.Gabarito;
                 GeradorProvasPdf.GerarProva(teste, ehGabarito);
+
+                MessageBox.Show($"Arquivo gravado em :\nGeradorDeTestes\\gerador.WinApp\\bin\\Debug\\net6.0 - windows",
+                   "Geração de Pdf de Testes",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information);
             }
             CarregarTestes();
         }
