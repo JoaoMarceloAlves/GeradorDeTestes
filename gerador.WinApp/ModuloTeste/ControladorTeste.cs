@@ -39,8 +39,8 @@ namespace gerador.WinApp.ModuloTeste
 
         public override bool VisualizarTestesHabilitado { get { return true; } }
         public override bool EditarHabilitado { get { return false; } }
-        public override bool DuplicarHabilitado { get { return false; } }
-        public override bool GerarPdfHabilitado { get { return false; } }
+        public override bool DuplicarHabilitado { get { return true; } }
+        public override bool GerarPdfHabilitado { get { return true; } }
         
         public override void Inserir()
         {

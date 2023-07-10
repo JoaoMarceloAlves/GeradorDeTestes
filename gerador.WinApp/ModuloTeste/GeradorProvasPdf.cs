@@ -29,11 +29,13 @@ namespace gerador.WinApp.ModuloTeste
         private static string ObterTexto(Teste teste, bool ehGabarito)
         {
             string texto = "";
-            texto += $"\nTítulo: {teste.titulo}{(ehGabarito ? "-GABARITO" : "")}";
             texto += $"\nDisciplina: {teste.disciplina}";
             texto += $"\nMatéria: {teste.materia.Nome}";
+            texto += $"\nSérie: {teste.materia.Serie}";
             texto += $"\nTeste: {(teste.ehRecuperacao ? "Recuperação" : "Prova")}";
 
+            texto += "\n";
+            texto += $"\nTítulo: {teste.titulo}{(ehGabarito ? "-GABARITO" : "")}";
             for (int i = 0; i < teste.questoes.Count; i++)
             {
                 texto += "\n";

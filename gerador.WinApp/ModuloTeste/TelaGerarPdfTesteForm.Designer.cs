@@ -62,7 +62,7 @@
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 41);
             btnGravar.TabIndex = 14;
-            btnGravar.Text = "Gravar";
+            btnGravar.Text = "Gerar";
             btnGravar.UseVisualStyleBackColor = true;
             // 
             // cmbTestes
