@@ -12,8 +12,8 @@ namespace gerador.WinApp.ModuloTeste
         {
             string texto = ObterTexto(teste, ehGabarito);
 
-            string arquivo = ehGabarito ? "Gabarito" : "Prova";
-            string caminho = $"{arquivo}.pdf";
+            string arquivo = teste.titulo + (ehGabarito ? "_Gabarito" : "_Prova");
+            string caminho = $"{Directory.GetCurrentDirectory()}\\ArquivosPdf\\{arquivo}.pdf";
 
             PdfWriter writer = new PdfWriter(caminho);
             PdfDocument pdf = new PdfDocument(writer);

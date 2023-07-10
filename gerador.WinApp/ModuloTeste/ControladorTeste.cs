@@ -127,7 +127,7 @@ namespace gerador.WinApp.ModuloTeste
                 bool ehGabarito = telaTeste.ObterTipoTeste() == TipoTesteEnum.Gabarito;
                 GeradorProvasPdf.GerarProva(teste, ehGabarito);
 
-                MessageBox.Show($"Arquivo gravado em :\nGeradorDeTestes\\gerador.WinApp\\bin\\Debug\\net6.0 - windows",
+                MessageBox.Show($"Arquivo gravado em :\nGeradorDeTestes\\gerador.WinApp\\bin\\Debug\\net6.0 - windows\\ArquivosPdf",
                    "Geração de Pdf de Testes",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Information);
