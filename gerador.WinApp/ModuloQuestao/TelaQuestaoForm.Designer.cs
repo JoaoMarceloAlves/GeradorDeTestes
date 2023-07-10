@@ -149,6 +149,7 @@
             txtAlternativas.Name = "txtAlternativas";
             txtAlternativas.Size = new Size(457, 112);
             txtAlternativas.TabIndex = 26;
+            txtAlternativas.ItemCheck += txtAlternativas_ItemCheck;
             // 
             // btnRemover
             // 

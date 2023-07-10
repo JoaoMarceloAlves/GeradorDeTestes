@@ -151,5 +151,17 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             return erros.ToArray();
         }
+
+        private void txtAlternativas_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (e.NewValue != CheckState.Checked || txtAlternativas.CheckedItems.Count < 1)
+                return;
+
+            int[] indices = txtAlternativas.CheckedIndices.Cast<int>().ToArray<int>();
+            foreach(int i in indices)
+            {
+                txtAlternativas.SetItemChecked(i, false);
+            }
+        }
     }
 }
