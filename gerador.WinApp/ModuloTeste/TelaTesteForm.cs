@@ -76,9 +76,9 @@ namespace gerador.WinApp.ModuloTeste
         {
             txtTitulo.Text = teste.titulo;
 
-            cmbDisciplina.SelectedItem = teste.disciplina;
+            cmbDisciplina.SelectedItem = disciplinas.Find(d =>d.id == teste.disciplina.id);
 
-            AtualizarMaterias(teste.disciplina);
+            AtualizarMaterias((Disciplina)cmbDisciplina.SelectedItem);
 
             cmbMateria.SelectedItem = teste.materia;
 

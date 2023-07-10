@@ -151,7 +151,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
         {
             foreach (Questao questao in teste.questoes)
             {
-                InserirQuestao(teste.id,questao.id);
+                ExcluirQuestao(teste.id,questao.id);
             }
             base.Excluir(teste);
         }
@@ -175,7 +175,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
             return teste;
         }
 
-        public virtual void InserirQuestao(int testeId, int questaoId)
+        public void InserirQuestao(int testeId, int questaoId)
         {
             //obter a conexão com o banco e abrir ela
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
@@ -196,7 +196,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
             conexaoComBanco.Close();
         }
 
-        public virtual void ExcluirQuestao(int testeId, int questaoId)
+        public void ExcluirQuestao(int testeId, int questaoId)
         {
             //obter a conexão com o banco e abrir ela
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);

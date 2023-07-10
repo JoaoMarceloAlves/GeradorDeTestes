@@ -173,7 +173,7 @@
             // btnDuplicar
             // 
             btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnDuplicar.Image = gerador.WinApp.Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
+            btnDuplicar.Image = gerador.WinApp.Properties.Resources.content_copy_FILL0_wght400_GRAD0_opsz24;
             btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
             btnDuplicar.ImageTransparentColor = Color.Magenta;
             btnDuplicar.Name = "btnDuplicar";
@@ -189,7 +189,7 @@
             // btnGerar
             // 
             btnGerar.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnGerar.Image = gerador.WinApp.Properties.Resources.view_kanban_FILL0_wght400_GRAD0_opsz24;
+            btnGerar.Image = gerador.WinApp.Properties.Resources.picture_as_pdf_FILL0_wght400_GRAD0_opsz24;
             btnGerar.ImageScaling = ToolStripItemImageScaling.None;
             btnGerar.ImageTransparentColor = Color.Magenta;
             btnGerar.Name = "btnGerar";
@@ -205,10 +205,11 @@
             // btnVisualizarTestes
             // 
             btnVisualizarTestes.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnVisualizarTestes.Image = gerador.WinApp.Properties.Resources.key_visualizer_FILL0_wght400_GRAD0_opsz48__1_;
+            btnVisualizarTestes.Image = gerador.WinApp.Properties.Resources.key_visualizer_FILL0_wght400_GRAD0_opsz24;
+            btnVisualizarTestes.ImageScaling = ToolStripItemImageScaling.None;
             btnVisualizarTestes.ImageTransparentColor = Color.Magenta;
             btnVisualizarTestes.Name = "btnVisualizarTestes";
-            btnVisualizarTestes.Size = new Size(24, 42);
+            btnVisualizarTestes.Size = new Size(28, 42);
             btnVisualizarTestes.Click += btnVisualizarTestes_Click;
             // 
             // toolStripSeparator5

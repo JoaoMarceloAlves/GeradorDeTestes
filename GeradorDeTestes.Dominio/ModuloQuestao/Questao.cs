@@ -64,8 +64,7 @@ namespace GeradorDeTestes.Dominio.ModuloQuestao
 
         public override string ToString()
         {
-            return $"Id: {id} Enunciado: {enunciado}, Materia: {materia}, " +
-                $"Resposta: {resposta.descricao}";
+            return $"{enunciado}";
         }
 
         public override bool Equals(object? obj)
