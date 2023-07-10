@@ -1,14 +1,4 @@
-﻿using GeradorDeTestes.Dominio.ModuloMateria;
-using GeradorDeTestes.Dominio.ModuloTeste;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using GeradorDeTestes.Dominio.ModuloTeste;
 
 namespace gerador.WinApp.ModuloTeste
 {
@@ -39,7 +29,7 @@ namespace gerador.WinApp.ModuloTeste
                     Name = "titulo",
                     HeaderText = "Título"
                 },
-                  new DataGridViewTextBoxColumn()
+                new DataGridViewTextBoxColumn()
                 {
                     Name = "recuperacao",
                     HeaderText = "Recuperação"
@@ -59,7 +49,6 @@ namespace gerador.WinApp.ModuloTeste
                     Name = "quantidade de questoes",
                     HeaderText = "Quantidade de Questões"
                 }
-
             };
 
             gridTeste.Columns.AddRange(colunas);
@@ -71,7 +60,13 @@ namespace gerador.WinApp.ModuloTeste
 
             foreach (Teste teste in testes)
             {
-                gridTeste.Rows.Add(teste.id, teste.titulo, teste.ehRecuperacao, teste.disciplina.nome, teste.materia.Nome,teste.questoes.Count);
+                gridTeste.Rows.Add(
+                    teste.id, 
+                    teste.titulo, 
+                    teste.ehRecuperacao ? "Sim" : "Não", 
+                    teste.disciplina.nome, 
+                    teste.materia.Nome,
+                    teste.questoes.Count);
             }
         }
 
