@@ -30,7 +30,7 @@ namespace gerador.WinApp.ModuloTeste
         {
             string texto = "";
             texto += $"\nDisciplina: {teste.disciplina}";
-            texto += $"\nMatéria: {teste.materia.Nome}";
+            texto += $"\nMatéria: {(teste.ehRecuperacao ? "RECUPERAÇÃO" : teste.materia.Nome)}";
             texto += $"\nSérie: {teste.materia.Serie}";
             texto += $"\nTeste: {(teste.ehRecuperacao ? "Recuperação" : "Prova")}";
 
@@ -39,7 +39,7 @@ namespace gerador.WinApp.ModuloTeste
             for (int i = 0; i < teste.questoes.Count; i++)
             {
                 texto += "\n";
-                texto += $"\n{i}-{teste.questoes[i].enunciado}";
+                texto += $"\n{i + 1}-{teste.questoes[i].enunciado}";
                 texto += "\n";
 
                 for (int j = 0; j < teste.questoes[i].alternativas.Count; j++)

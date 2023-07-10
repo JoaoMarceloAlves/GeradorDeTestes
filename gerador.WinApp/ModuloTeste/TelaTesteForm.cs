@@ -171,7 +171,7 @@ namespace gerador.WinApp.ModuloTeste
                 foreach (Materia materiaDisciplina in disciplina.materias)
                 {
                     materiaQuestoes.AddRange(
-                        questoes.FindAll(q => materia.id == q.materia.id));
+                        questoes.FindAll(q => materiaDisciplina.id == q.materia.id));
                 }
             }
             else

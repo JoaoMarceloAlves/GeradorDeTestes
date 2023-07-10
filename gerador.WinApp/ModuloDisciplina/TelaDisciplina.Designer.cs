@@ -46,9 +46,9 @@
             // btn_Gravar
             // 
             btn_Gravar.DialogResult = DialogResult.OK;
-            btn_Gravar.Location = new Point(161, 112);
+            btn_Gravar.Location = new Point(119, 112);
             btn_Gravar.Name = "btn_Gravar";
-            btn_Gravar.Size = new Size(75, 39);
+            btn_Gravar.Size = new Size(100, 44);
             btn_Gravar.TabIndex = 2;
             btn_Gravar.Text = "Gravar";
             btn_Gravar.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // button2
             // 
             button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(250, 112);
+            button2.Location = new Point(225, 112);
             button2.Name = "button2";
-            button2.Size = new Size(75, 39);
+            button2.Size = new Size(100, 44);
             button2.TabIndex = 3;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(337, 154);
+            ClientSize = new Size(337, 165);
             Controls.Add(txtId);
             Controls.Add(label1);
             Controls.Add(txtNome);

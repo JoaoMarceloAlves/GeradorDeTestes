@@ -64,8 +64,8 @@ namespace gerador.WinApp.ModuloTeste
                     teste.id, 
                     teste.titulo, 
                     teste.ehRecuperacao ? "Sim" : "Não", 
-                    teste.disciplina.nome, 
-                    teste.materia.Nome,
+                    teste.disciplina.nome,
+                    teste.ehRecuperacao ? "RECUPERAÇÂO" : teste.materia.Nome,
                     teste.questoes.Count);
             }
         }
