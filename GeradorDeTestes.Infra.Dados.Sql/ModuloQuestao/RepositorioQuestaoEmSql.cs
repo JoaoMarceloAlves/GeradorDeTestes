@@ -33,7 +33,7 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloQuestao
         protected override string sqlEditar =>
           @"UPDATE [TBQUESTAO]
                 SET 
-                [ENUNCIADO]     = @QUESTAO_ENUNCIADO
+                [ENUNCIADO]     = @ENUNCIADO
                ,[RESPOSTA]      = @RESPOSTA
                ,[ALTERNATIVA_A] = @ALTERNATIVA_A
                ,[ALTERNATIVA_B] = @ALTERNATIVA_B

@@ -49,6 +49,8 @@
             toolStripSeparator5 = new ToolStripSeparator();
             labelTipoCadastro = new ToolStripLabel();
             panelRegistros = new Panel();
+            btnDuplicar = new ToolStripButton();
+            btnGerar = new ToolStripButton();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             barraFerramentas.SuspendLayout();
@@ -137,7 +139,7 @@
             // 
             barraFerramentas.Enabled = false;
             barraFerramentas.ImageScalingSize = new Size(20, 20);
-            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, toolStripSeparator3, toolStripSeparator1, toolStripSeparator5, labelTipoCadastro });
+            barraFerramentas.Items.AddRange(new ToolStripItem[] { btnInserir, btnEditar, btnExcluir, toolStripSeparator2, btnDuplicar, toolStripSeparator3, btnGerar, toolStripSeparator1, toolStripSeparator5, labelTipoCadastro });
             barraFerramentas.Location = new Point(0, 24);
             barraFerramentas.Name = "barraFerramentas";
             barraFerramentas.Size = new Size(800, 45);
@@ -211,6 +213,28 @@
             panelRegistros.Size = new Size(800, 359);
             panelRegistros.TabIndex = 3;
             // 
+            // btnDuplicar
+            // 
+            btnDuplicar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnDuplicar.Image = gerador.WinApp.Properties.Resources.library_add_FILL0_wght400_GRAD0_opsz24;
+            btnDuplicar.ImageScaling = ToolStripItemImageScaling.None;
+            btnDuplicar.ImageTransparentColor = Color.Magenta;
+            btnDuplicar.Name = "btnDuplicar";
+            btnDuplicar.Padding = new Padding(7);
+            btnDuplicar.Size = new Size(42, 42);
+            btnDuplicar.Click += btnDuplicar_Click;
+            // 
+            // btnGerar
+            // 
+            btnGerar.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnGerar.Image = gerador.WinApp.Properties.Resources.view_kanban_FILL0_wght400_GRAD0_opsz24;
+            btnGerar.ImageScaling = ToolStripItemImageScaling.None;
+            btnGerar.ImageTransparentColor = Color.Magenta;
+            btnGerar.Name = "btnGerar";
+            btnGerar.Padding = new Padding(7);
+            btnGerar.Size = new Size(42, 42);
+            btnGerar.Click += btnGerar_Click;
+            // 
             // TelaPrincipalForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -259,5 +283,7 @@
         private ToolStripMenuItem btnQuestoes;
         private ToolStripMenuItem btnDisciplinas;
         private ToolStripMenuItem testesToolStripMenuItem;
+        private ToolStripButton btnDuplicar;
+        private ToolStripButton btnGerar;
     }
 }

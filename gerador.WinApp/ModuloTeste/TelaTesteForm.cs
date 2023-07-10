@@ -74,7 +74,17 @@ namespace gerador.WinApp.ModuloTeste
 
         public void ConfigurarTela(Teste teste)
         {
+            txtTitulo.Text = teste.titulo;
 
+            cmbDisciplina.SelectedItem = teste.disciplina;
+
+            AtualizarMaterias(teste.disciplina);
+
+            cmbMateria.SelectedItem = teste.materia;
+
+            checkProva.Checked = teste.ehRecuperacao;
+
+            numericQtdQuestoes.Value = teste.quantidadeQuestoes;
         }
 
         public List<Questao> EmbaralharQuestoes(List<Questao> questoes, int numeroQuestoes)

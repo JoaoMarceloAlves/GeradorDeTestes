@@ -95,6 +95,8 @@ namespace GeradorDeTestes.WinApp
             btnInserir.ToolTipText = controlador.ToolTipInserir;
             btnEditar.ToolTipText = controlador.ToolTipEditar;
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
+            btnDuplicar.ToolTipText = controlador.ToolTipExcluir;
+            btnGerar.ToolTipText = controlador.ToolTipGerarPdf;
         }
 
         private void ConfigurarEstados(ControladorBase controlador)
@@ -102,6 +104,8 @@ namespace GeradorDeTestes.WinApp
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;
+            btnDuplicar.Enabled = controlador.DuplicarHabilitado;
+            btnGerar.Enabled = controlador.GerarPdfHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -119,14 +123,14 @@ namespace GeradorDeTestes.WinApp
             controlador.Excluir();
         }
 
-        private void btnFiltrar_Click(object sender, EventArgs e)
+        private void btnDuplicar_Click(object sender, EventArgs e)
         {
-            controlador.Filtrar();
+            controlador.Duplicar();
         }
 
-        private void btnAdicionar_Click(object sender, EventArgs e)
+        private void btnGerar_Click(object sender, EventArgs e)
         {
-            controlador.Adicionar();
+            controlador.GerarPdf();
         }
 
         private void temasMenuItem_Click(object sender, EventArgs e)
@@ -138,7 +142,7 @@ namespace GeradorDeTestes.WinApp
 
         private void matériasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina,repositorioQuestao);
+            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina, repositorioQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }

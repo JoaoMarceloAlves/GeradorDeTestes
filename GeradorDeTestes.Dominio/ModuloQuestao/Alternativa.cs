@@ -15,7 +15,7 @@
             this.descricao = descricao;
         }
 
-         public void AtualizarInformacoes(Alternativa registroAtualizado)
+        public void AtualizarInformacoes(Alternativa registroAtualizado)
         {
             this.descricao = registroAtualizado.descricao;
         }
@@ -25,10 +25,10 @@
             List<string> erros = new List<string>();
 
             if (string.IsNullOrEmpty(descricao))
-                erros.Add("O campo 'Descrição' é obrigatório");
+                erros.Add("O campo 'Resposta' é obrigatório");
 
             if (descricao.Length < 5 )
-                erros.Add("O campo 'Descrição' deve conter no mínimo 5 caracteres");
+                erros.Add("O campo 'Resposta' deve conter no mínimo 5 caracteres");
 
             return erros.ToArray();
         }
