@@ -207,8 +207,6 @@ namespace gerador.WinApp.ModuloTeste
         {
             Teste teste = ObterTesteSelecionado();
 
-            TelaVisualizarTesteForm telaListagem = new TelaVisualizarTesteForm();
-
             if (teste == null)
             {
                 MessageBox.Show($"Selecione um Teste Primeiro!",
@@ -219,6 +217,8 @@ namespace gerador.WinApp.ModuloTeste
                 return;
             }
 
+            TelaVisualizarTesteForm telaListagem = new TelaVisualizarTesteForm();
+          
             telaListagem.CarregarLabel(teste);
 
             telaListagem.CarregarLista(teste.questoes);
