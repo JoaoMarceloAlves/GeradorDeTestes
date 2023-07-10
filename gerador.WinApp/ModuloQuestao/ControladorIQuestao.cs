@@ -78,6 +78,9 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
         {
             int id = tabelaQuestao.ObterIdSelecionado();
 
+            if (id == -1)
+                return null;
+
             return repositorioQuestao.SelecionarPorId(id);
         }
 

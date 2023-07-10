@@ -75,28 +75,28 @@
             // matériasToolStripMenuItem
             // 
             matériasToolStripMenuItem.Name = "matériasToolStripMenuItem";
-            matériasToolStripMenuItem.Size = new Size(180, 22);
+            matériasToolStripMenuItem.Size = new Size(130, 22);
             matériasToolStripMenuItem.Text = "Matérias";
             matériasToolStripMenuItem.Click += matériasToolStripMenuItem_Click;
             // 
             // btnQuestoes
             // 
             btnQuestoes.Name = "btnQuestoes";
-            btnQuestoes.Size = new Size(180, 22);
+            btnQuestoes.Size = new Size(130, 22);
             btnQuestoes.Text = "Questões";
             btnQuestoes.Click += btnQuestoes_Click;
             // 
             // btnDisciplinas
             // 
             btnDisciplinas.Name = "btnDisciplinas";
-            btnDisciplinas.Size = new Size(180, 22);
+            btnDisciplinas.Size = new Size(130, 22);
             btnDisciplinas.Text = "Disciplinas";
             btnDisciplinas.Click += btnDisciplinas_Click;
             // 
             // testesToolStripMenuItem
             // 
             testesToolStripMenuItem.Name = "testesToolStripMenuItem";
-            testesToolStripMenuItem.Size = new Size(180, 22);
+            testesToolStripMenuItem.Size = new Size(130, 22);
             testesToolStripMenuItem.Text = "Testes";
             testesToolStripMenuItem.Click += testesToolStripMenuItem_Click;
             // 
@@ -204,12 +204,13 @@
             // 
             // btnVisualizarTestes
             // 
+            btnVisualizarTestes.AutoSize = false;
             btnVisualizarTestes.DisplayStyle = ToolStripItemDisplayStyle.Image;
             btnVisualizarTestes.Image = gerador.WinApp.Properties.Resources.key_visualizer_FILL0_wght400_GRAD0_opsz24;
             btnVisualizarTestes.ImageScaling = ToolStripItemImageScaling.None;
             btnVisualizarTestes.ImageTransparentColor = Color.Magenta;
             btnVisualizarTestes.Name = "btnVisualizarTestes";
-            btnVisualizarTestes.Size = new Size(28, 42);
+            btnVisualizarTestes.Size = new Size(42, 42);
             btnVisualizarTestes.Click += btnVisualizarTestes_Click;
             // 
             // toolStripSeparator5

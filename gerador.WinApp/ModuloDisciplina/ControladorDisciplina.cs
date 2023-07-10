@@ -80,6 +80,9 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
         {
             int id = tabelaDisciplina.ObterIdSelecionado();
 
+            if (id == -1)
+                return null;
+
             return repositorioDisciplina.SelecionarPorId(id);
         }
 

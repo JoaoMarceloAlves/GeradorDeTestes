@@ -184,6 +184,9 @@ namespace gerador.WinApp.ModuloTeste
         {
             int id = tabelaTeste.ObterIdSelecionado();
 
+            if (id == -1)
+                return null;
+
             return repositorioTeste.SelecionarPorId(id);
         }
 

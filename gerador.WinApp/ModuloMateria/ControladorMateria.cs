@@ -75,6 +75,9 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         {
             int id = tabelaMateria.ObterIdSelecionado();
 
+            if (id == -1)
+                return null;
+
             return repositorioMateria.SelecionarPorId(id);
         }
 
