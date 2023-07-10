@@ -91,14 +91,7 @@ namespace gerador.WinApp.ModuloTeste
         {
             Random random = new Random();
 
-            for (int i = questoes.Count - 1; i > 1; i--)
-            {
-                int rnd = random.Next(i + 1);
-
-                Questao questao = questoes[rnd];
-                questoes[rnd] = questoes[i];
-                questoes[i] = questao;
-            }
+            questoes.Sort((a, b) => random.Next().CompareTo(random.Next()));
 
             List<Questao> questoesAleatorias = new List<Questao>();
             for (int i = 0; i < numeroQuestoes; i++)

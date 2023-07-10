@@ -85,7 +85,7 @@ namespace GeradorDeTestes.WinApp
             btnInserir.ToolTipText = controlador.ToolTipInserir;
             btnEditar.ToolTipText = controlador.ToolTipEditar;
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
-            btnDuplicar.ToolTipText = controlador.ToolTipExcluir;
+            btnDuplicar.ToolTipText = controlador.ToolTipDuplicar;
             btnGerar.ToolTipText = controlador.ToolTipGerarPdf;
             btnVisualizarTestes.ToolTipText = controlador.ToolTipVisualizarTestes;
         }
