@@ -51,7 +51,7 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
 
         public override string? ToString()
         {
-            return $"Id: {id} Nome: {Nome}, Disciplina: {Disciplina}, " +
+            return $"{Nome}," +
                $"Série: {Serie}";
         }
 

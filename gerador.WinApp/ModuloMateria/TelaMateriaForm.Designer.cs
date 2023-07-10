@@ -85,15 +85,16 @@
             txtId.Location = new Point(96, 26);
             txtId.Name = "txtId";
             txtId.Size = new Size(52, 23);
-            txtId.TabIndex = 4;
+            txtId.TabIndex = 0;
+            txtId.TabStop = false;
             txtId.Text = "0";
             // 
             // txtNome
             // 
             txtNome.Location = new Point(96, 55);
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(295, 23);
-            txtNome.TabIndex = 5;
+            txtNome.Size = new Size(268, 23);
+            txtNome.TabIndex = 1;
             // 
             // cmbDisciplina
             // 
@@ -102,15 +103,15 @@
             cmbDisciplina.Location = new Point(96, 89);
             cmbDisciplina.Name = "cmbDisciplina";
             cmbDisciplina.Size = new Size(100, 23);
-            cmbDisciplina.TabIndex = 6;
+            cmbDisciplina.TabIndex = 2;
             // 
             // btnGravar
             // 
             btnGravar.DialogResult = DialogResult.OK;
-            btnGravar.Location = new Point(294, 187);
+            btnGravar.Location = new Point(187, 185);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(97, 40);
-            btnGravar.TabIndex = 7;
+            btnGravar.TabIndex = 6;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -118,10 +119,10 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(397, 187);
+            btnCancelar.Location = new Point(290, 185);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(97, 40);
-            btnCancelar.TabIndex = 8;
+            btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -131,7 +132,7 @@
             radiobtn1Serie.Location = new Point(20, 21);
             radiobtn1Serie.Name = "radiobtn1Serie";
             radiobtn1Serie.Size = new Size(39, 19);
-            radiobtn1Serie.TabIndex = 9;
+            radiobtn1Serie.TabIndex = 4;
             radiobtn1Serie.TabStop = true;
             radiobtn1Serie.Text = "1ª ";
             radiobtn1Serie.UseVisualStyleBackColor = true;
@@ -142,7 +143,7 @@
             radiobtn2serie.Location = new Point(91, 20);
             radiobtn2serie.Name = "radiobtn2serie";
             radiobtn2serie.Size = new Size(39, 19);
-            radiobtn2serie.TabIndex = 10;
+            radiobtn2serie.TabIndex = 5;
             radiobtn2serie.TabStop = true;
             radiobtn2serie.Text = "2ª ";
             radiobtn2serie.UseVisualStyleBackColor = true;
@@ -154,14 +155,14 @@
             grpboxSerie.Location = new Point(96, 118);
             grpboxSerie.Name = "grpboxSerie";
             grpboxSerie.Size = new Size(200, 47);
-            grpboxSerie.TabIndex = 11;
+            grpboxSerie.TabIndex = 3;
             grpboxSerie.TabStop = false;
             // 
             // TelaMateriaForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(506, 246);
+            ClientSize = new Size(408, 237);
             Controls.Add(grpboxSerie);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);

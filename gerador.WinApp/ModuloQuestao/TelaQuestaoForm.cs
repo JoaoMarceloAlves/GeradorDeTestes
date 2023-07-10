@@ -158,7 +158,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
 
             int[] indices = txtAlternativas.CheckedIndices.Cast<int>().ToArray<int>();
-            foreach(int i in indices)
+            foreach (int i in indices)
             {
                 txtAlternativas.SetItemChecked(i, false);
             }

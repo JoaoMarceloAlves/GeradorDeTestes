@@ -62,6 +62,7 @@
             txtId.ReadOnly = true;
             txtId.Size = new Size(100, 23);
             txtId.TabIndex = 17;
+            txtId.TabStop = false;
             txtId.Text = "0";
             // 
             // label1
@@ -80,7 +81,7 @@
             btnCancelar.Location = new Point(411, 424);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 41);
-            btnCancelar.TabIndex = 15;
+            btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -91,7 +92,7 @@
             btnGravar.Location = new Point(330, 424);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 41);
-            btnGravar.TabIndex = 14;
+            btnGravar.TabIndex = 6;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
             btnGravar.Click += btnGravar_Click;
@@ -101,7 +102,7 @@
             txtEnunciado.Location = new Point(86, 86);
             txtEnunciado.Name = "txtEnunciado";
             txtEnunciado.Size = new Size(400, 53);
-            txtEnunciado.TabIndex = 20;
+            txtEnunciado.TabIndex = 2;
             txtEnunciado.Text = "";
             // 
             // txtResposta
@@ -109,7 +110,7 @@
             txtResposta.Location = new Point(86, 145);
             txtResposta.Name = "txtResposta";
             txtResposta.Size = new Size(241, 39);
-            txtResposta.TabIndex = 22;
+            txtResposta.TabIndex = 3;
             txtResposta.Text = "";
             // 
             // label3
@@ -126,7 +127,7 @@
             btnAdicionar.Location = new Point(354, 145);
             btnAdicionar.Name = "btnAdicionar";
             btnAdicionar.Size = new Size(99, 39);
-            btnAdicionar.TabIndex = 23;
+            btnAdicionar.TabIndex = 4;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
             btnAdicionar.Click += btnAdicionar_Click;
@@ -138,7 +139,7 @@
             groupBox1.Location = new Point(14, 203);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(472, 194);
-            groupBox1.TabIndex = 24;
+            groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Alternativas";
             // 
@@ -177,7 +178,7 @@
             cmbMateria.Location = new Point(86, 53);
             cmbMateria.Name = "cmbMateria";
             cmbMateria.Size = new Size(241, 23);
-            cmbMateria.TabIndex = 26;
+            cmbMateria.TabIndex = 1;
             // 
             // TelaQuestaoForm
             // 

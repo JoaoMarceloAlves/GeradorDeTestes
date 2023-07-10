@@ -41,7 +41,7 @@
             txt_Nome.Location = new Point(56, 70);
             txt_Nome.Name = "txt_Nome";
             txt_Nome.Size = new Size(255, 23);
-            txt_Nome.TabIndex = 0;
+            txt_Nome.TabIndex = 1;
             // 
             // btn_Gravar
             // 
@@ -49,7 +49,7 @@
             btn_Gravar.Location = new Point(161, 112);
             btn_Gravar.Name = "btn_Gravar";
             btn_Gravar.Size = new Size(75, 39);
-            btn_Gravar.TabIndex = 1;
+            btn_Gravar.TabIndex = 2;
             btn_Gravar.Text = "Gravar";
             btn_Gravar.UseVisualStyleBackColor = true;
             btn_Gravar.Click += btn_Gravar_Click;
@@ -60,7 +60,7 @@
             button2.Location = new Point(250, 112);
             button2.Name = "button2";
             button2.Size = new Size(75, 39);
-            button2.TabIndex = 2;
+            button2.TabIndex = 3;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
             // 
@@ -81,6 +81,7 @@
             txtId.ReadOnly = true;
             txtId.Size = new Size(100, 23);
             txtId.TabIndex = 7;
+            txtId.TabStop = false;
             txtId.Text = "0";
             // 
             // label1

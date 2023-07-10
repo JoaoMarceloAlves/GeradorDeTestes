@@ -50,7 +50,7 @@
             btnCancelar.Location = new Point(138, 77);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 41);
-            btnCancelar.TabIndex = 15;
+            btnCancelar.TabIndex = 3;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
@@ -61,7 +61,7 @@
             btnGravar.Location = new Point(57, 77);
             btnGravar.Name = "btnGravar";
             btnGravar.Size = new Size(75, 41);
-            btnGravar.TabIndex = 14;
+            btnGravar.TabIndex = 2;
             btnGravar.Text = "Gerar";
             btnGravar.UseVisualStyleBackColor = true;
             // 
@@ -72,7 +72,7 @@
             cmbTestes.Location = new Point(25, 37);
             cmbTestes.Name = "cmbTestes";
             cmbTestes.Size = new Size(181, 23);
-            cmbTestes.TabIndex = 19;
+            cmbTestes.TabIndex = 1;
             // 
             // TelaGerarPdfTesteForm
             // 

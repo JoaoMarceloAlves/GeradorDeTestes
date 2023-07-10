@@ -50,7 +50,15 @@ namespace gerador.WinApp.ModuloTeste
             {
                 cmbMateria.Items.Add(materia);
             }
-            cmbMateria.SelectedIndex = 0;
+
+            if (disciplina.materias.Count > 0)
+
+            {
+                cmbMateria.SelectedIndex = 0;
+            }
+
+
+
         }
 
         public Teste ObterTeste()
@@ -76,7 +84,7 @@ namespace gerador.WinApp.ModuloTeste
         {
             txtTitulo.Text = teste.titulo;
 
-            cmbDisciplina.SelectedItem = disciplinas.Find(d =>d.id == teste.disciplina.id);
+            cmbDisciplina.SelectedItem = disciplinas.Find(d => d.id == teste.disciplina.id);
 
             AtualizarMaterias((Disciplina)cmbDisciplina.SelectedItem);
 
@@ -152,6 +160,11 @@ namespace gerador.WinApp.ModuloTeste
             Disciplina disciplina = (Disciplina)cmbDisciplina.SelectedItem;
 
             List<Questao> materiaQuestoes = new List<Questao>();
+
+            if (disciplina.materias.Count == 0)
+            {
+                return;
+            }
 
             if (checkProva.Checked)
             {

@@ -119,7 +119,7 @@
             btnFechar.Location = new Point(343, 410);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(112, 40);
-            btnFechar.TabIndex = 9;
+            btnFechar.TabIndex = 1;
             btnFechar.Text = "Fechar";
             btnFechar.UseVisualStyleBackColor = true;
             // 
