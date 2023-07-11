@@ -1,8 +1,10 @@
 ﻿using GeradorDeTestes.Dominio.ModuloTeste;
+using iText.Kernel.Colors;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using Color = iText.Kernel.Colors.Color;
 
 namespace gerador.WinApp.ModuloTeste
 {
@@ -10,58 +12,110 @@ namespace gerador.WinApp.ModuloTeste
     {
         public static void GerarProva(Teste teste, bool ehGabarito)
         {
-            string texto = ObterTexto(teste, ehGabarito);
-
             string arquivo = teste.titulo + (ehGabarito ? "_Gabarito" : "_Prova");
             string caminho = $"{Directory.GetCurrentDirectory()}\\ArquivosPdf\\{arquivo}.pdf";
 
-            PdfWriter writer = new PdfWriter(caminho);
-            PdfDocument pdf = new PdfDocument(writer);
-            Document document = new Document(pdf);
-            Paragraph header = new Paragraph(texto)
-               .SetTextAlignment(TextAlignment.LEFT)
-               .SetFontSize(20);
+            PdfWriter escritor = new PdfWriter(caminho);
+            PdfDocument pdf = new PdfDocument(escritor);
+            Document documento = new Document(pdf);
 
-            document.Add(header);
-            document.Close();
+            string cabecalhoTexto = ObterCabecalho(teste, ehGabarito);
+            Paragraph cabecalho = new Paragraph(cabecalhoTexto)
+               .SetTextAlignment(TextAlignment.LEFT)
+               .SetFontSize(16)
+               .SetBold();
+
+            documento.Add(cabecalho);
+
+            string tituloTexto = ObterTitulo(teste, ehGabarito);
+            Paragraph titulo = new Paragraph(tituloTexto)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetFontSize(20)
+               .SetBold()
+               .SetUnderline();
+
+            documento.Add(titulo);
+
+
+            EscreverQuestoes(teste, ehGabarito, documento);
+
+            string rodapeTexto = ObterRodape(teste, ehGabarito);
+            Paragraph rodape = new Paragraph(rodapeTexto)
+               .SetTextAlignment(TextAlignment.RIGHT)
+               .SetFontSize(14)
+               .SetBold()
+               .SetItalic();
+
+            documento.Add(rodape);
+
+            documento.Close();
         }
 
-        private static string ObterTexto(Teste teste, bool ehGabarito)
+        private static string ObterCabecalho(Teste teste, bool ehGabarito)
         {
             string texto = "";
             texto += $"\nDisciplina: {teste.disciplina}";
             texto += $"\nMatéria: {(teste.ehRecuperacao ? "RECUPERAÇÃO" : teste.materia.Nome)}";
             texto += $"\nSérie: {teste.materia.Serie}";
-            texto += $"\nTeste: {(teste.ehRecuperacao ? "Recuperação" : "Prova")}";
 
             texto += "\n";
-            texto += $"\nTítulo: {teste.titulo}{(ehGabarito ? "-GABARITO" : "")}";
+            return texto;
+        }
+        private static string ObterTitulo(Teste teste, bool ehGabarito)
+        {
+            return $"\n{teste.titulo}{(ehGabarito ? "-GABARITO" : "")}";
+        }
+
+        private static void EscreverQuestoes(Teste teste, bool ehGabarito, Document documento) {
+ 
             for (int i = 0; i < teste.questoes.Count; i++)
             {
-                texto += "\n";
-                texto += $"\n{i + 1}-{teste.questoes[i].enunciado}";
-                texto += "\n";
+                string numeroQuestao = $"\n{i + 1}. ";
+
+                Paragraph numero = new Paragraph(numeroQuestao)
+               .SetTextAlignment(TextAlignment.LEFT)
+               .SetFontSize(16)
+               .SetBold();
+            
+                string enunciadoTexto = $"{teste.questoes[i].enunciado}";
+
+                Text enunciado = new Text(enunciadoTexto)
+               .SetTextAlignment(TextAlignment.LEFT)
+               .SetFontSize(16);
+
+                numero.Add(enunciado);
+
+                documento.Add(numero);
 
                 for (int j = 0; j < teste.questoes[i].alternativas.Count; j++)
                 {
-                    texto += "\n";
-                    string letra = Convert.ToChar(65 + j) + ") ";
                     string alternativa = teste.questoes[i].alternativas[j].descricao;
+                    
+                    string letraTexto = Convert.ToChar(65 + j) + ") ";
 
-                    if(ehGabarito && teste.questoes[i].resposta.descricao == alternativa)
+                    if (ehGabarito && teste.questoes[i].resposta.descricao == alternativa)
                     {
-                        letra = "X->" + letra;
+                        Paragraph alternativaCorreta = new Paragraph(letraTexto + alternativa)
+                       .SetTextAlignment(TextAlignment.LEFT)
+                       .SetFontSize(16)
+                       .SetFontColor(new DeviceRgb(40, 200, 60));
+
+                        documento.Add(alternativaCorreta);
+
+                        continue;
                     }
 
-                    alternativa = letra + alternativa;
+                     Paragraph descricao = new Paragraph(letraTexto + alternativa)
+                    .SetTextAlignment(TextAlignment.LEFT)
+                    .SetFontSize(16);
 
-                    texto += alternativa; 
+                    documento.Add(descricao);
                 }
             }
-
-            texto += "\n";
-            texto += $"\nArquivo gerado em {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
-            return texto;
+        }
+        private static string ObterRodape(Teste teste, bool ehGabarito) {
+            return $"\n" +
+                $"\nArquivo gerado em {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}";
         }
     }
 }
