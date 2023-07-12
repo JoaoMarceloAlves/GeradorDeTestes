@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GeradorDeTestes.Dominio\GeradorDeTestes.Dominio.csproj" />
+    <ProjectReference Include="..\GeradorDeTestes.Infra.Dados.Sql\GeradorDeTestes.Infra.Dados.Sql.csproj" />
+  </ItemGroup>
+
+</Project>
