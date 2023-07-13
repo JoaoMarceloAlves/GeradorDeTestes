@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentResults" Version="3.15.2" />
     <PackageReference Include="itext7" Version="8.0.0" />
     <PackageReference Include="itext7.bouncy-castle-adapter" Version="8.0.0" />
   </ItemGroup>

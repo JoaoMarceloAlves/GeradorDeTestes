@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloMateria;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp.ModuloQuestao
@@ -8,6 +9,9 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
         private List<Alternativa> alternativas;
         private Alternativa resposta;
         private List<Materia> materias;
+
+        public event GravarRegistroDelegate<Questao> onGravarRegistro;
+        public event GravarRegistroDelegate<Alternativa> onAdicionarAlternativa;
         public TelaQuestaoForm(List<Materia> materias)
         {
             InitializeComponent();
@@ -32,7 +36,8 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             string enunciado = txtEnunciado.Text;
 
-            Alternativa resposta = new Alternativa((string)txtAlternativas.CheckedItems[0]);
+            Alternativa resposta = txtAlternativas.CheckedItems.Count == 0 ? null :
+                new Alternativa((string)txtAlternativas.CheckedItems[0]);
 
             Materia materia = materias.Find(m => m.Nome == (string)cmbMateria.SelectedItem);
 
@@ -81,22 +86,13 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
         {
             Alternativa alternativa = ObterAlternativa();
 
-            string[] erros = alternativa.Validar();
+            Result resultado = onAdicionarAlternativa(alternativa);
 
-            if (erros.Length > 0)
+            if (resultado.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message);
 
-                return;
-            }
-
-            if (this.alternativas.Count > 3)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(
-                    "Número máximo de alternativas é 4"
-                    );
-
-                return;
+                DialogResult = DialogResult.None;
             }
 
             this.alternativas.Add(alternativa);
@@ -111,45 +107,17 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            string[] errosTela = Validar();
-            if (errosTela.Length > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(errosTela[0]);
-
-                DialogResult = DialogResult.None;
-
-                return;
-            }
             Questao questao = ObterQuestao();
 
-            string[] erros = questao.Validar();
+            Result resultado = onGravarRegistro(questao);
 
-            if (erros.Length > 0)
+            if (resultado.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message);
 
                 DialogResult = DialogResult.None;
             }
 
-
-
-        }
-
-        public string[] Validar()
-        {
-            List<string> erros = new List<string>();
-
-            if (txtAlternativas.CheckedItems.Count == 0)
-            {
-                erros.Add("É obrigatório marcar uma resposta");
-            }
-
-            if (txtAlternativas.CheckedItems.Count > 1)
-            {
-                erros.Add("Não é permitido marcar mais de uma resposta");
-            }
-
-            return erros.ToArray();
         }
 
         private void txtAlternativas_ItemCheck(object sender, ItemCheckEventArgs e)

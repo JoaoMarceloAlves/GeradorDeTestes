@@ -51,13 +51,14 @@ namespace GeradorDeTestes.Dominio.ModuloQuestao
             if (enunciado.Length < 5 )
                 erros.Add("O campo 'Enunciado' deve conter no mínimo 5 caracteres");
 
-            if (resposta == null)
-            {
-                erros.Add("A questão deve haver resposta");
-            }
+            if (resposta == null)           
+                erros.Add("A questão deve haver resposta");          
 
             if (alternativas.Count < 2)
                 erros.Add("O campo 'Alternativas' precisa de ao menos 2 alternativas");
+
+            if (alternativas.Count > 4)
+                erros.Add("O campo 'Alternativas' pode ter ao máximo 4 alternativas");
 
             return erros.ToArray();
         }

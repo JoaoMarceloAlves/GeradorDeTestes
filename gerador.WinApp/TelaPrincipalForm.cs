@@ -10,6 +10,7 @@ using GeradorDeTestes.WinApp.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloTeste;
 using GeradorDeTestes.Infra.Dados.Sql.ModuloTeste;
 using gerador.WinApp.ModuloTeste;
+using GerardorDeTestes.Aplicacao.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp
 {
@@ -22,7 +23,7 @@ namespace GeradorDeTestes.WinApp
         private IRepositorioDisciplina repositorioDisciplina = new RepositorioDisciplinaSql();
         private IRepositorioTeste repositorioTeste = new RepositorioTesteEmSql();
 
-
+        private ServicoQuestao servicoQuestao;
 
         private static TelaPrincipalForm telaPrincipal;
 
@@ -134,7 +135,10 @@ namespace GeradorDeTestes.WinApp
 
         private void btnQuestoes_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria);
+            if(servicoQuestao == null)
+                servicoQuestao = new ServicoQuestao(repositorioQuestao);
+
+            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria, servicoQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }

@@ -1,5 +1,7 @@
-﻿using GeradorDeTestes.Dominio.ModuloMateria;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
+using GerardorDeTestes.Aplicacao.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp.ModuloQuestao
 {
@@ -8,11 +10,13 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
         private TabelaQuestaoControl tabelaQuestao;
         private readonly IRepositorioQuestao repositorioQuestao;
         private readonly IRepositorioMateria repositorioMateria;
+        private readonly ServicoQuestao servicoQuestao;
 
-        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria)
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao, IRepositorioMateria repositorioMateria, ServicoQuestao servicoQuestao)
         {
             this.repositorioQuestao = repositorioQuestao;
             this.repositorioMateria = repositorioMateria;
+            this.servicoQuestao = servicoQuestao;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Questão"; } }
@@ -34,15 +38,11 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
             }
 
             TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria.SelecionarTodos());
+            telaQuestao.onGravarRegistro += servicoQuestao.Inserir;
+            telaQuestao.onAdicionarAlternativa += servicoQuestao.AdicionarAlternativa;
 
-            DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
+            telaQuestao.ShowDialog();
 
-            if (opcaoEscolhida == DialogResult.OK)
-            {
-                Questao questao = telaQuestao.ObterQuestao();
-
-                repositorioQuestao.Inserir(questao);
-            }
             CarregarQuestoes();
         }
 
@@ -62,14 +62,10 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             TelaQuestaoForm telaQuestao = new TelaQuestaoForm(repositorioMateria.SelecionarTodos());
             telaQuestao.ConfigurarTela(questao);
+            telaQuestao.onGravarRegistro += servicoQuestao.Editar;
+            telaQuestao.onAdicionarAlternativa += servicoQuestao.AdicionarAlternativa;
 
-            DialogResult opcaoEscolhida = telaQuestao.ShowDialog();
-
-            if (opcaoEscolhida == DialogResult.OK)
-            {
-                Questao questaoAtualizada = telaQuestao.ObterQuestao();
-                repositorioQuestao.Editar(questaoAtualizada.id, questaoAtualizada);
-            }
+            telaQuestao.ShowDialog();
 
             CarregarQuestoes();
         }
@@ -98,15 +94,6 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
                 return;
             }
 
-            if (repositorioQuestao.SelecionarQuestoes(questao.id).Count > 0)
-            {
-                MessageBox.Show($"Não é possível remover questões vinculadas a testes!",
-                   "Exclusão de Questões",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Exclamation);
-
-                return;
-            }
 
             DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Questão {questao.enunciado}?"
                 , "Exclusão de Questões",
@@ -114,7 +101,14 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioQuestao.Excluir(questao);
+                Result resultado = servicoQuestao.Excluir(questao);
+                if(resultado.IsFailed)
+                {
+                    MessageBox.Show($"{resultado.Errors[0].Message}",
+                   "Exclusão de Questões",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
             }
             CarregarQuestoes();
         }
