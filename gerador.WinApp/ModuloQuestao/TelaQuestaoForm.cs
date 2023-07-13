@@ -92,7 +92,7 @@ namespace GeradorDeTestes.WinApp.ModuloQuestao
             {
                 TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message);
 
-                DialogResult = DialogResult.None;
+                return;
             }
 
             this.alternativas.Add(alternativa);
