@@ -71,7 +71,7 @@ namespace GerardorDeTestes.Aplicacao.ModuloTeste
         private bool QuestaoComTeste(Teste teste)
         {
             bool comTeste = false;
-            List<Questao> questoes = repositorioTeste.SelecionarQuestoesSemTeste();
+            List<Questao> questoes = repositorioTeste.SelecionarQuestoesComTeste();
             foreach(Questao questao in teste.questoes)
             {
                 comTeste = comTeste && (questoes.Find(q => q.id == questao.id) != null);

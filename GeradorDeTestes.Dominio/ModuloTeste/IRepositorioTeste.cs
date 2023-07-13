@@ -11,5 +11,6 @@ namespace GeradorDeTestes.Dominio.ModuloTeste
         Teste SelecionarPorId(int id);
         List<Teste> SelecionarPorTitulo(Teste teste);
         List<Questao> SelecionarQuestoesSemTeste();
+        List<Questao> SelecionarQuestoesComTeste();
     }
 }
