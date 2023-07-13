@@ -65,7 +65,8 @@ namespace gerador.WinApp.ModuloTeste
                 repositorioTeste.SelecionarQuestoesSemTeste(),
                 repositorioTeste.SelecionarTodos());
 
-            DialogResult opcaoEscolhida = telaTeste.ShowDialog();
+            telaTeste.ShowDialog();
+            telaTeste.onGravarRegistro = servicoTeste.Inserir;
 
             CarregarTestes();           
         }
@@ -91,6 +92,7 @@ namespace gerador.WinApp.ModuloTeste
                 repositorioTeste.SelecionarTodos());
 
             telaTeste.ConfigurarTela(teste);
+            telaTeste.onGravarRegistro = servicoTeste.Inserir;
 
             telaTeste.ShowDialog();
 
