@@ -1,11 +1,8 @@
-﻿namespace GeradorDeTestes.Dominio.ModuloMateria
+﻿using GeradorDeTestes.Dominio.ModuloCompartilhado;
+
+namespace GeradorDeTestes.Dominio.ModuloMateria
 {
-    public interface IRepositorioMateria
+    public interface IRepositorioMateria : IRepositorioBase<Materia>
     {
-        void Inserir(Materia novaMateria);
-        void Editar(int id, Materia materia);
-        void Excluir(Materia materiaSelecionada);
-        List<Materia> SelecionarTodos();
-        Materia SelecionarPorId(int id);
     }
 }

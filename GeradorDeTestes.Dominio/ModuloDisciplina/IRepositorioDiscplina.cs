@@ -1,12 +1,9 @@
-﻿namespace GeradorDeTestes.Dominio.ModuloDisciplina
+﻿using GeradorDeTestes.Dominio.ModuloCompartilhado;
+
+namespace GeradorDeTestes.Dominio.ModuloDisciplina
 {
-    public interface IRepositorioDisciplina
+    public interface IRepositorioDisciplina : IRepositorioBase<Disciplina>
     {
-        void Inserir(Disciplina novaDisciplina);
-        void Editar(int id, Disciplina disciplina);
-        void Excluir(Disciplina DisciplinaSelecionado);
-        List<Disciplina> SelecionarTodos();
-        Disciplina SelecionarPorId(int id);
         List<Disciplina> SelecionarTodosCarregados();
     }
 }

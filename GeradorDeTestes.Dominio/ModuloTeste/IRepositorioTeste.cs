@@ -1,14 +1,10 @@
-﻿using GeradorDeTestes.Dominio.ModuloQuestao;
+﻿using GeradorDeTestes.Dominio.ModuloCompartilhado;
+using GeradorDeTestes.Dominio.ModuloQuestao;
 
 namespace GeradorDeTestes.Dominio.ModuloTeste
 {
-    public interface IRepositorioTeste
+    public interface IRepositorioTeste : IRepositorioBase<Teste>
     {
-        void Inserir(Teste novoTeste);
-        void Editar(int id, Teste teste);
-        void Excluir(Teste testeSelecionado);
-        List<Teste> SelecionarTodos();
-        Teste SelecionarPorId(int id);
         List<Teste> SelecionarPorTitulo(Teste teste);
         List<Questao> SelecionarQuestoesSemTeste();
         List<Questao> SelecionarQuestoesComTeste();
