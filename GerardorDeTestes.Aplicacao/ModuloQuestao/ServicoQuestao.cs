@@ -49,6 +49,7 @@ namespace GerardorDeTestes.Aplicacao.ModuloQuestao
             }
             catch (SqlException ex)
             {
+                if(ex.Message.Contains("TbTeste"))
                     erros.Add("Esta questao está relacionada com um teste e não pode ser excluída");
 
                 return Result.Fail(erros);
