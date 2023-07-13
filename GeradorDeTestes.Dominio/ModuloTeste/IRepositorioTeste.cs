@@ -7,5 +7,6 @@
         void Excluir(Teste testeSelecionado);
         List<Teste> SelecionarTodos();
         Teste SelecionarPorId(int id);
+        List<Teste> SelecionarPorTitulo(Teste teste);
     }
 }

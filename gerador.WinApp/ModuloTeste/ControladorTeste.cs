@@ -1,8 +1,10 @@
-﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Dominio.ModuloTeste;
 using GeradorDeTestes.WinApp;
+using GerardorDeTestes.Aplicacao.ModuloTeste;
 
 namespace gerador.WinApp.ModuloTeste
 {
@@ -13,16 +15,19 @@ namespace gerador.WinApp.ModuloTeste
         private IRepositorioDisciplina repositorioDisciplina;
         private IRepositorioMateria repositorioMateria;
         private IRepositorioQuestao repositorioQuestao;
+        private ServicoTeste servicoTeste;
 
         public ControladorTeste(IRepositorioTeste repositorioTeste, 
             IRepositorioDisciplina repositorioDisciplina,
             IRepositorioMateria repositorioMateria,
-            IRepositorioQuestao repositorioQuestao)
+            IRepositorioQuestao repositorioQuestao,
+            ServicoTeste servicoTeste)
         {
             this.repositorioTeste = repositorioTeste;
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioMateria = repositorioMateria;
             this.repositorioQuestao = repositorioQuestao;
+            this.servicoTeste = servicoTeste;
         }
 
         public override string ToolTipInserir { get { return "Inserir novo Teste"; } }
@@ -62,12 +67,6 @@ namespace gerador.WinApp.ModuloTeste
 
             DialogResult opcaoEscolhida = telaTeste.ShowDialog();
 
-            if(opcaoEscolhida == DialogResult.OK)
-            {
-                Teste teste = telaTeste.ObterTeste();
-
-                repositorioTeste.Inserir(teste);
-            }
             CarregarTestes();           
         }
 
@@ -95,12 +94,6 @@ namespace gerador.WinApp.ModuloTeste
 
             DialogResult opcaoEscolhida = telaTeste.ShowDialog();
 
-            if(opcaoEscolhida == DialogResult.OK)
-            {
-                Teste novoTeste = telaTeste.ObterTeste();
-
-                repositorioTeste.Inserir(novoTeste);
-            }
             CarregarTestes();        
         }
 
@@ -163,7 +156,14 @@ namespace gerador.WinApp.ModuloTeste
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioTeste.Excluir(teste);
+                Result resultado = servicoTeste.Excluir(teste);
+                if (resultado.IsFailed)
+                {
+                   MessageBox.Show($"{resultado.Errors[0].Message}",
+                   "Exclusão de Testes",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
             }
             CarregarTestes();
         }

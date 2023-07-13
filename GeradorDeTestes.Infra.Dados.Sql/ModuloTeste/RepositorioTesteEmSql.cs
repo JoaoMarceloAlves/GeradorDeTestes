@@ -248,5 +248,11 @@ namespace GeradorDeTestes.Infra.Dados.Sql.ModuloTeste
 
             return registros;
         }
+
+        public List<Teste> SelecionarPorTitulo(Teste teste)
+        {
+            return SelecionarTodos().FindAll(
+                t => t.id != teste.id && t.titulo == teste.titulo);
+        }
     }
 }

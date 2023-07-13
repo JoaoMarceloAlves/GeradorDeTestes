@@ -1,17 +1,9 @@
-﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Dominio.ModuloTeste;
 using GeradorDeTestes.WinApp;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace gerador.WinApp.ModuloTeste
 {
@@ -22,6 +14,8 @@ namespace gerador.WinApp.ModuloTeste
         public List<Disciplina> disciplinas;
         public List<Questao> questoes;
         public List<Questao> questoesAleatorias;
+
+        public GravarRegistroDelegate<Teste> onGravarRegistro;
 
         public TelaTesteForm(List<Materia> materias,
             List<Disciplina> disciplinas,
@@ -56,9 +50,6 @@ namespace gerador.WinApp.ModuloTeste
             {
                 cmbMateria.SelectedIndex = 0;
             }
-
-
-
         }
 
         public Teste ObterTeste()
@@ -133,20 +124,11 @@ namespace gerador.WinApp.ModuloTeste
         {
             Teste teste = ObterTeste();
 
-            string[] erros = teste.Validar();
+            Result resultado = onGravarRegistro(teste);
 
-            if (erros.Length > 0)
+            if (resultado.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
-                DialogResult = DialogResult.None;
-            }
-
-            int numero = testes.FindAll(t => t.titulo == txtTitulo.Text && t.id != teste.id).Count();
-
-            if (numero > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Título de 'Teste' já existente");
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message);
 
                 DialogResult = DialogResult.None;
             }
