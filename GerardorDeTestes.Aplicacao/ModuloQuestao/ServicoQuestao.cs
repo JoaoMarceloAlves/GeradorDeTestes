@@ -10,11 +10,7 @@ namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 
         public ServicoQuestao(IRepositorioQuestao repositorioQuestao) : base(repositorioQuestao)
         {
-        }
-
-   
-
-    
+        } 
 
         public override Result Excluir(Questao questaoSelecionada)
         {
