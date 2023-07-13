@@ -33,17 +33,17 @@ namespace GerardorDeTestes.Aplicacao.ModuloTeste
             return Result.Fail(erros);
         }
 
-        public Result Excluir(Teste testeSelecionada)
+        public Result Excluir(Teste testeSelecionado)
         {
             List<string> erros = new List<string>();
 
             try
             {
-                repositorioTeste.Excluir(testeSelecionada);
+                repositorioTeste.Excluir(testeSelecionado);
 
                 return Result.Ok();
             }
-            catch (SqlException ex)
+            catch (Exception ex)
             {
                 erros.Add("Este teste não pode ser excluído");
                 return Result.Fail(erros);

@@ -65,8 +65,9 @@ namespace gerador.WinApp.ModuloTeste
                 repositorioTeste.SelecionarQuestoesSemTeste(),
                 repositorioTeste.SelecionarTodos());
 
-            telaTeste.ShowDialog();
             telaTeste.onGravarRegistro = servicoTeste.Inserir;
+            telaTeste.ShowDialog();
+           
 
             CarregarTestes();           
         }
