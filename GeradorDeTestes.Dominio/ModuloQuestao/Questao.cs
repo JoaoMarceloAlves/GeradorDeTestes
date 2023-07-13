@@ -38,7 +38,7 @@ namespace GeradorDeTestes.Dominio.ModuloQuestao
             this.enunciado = registroAtualizado.enunciado;
             this.alternativas = registroAtualizado.alternativas;
             this.resposta = registroAtualizado.resposta;
-            this.materia = materia;
+            this.materia = registroAtualizado.materia;
         }
 
         public override string[] Validar()
@@ -59,6 +59,20 @@ namespace GeradorDeTestes.Dominio.ModuloQuestao
 
             if (alternativas.Count > 4)
                 erros.Add("O campo 'Alternativas' pode ter ao máximo 4 alternativas");
+
+            bool alternativasUnicas = true;
+            for(int i = 0; i < alternativas.Count && alternativasUnicas; i++)
+            {
+                for(int j = i + 1; j < alternativas.Count; j++)
+                {
+                    if (alternativas[i].descricao == alternativas[j].descricao)
+                    {
+                        erros.Add("O campo 'Alternativas' não pode ter alternativa repetida");
+                        alternativasUnicas = false;
+                        break;
+                    }
+                }
+            }
 
             return erros.ToArray();
         }
