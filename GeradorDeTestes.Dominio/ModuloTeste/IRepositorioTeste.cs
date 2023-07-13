@@ -1,4 +1,6 @@
-﻿namespace GeradorDeTestes.Dominio.ModuloTeste
+﻿using GeradorDeTestes.Dominio.ModuloQuestao;
+
+namespace GeradorDeTestes.Dominio.ModuloTeste
 {
     public interface IRepositorioTeste
     {
@@ -8,5 +10,6 @@
         List<Teste> SelecionarTodos();
         Teste SelecionarPorId(int id);
         List<Teste> SelecionarPorTitulo(Teste teste);
+        List<Questao> SelecionarQuestoesSemTeste();
     }
 }

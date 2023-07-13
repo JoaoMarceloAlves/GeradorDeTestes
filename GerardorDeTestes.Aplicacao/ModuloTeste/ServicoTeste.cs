@@ -1,4 +1,5 @@
 ﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Dominio.ModuloTeste;
 using Microsoft.Data.SqlClient;
 
@@ -56,12 +57,26 @@ namespace GerardorDeTestes.Aplicacao.ModuloTeste
             if (TituloDuplicado(teste))
                 erros.Add("Não pode inserir teste com mesmo título");
 
+            if (QuestaoComTeste(teste))
+                erros.Add("Não pode inserir questões que estão relacionadas a testes");
+
             return erros;
         }
 
         private bool TituloDuplicado(Teste teste)
         {
             return repositorioTeste.SelecionarPorTitulo(teste).Count > 0;
+        }
+
+        private bool QuestaoComTeste(Teste teste)
+        {
+            bool comTeste = false;
+            List<Questao> questoes = repositorioTeste.SelecionarQuestoesSemTeste();
+            foreach(Questao questao in teste.questoes)
+            {
+                comTeste = comTeste && (questoes.Find(q => q.id == questao.id) != null);
+            }
+            return comTeste;
         }
     }
 }

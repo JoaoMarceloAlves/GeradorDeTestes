@@ -49,9 +49,9 @@ namespace gerador.WinApp.ModuloTeste
         
         public override void Inserir()
         {
-            if (repositorioQuestao.SelecionarTodos().Count == 0)
+            if (repositorioTeste.SelecionarQuestoesSemTeste().Count == 0)
             {
-                MessageBox.Show($"Não há questões cadastradas!",
+                MessageBox.Show($"Não há questões válidas cadastradas!",
                    "Adição de Testes",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Exclamation);
@@ -62,7 +62,7 @@ namespace gerador.WinApp.ModuloTeste
             TelaTesteForm telaTeste = new TelaTesteForm(
                 repositorioMateria.SelecionarTodos(),
                 repositorioDisciplina.SelecionarTodosCarregados(),
-                repositorioQuestao.SelecionarTodos(),
+                repositorioTeste.SelecionarQuestoesSemTeste(),
                 repositorioTeste.SelecionarTodos());
 
             DialogResult opcaoEscolhida = telaTeste.ShowDialog();
@@ -87,12 +87,12 @@ namespace gerador.WinApp.ModuloTeste
             TelaTesteForm telaTeste = new TelaTesteForm(
                 repositorioMateria.SelecionarTodos(),
                 repositorioDisciplina.SelecionarTodosCarregados(),
-                repositorioQuestao.SelecionarTodos(),
+                repositorioTeste.SelecionarQuestoesSemTeste(),
                 repositorioTeste.SelecionarTodos());
 
             telaTeste.ConfigurarTela(teste);
 
-            DialogResult opcaoEscolhida = telaTeste.ShowDialog();
+            telaTeste.ShowDialog();
 
             CarregarTestes();        
         }
