@@ -8,7 +8,7 @@ namespace GerardorDeTestes.Aplicacao.ModuloCompartilhado
         where T : EntidadeBase<T>
         where TRepositorio : IRepositorioBase<T>
     {
-        private TRepositorio repositorioBase;
+        protected TRepositorio repositorioBase;
 
         public ServicoBase(TRepositorio repositorioBase)
         {

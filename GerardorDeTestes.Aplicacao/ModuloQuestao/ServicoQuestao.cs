@@ -1,49 +1,28 @@
 ﻿using FluentResults;
 using GeradorDeTestes.Dominio.ModuloQuestao;
+using GerardorDeTestes.Aplicacao.ModuloCompartilhado;
 using Microsoft.Data.SqlClient;
 
 namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 {
-    public class ServicoQuestao
+    public class ServicoQuestao : ServicoBase<Questao, IRepositorioQuestao>
     {
-        private IRepositorioQuestao repositorioQuestao;
 
-        public ServicoQuestao(IRepositorioQuestao repositorioQuestao)
+        public ServicoQuestao(IRepositorioQuestao repositorioQuestao) : base(repositorioQuestao)
         {
-            this.repositorioQuestao = repositorioQuestao;
         }
 
-        public Result Inserir(Questao questao)
-        {
-            List<string> erros = ValidarQuestao(questao);
+   
 
-            if (erros.Count() > 0)
-                return Result.Fail(erros);
+    
 
-            repositorioQuestao.Inserir(questao);
-
-            return Result.Ok();
-        }
-
-        public Result Editar(Questao questao)
-        {
-            List<string> erros = ValidarQuestao(questao);
-
-            if (erros.Count() > 0)
-                return Result.Fail(erros);
-
-            repositorioQuestao.Editar(questao.id, questao);
-
-            return Result.Ok();
-        }
-
-        public Result Excluir(Questao questaoSelecionada)
+        public override Result Excluir(Questao questaoSelecionada)
         {
             List<string> erros = new List<string>();
 
             try
             {
-                repositorioQuestao.Excluir(questaoSelecionada);
+                repositorioBase.Excluir(questaoSelecionada);
 
                 return Result.Ok();
             }
@@ -54,13 +33,6 @@ namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 
                 return Result.Fail(erros);
             }
-        }
-
-        private List<string> ValidarQuestao(Questao questao)
-        {
-            List<string> erros = new List<string>(questao.Validar());
-
-            return erros;
         }
 
         public Result AdicionarAlternativa(Alternativa alternativa)
