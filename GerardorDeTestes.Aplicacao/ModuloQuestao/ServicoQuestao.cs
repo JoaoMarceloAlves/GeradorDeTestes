@@ -7,10 +7,11 @@ namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 {
     public class ServicoQuestao : ServicoBase<Questao, IRepositorioQuestao, ValidadorQuestao>
     {
-
+        ValidadorAlternativa validadorAlternativa;
         public ServicoQuestao(IRepositorioQuestao repositorioQuestao) : 
             base(repositorioQuestao, new ValidadorQuestao())
         {
+            this.validadorAlternativa = new ValidadorAlternativa();
         } 
 
         public override Result Excluir(Questao questaoSelecionada)
@@ -44,7 +45,8 @@ namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 
         private List<string> ValidarAlternativa(Alternativa alternativa)
         {
-            List<string> erros = new List<string>(alternativa.Validar());
+            List<string> erros = validadorAlternativa.Validate(alternativa)
+                .Errors.Select(e => e.ErrorMessage).ToList();
 
             return erros;
         }
