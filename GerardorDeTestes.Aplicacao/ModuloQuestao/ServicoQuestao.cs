@@ -5,10 +5,11 @@ using Microsoft.Data.SqlClient;
 
 namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 {
-    public class ServicoQuestao : ServicoBase<Questao, IRepositorioQuestao>
+    public class ServicoQuestao : ServicoBase<Questao, IRepositorioQuestao, ValidadorQuestao>
     {
 
-        public ServicoQuestao(IRepositorioQuestao repositorioQuestao) : base(repositorioQuestao)
+        public ServicoQuestao(IRepositorioQuestao repositorioQuestao) : 
+            base(repositorioQuestao, new ValidadorQuestao())
         {
         } 
 

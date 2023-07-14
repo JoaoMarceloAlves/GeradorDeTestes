@@ -1,18 +1,22 @@
 ﻿using FluentResults;
+using FluentValidation;
 using GeradorDeTestes.Dominio.Compartilhado;
 using GeradorDeTestes.Dominio.ModuloCompartilhado;
 
 namespace GerardorDeTestes.Aplicacao.ModuloCompartilhado
 {
-    public abstract class ServicoBase<T, TRepositorio>
+    public abstract class ServicoBase<T, TRepositorio, TValidador>
         where T : EntidadeBase<T>
         where TRepositorio : IRepositorioBase<T>
+        where TValidador : AbstractValidator<T>
     {
         protected TRepositorio repositorioBase;
+        protected TValidador validadorBase;
 
-        public ServicoBase(TRepositorio repositorioBase)
+        public ServicoBase(TRepositorio repositorioBase, TValidador validadorBase)
         {
             this.repositorioBase = repositorioBase;
+            this.validadorBase = validadorBase;
         }
 
         public virtual Result Inserir(T registro)
@@ -59,7 +63,8 @@ namespace GerardorDeTestes.Aplicacao.ModuloCompartilhado
 
         protected virtual List<string> ValidarRegistro(T registro)
         {
-            List<string> erros = new List<string>(registro.Validar());
+            List<string> erros = this.validadorBase.Validate(registro)
+                .Errors.Select(x => x.ErrorMessage).ToList(); ;
 
             return erros;
         }

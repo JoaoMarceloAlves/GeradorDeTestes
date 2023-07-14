@@ -6,11 +6,12 @@ using Microsoft.Data.SqlClient;
 
 namespace GerardorDeTestes.Aplicacao.ModuloTeste
 {
-    public class ServicoTeste : ServicoBase<Teste, IRepositorioTeste> 
+    public class ServicoTeste : ServicoBase<Teste, IRepositorioTeste, ValidadorTeste> 
     {
 
 
-        public ServicoTeste(IRepositorioTeste repositorioTeste): base(repositorioTeste)
+        public ServicoTeste(IRepositorioTeste repositorioTeste): 
+            base(repositorioTeste, new ValidadorTeste())
         {
         } 
 
