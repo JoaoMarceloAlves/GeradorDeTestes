@@ -8,8 +8,6 @@ namespace GerardorDeDisciplinas.Aplicacao.ModuloDisciplina
 {
     public class ServicoDisciplina : ServicoBase<Disciplina, IRepositorioDisciplina, ValidadorDisciplina> 
     {
-
-
         public ServicoDisciplina(IRepositorioDisciplina repositorioDisciplina): 
             base(repositorioDisciplina, new ValidadorDisciplina())
         {

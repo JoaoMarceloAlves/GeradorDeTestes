@@ -37,7 +37,7 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
         {
             TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos()) ;
 
-            telaDisciplina.onGravarDisciplina = servicoDisciplina.Inserir;
+            telaDisciplina.onGravarRegistro = servicoDisciplina.Inserir;
 
             telaDisciplina.ShowDialog();
 
@@ -62,7 +62,7 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos());
             telaDisciplina.ConfigurarTela(Disciplina);
 
-            telaDisciplina.onGravardisciplina = servicoDisciplina.Editar;
+            telaDisciplina.onGravarRegistro = servicoDisciplina.Editar;
 
             DialogResult opcaoEscolhida = telaDisciplina.ShowDialog();
 
