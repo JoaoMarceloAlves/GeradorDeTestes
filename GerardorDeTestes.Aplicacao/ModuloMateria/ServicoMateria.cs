@@ -1,6 +1,5 @@
 ﻿using FluentResults;
 using GeradorDeTestes.Dominio.ModuloMateria;
-using GeradorDeTestes.Dominio.ModuloQuestao;
 using GerardorDeTestes.Aplicacao.ModuloCompartilhado;
 using Microsoft.Data.SqlClient;
 using Serilog;
@@ -25,7 +24,7 @@ namespace GerardorDeMaterias.Aplicacao.ModuloMateria
             {
                 repositorioBase.Excluir(materia);
 
-                Log.Debug("Questão {materiaId} excluída com sucesso", materia.id);
+                Log.Debug("Matéria {materiaId} excluída com sucesso", materia.id);
             }
             catch (SqlException ex)
             {

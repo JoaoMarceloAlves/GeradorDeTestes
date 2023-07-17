@@ -1,13 +1,10 @@
-﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
 using GeradorDeTestes.Dominio.ModuloTeste;
-using GeradorDeTestes.WinApp.ModuloDisciplina;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GerardorDeDisciplinas.Aplicacao.ModuloDisciplina;
+using GerardorDeTestes.Aplicacao.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp.ModuloDisciplina
 {
@@ -17,11 +14,17 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
         private readonly IRepositorioDisciplina repositorioDisciplina;
         private readonly IRepositorioMateria repositorioMateria;
         private readonly IRepositorioTeste repositorioTeste;
-        public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina, IRepositorioMateria repositorioMateria, IRepositorioTeste repositorioTeste)
+
+        private readonly ServicoDisciplina servicoDisciplina;
+        public ControladorDisciplina(IRepositorioDisciplina repositorioDisciplina, 
+            IRepositorioMateria repositorioMateria, 
+            IRepositorioTeste repositorioTeste,
+            ServicoDisciplina servicoDisciplina)
         {
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioMateria = repositorioMateria;
             this.repositorioTeste = repositorioTeste;
+            this.servicoDisciplina = servicoDisciplina;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Disciplina"; } }
@@ -34,14 +37,9 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
         {
             TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos()) ;
 
-            DialogResult opcaoEscolhida = telaDisciplina.ShowDialog();
+            telaDisciplina.onGravarDisciplina = servicoDisciplina.Inserir;
 
-            if (opcaoEscolhida == DialogResult.OK)
-            {
-                Disciplina Disciplina = telaDisciplina.ObterDisciplina();
-
-                repositorioDisciplina.Inserir(Disciplina);
-            }
+            telaDisciplina.ShowDialog();
 
             CarregarDisciplinas();
         }
@@ -64,14 +62,9 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             TelaDisciplinaForm telaDisciplina = new TelaDisciplinaForm(repositorioDisciplina.SelecionarTodos());
             telaDisciplina.ConfigurarTela(Disciplina);
 
+            telaDisciplina.onGravardisciplina = servicoDisciplina.Editar;
+
             DialogResult opcaoEscolhida = telaDisciplina.ShowDialog();
-
-            if (opcaoEscolhida == DialogResult.OK)
-            {
-                Disciplina DisciplinaAtualizada = telaDisciplina.ObterDisciplina();
-
-                repositorioDisciplina.Editar(DisciplinaAtualizada.id, DisciplinaAtualizada);
-            }
 
             CarregarDisciplinas();
         }
@@ -100,33 +93,19 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
                 return;
             }
 
-            if (repositorioMateria.SelecionarTodos().Find(a=> a.Disciplina.id == Disciplina.id)!= null)
-            {
-                MessageBox.Show($"Não foi possivel excluir a disciplina a uma matéria vinculada",
-                    "Exclusão de Disciplinas",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Exclamation);
-
-                return;
-            }
-
-
-          if (repositorioTeste.SelecionarTodos().Find(a => a.disciplina.id == Disciplina.id) != null)
-            {
-              MessageBox.Show($"Não foi possivel excluir a disciplina a uma questão vinculada",
-                "Exclusão de Disciplinas",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Exclamation);
-
-               return;
-            }
-
             DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Disciplina {Disciplina.nome}?", "Exclusão de Matérias",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioDisciplina.Excluir(Disciplina);
+                Result resultado = servicoDisciplina.Excluir(Disciplina);
+                if (resultado.IsFailed)
+                {
+                    MessageBox.Show($"{resultado.Errors[0].Message}",
+                   "Exclusão de Disciplinas",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
             }
 
             CarregarDisciplinas();

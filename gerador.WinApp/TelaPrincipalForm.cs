@@ -13,6 +13,7 @@ using gerador.WinApp.ModuloTeste;
 using GerardorDeTestes.Aplicacao.ModuloQuestao;
 using GerardorDeTestes.Aplicacao.ModuloTeste;
 using GerardorDeMaterias.Aplicacao.ModuloMateria;
+using GerardorDeDisciplinas.Aplicacao.ModuloDisciplina;
 
 namespace GeradorDeTestes.WinApp
 {
@@ -28,6 +29,7 @@ namespace GeradorDeTestes.WinApp
         private ServicoQuestao servicoQuestao;
         private ServicoTeste servicoTeste;
         private ServicoMateria servicoMateria;
+        private ServicoDisciplina servicoDisciplina;
 
         private static TelaPrincipalForm telaPrincipal;
 
@@ -147,14 +149,22 @@ namespace GeradorDeTestes.WinApp
             if(servicoQuestao == null)
                 servicoQuestao = new ServicoQuestao(repositorioQuestao);
 
-            controlador = new ControladorQuestao(repositorioQuestao, repositorioMateria, servicoQuestao);
+            controlador = new ControladorQuestao(repositorioQuestao, 
+                repositorioMateria, 
+                servicoQuestao);
 
             ConfigurarTelaPrincipal(controlador);
         }
 
         private void btnDisciplinas_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorDisciplina(repositorioDisciplina, repositorioMateria, repositorioTeste);
+            if(servicoDisciplina == null)
+                servicoDisciplina = new ServicoDisciplina(repositorioDisciplina);
+
+            controlador = new ControladorDisciplina(repositorioDisciplina, 
+                repositorioMateria, 
+                repositorioTeste,
+                servicoDisciplina);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -164,7 +174,11 @@ namespace GeradorDeTestes.WinApp
             if (servicoTeste == null)
                 servicoTeste = new ServicoTeste(repositorioTeste);
 
-            controlador = new ControladorTeste(repositorioTeste, repositorioDisciplina, repositorioMateria, repositorioQuestao, servicoTeste);
+            controlador = new ControladorTeste(repositorioTeste, 
+                repositorioDisciplina, 
+                repositorioMateria, 
+                repositorioQuestao, 
+                servicoTeste);
 
             ConfigurarTelaPrincipal(controlador);
         }

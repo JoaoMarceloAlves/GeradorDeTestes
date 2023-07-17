@@ -1,19 +1,14 @@
-﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
+using GeradorDeTestes.Dominio.ModuloMateria;
+using GeradorDeTestes.WinApp.Compartilhado;
 
 namespace GeradorDeTestes.WinApp.ModuloDisciplina
 {
     public partial class TelaDisciplinaForm : Form
     {
         List<Disciplina> disciplinas = new List<Disciplina>();
+        public GravarRegistroDelegate<Disciplina> onGravarRegistro;
 
         public TelaDisciplinaForm(List<Disciplina> disciplinaa)
         {
@@ -29,8 +24,6 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
 
             string nome = txt_Nome.Text;
 
-
-
             Disciplina Disciplina = new Disciplina(nome);
 
             if (id > 0)
@@ -44,31 +37,17 @@ namespace GeradorDeTestes.WinApp.ModuloDisciplina
             txtId.Text = Disciplina.id.ToString();
 
             txt_Nome.Text = Disciplina.nome;
-
-
         }
-
-
 
         private void btn_Gravar_Click(object sender, EventArgs e)
         {
             Disciplina Disciplina = ObterDisciplina();
 
-            string[] erros = Disciplina.Validar();
+            Result resultado = onGravarRegistro(Disciplina);
 
-            if (erros.Length > 0)
+            if (resultado.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
-                DialogResult = DialogResult.None;
-            }
-
-            int numero = disciplinas.FindAll(c => c.nome == txt_Nome.Text && c.id != Disciplina.id).Count();
-
-
-            if (numero > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Nome de 'Disciplina' já existente");
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message);
 
                 DialogResult = DialogResult.None;
             }
