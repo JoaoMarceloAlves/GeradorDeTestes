@@ -1,4 +1,5 @@
-﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using static GeradorDeTestes.Dominio.ModuloMateria.Materia;
 
@@ -8,6 +9,7 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
     {
         public List<Disciplina> disciplinas;
         public List<Materia> materias = new List<Materia>();
+        public GravarRegistroDelegate<Materia> onGravarRegistro;
 
         public TelaMateriaForm(List<Materia> materias)
         {
@@ -15,7 +17,6 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
             this.ConfigurarDialog();
             this.materias = materias;
-
         }
 
         public Materia ObterMateria()
@@ -26,7 +27,14 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
             Disciplina disciplina = (Disciplina)cmbDisciplina.SelectedItem;
 
-            string serie = grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text;
+            string serie = "";
+
+            if (radiobtn1Serie.Checked == false && radiobtn2serie.Checked == false)
+            {
+                serie = "";
+            }
+            else
+                serie = grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text;
 
             Materia materia = new Materia(nome, disciplina, serie);
 
@@ -59,57 +67,17 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (radiobtn1Serie.Checked == false && radiobtn2serie.Checked == false)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Obrigatório selecionar uma Série");
-                DialogResult = DialogResult.None;
-                return;
-            }
-
             Materia materia = ObterMateria();
 
-            string[] erros = materia.Validar();
+            Result resultado = onGravarRegistro(materia);
 
-            if (erros.Length > 0)
+            if (resultado.IsFailed)
             {
-                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
-
-                DialogResult = DialogResult.None;
-            }
-
-            int numero = materias.FindAll(m => m.Nome.ToLower() == txtNome.Text.ToLower() && m.id != materia.id).Count();
-
-            if (numero > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape("Nome da 'Matéria' já existe");
-
-                DialogResult = DialogResult.None;
-            }
-
-            string[] outrosErros = ValidarOutros();
-
-            if (outrosErros.Length > 0)
-            {
-                TelaPrincipalForm.Instancia.AtualizarRodape(outrosErros[0]);
+                TelaPrincipalForm.Instancia.AtualizarRodape(resultado.Errors[0].Message);
 
                 DialogResult = DialogResult.None;
             }
         }
 
-        public string[] ValidarOutros()
-        {
-            List<string> erros = new List<string>();
-
-            if (grpboxSerie.Controls.OfType<RadioButton>().SingleOrDefault(RadioButton => RadioButton.Checked).Text == null)
-            {
-                erros.Add("Obrigatório selecionar uma Série");
-            }
-            if (cmbDisciplina.SelectedItem == null)
-            {
-                erros.Add("Obrigatório selecionar uma Disciplina");
-            }
-
-            return erros.ToArray();
-        }
     }
 }

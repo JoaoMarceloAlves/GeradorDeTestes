@@ -14,6 +14,9 @@ namespace GeradorDeTestes.Dominio.ModuloMateria
                 .NotEmpty()
                 .NotNull()
                 .MinimumLength(5);
+
+            RuleFor(x => x.Disciplina)
+                .NotNull();
         }
     }
 }

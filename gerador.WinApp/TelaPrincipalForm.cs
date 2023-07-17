@@ -12,6 +12,7 @@ using GeradorDeTestes.Infra.Dados.Sql.ModuloTeste;
 using gerador.WinApp.ModuloTeste;
 using GerardorDeTestes.Aplicacao.ModuloQuestao;
 using GerardorDeTestes.Aplicacao.ModuloTeste;
+using GerardorDeMaterias.Aplicacao.ModuloMateria;
 
 namespace GeradorDeTestes.WinApp
 {
@@ -26,6 +27,7 @@ namespace GeradorDeTestes.WinApp
 
         private ServicoQuestao servicoQuestao;
         private ServicoTeste servicoTeste;
+        private ServicoMateria servicoMateria;
 
         private static TelaPrincipalForm telaPrincipal;
 
@@ -130,7 +132,12 @@ namespace GeradorDeTestes.WinApp
 
         private void matériasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorMateria(repositorioMateria, repositorioDisciplina, repositorioQuestao);
+            if (servicoMateria == null)
+                servicoMateria = new ServicoMateria(repositorioMateria);
+
+            controlador = new ControladorMateria(repositorioMateria, 
+                repositorioDisciplina, 
+                repositorioQuestao, servicoMateria);
 
             ConfigurarTelaPrincipal(controlador);
         }

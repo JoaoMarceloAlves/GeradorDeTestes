@@ -1,6 +1,9 @@
-﻿using GeradorDeTestes.Dominio.ModuloDisciplina;
+﻿using FluentResults;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
 using GeradorDeTestes.Dominio.ModuloMateria;
 using GeradorDeTestes.Dominio.ModuloQuestao;
+using GerardorDeMaterias.Aplicacao.ModuloMateria;
+using GerardorDeTestes.Aplicacao.ModuloQuestao;
 
 namespace GeradorDeTestes.WinApp.ModuloMateria
 {
@@ -10,14 +13,17 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         private readonly IRepositorioMateria repositorioMateria;
         private readonly IRepositorioDisciplina repositorioDisciplina;
         private readonly IRepositorioQuestao repositorioQuestao;
+        private readonly ServicoMateria servicoMateria;
 
         public ControladorMateria(IRepositorioMateria repositorioMateria,
             IRepositorioDisciplina repositorioDisciplina,
-            IRepositorioQuestao repositorioQuestao)
+            IRepositorioQuestao repositorioQuestao,
+            ServicoMateria servicoMateria)
         {
             this.repositorioMateria = repositorioMateria;
             this.repositorioDisciplina = repositorioDisciplina;
             this.repositorioQuestao = repositorioQuestao;
+            this.servicoMateria = servicoMateria;
         }
 
         public override string ToolTipInserir { get { return "Inserir nova Matéria"; } }
@@ -30,14 +36,10 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
         {
             TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioMateria.SelecionarTodos());
             telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
-            DialogResult opcaoEscolhida = telaMateria.ShowDialog();
-            
-            if(opcaoEscolhida == DialogResult.OK)
-            {
-                Materia materia = telaMateria.ObterMateria();
 
-                repositorioMateria.Inserir(materia);
-            }
+            telaMateria.onGravarRegistro = servicoMateria.Inserir;
+
+            telaMateria.ShowDialog();
 
             CarregarMaterias();
         }
@@ -58,15 +60,10 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
             TelaMateriaForm telaMateria = new TelaMateriaForm(repositorioMateria.SelecionarTodos());
             telaMateria.CarregarDisciplinas(this.repositorioDisciplina.SelecionarTodos());
             telaMateria.ConfigurarTela(materia);
-            
-            DialogResult opcaoEscolhida = telaMateria.ShowDialog();
 
-            if(opcaoEscolhida == DialogResult.OK )
-            {
-                Materia materiaAtualizada = telaMateria.ObterMateria();
+            telaMateria.onGravarRegistro = servicoMateria.Editar;
 
-                repositorioMateria.Editar(materiaAtualizada.id, materiaAtualizada);
-            }
+            telaMateria.ShowDialog();
 
             CarregarMaterias();
         }
@@ -95,21 +92,26 @@ namespace GeradorDeTestes.WinApp.ModuloMateria
                 return;
             }
 
-            if(repositorioQuestao.SelecionarTodos().Find(q => q.materia.id == materia.id) != null)
+            if (repositorioQuestao.SelecionarTodos().Find(q => q.materia.id == materia.id) != null)
             {
                 MessageBox.Show("A Matéria não pode ser Excluída pois esta em uma Questão", "Exclusão de Matérias",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
                 return;
             }
-
-
             DialogResult opcaoEscolhida = MessageBox.Show($"Deseja excluir a Matéria {materia.Nome}?", "Exclusão de Matérias",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if(opcaoEscolhida == DialogResult.OK)
+            if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioMateria.Excluir(materia);
+                Result resultado = servicoMateria.Excluir(materia);
+                if (resultado.IsFailed)
+                {
+                    MessageBox.Show($"{resultado.Errors[0].Message}",
+                   "Exclusão de Materias",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
             }
 
             CarregarMaterias();
