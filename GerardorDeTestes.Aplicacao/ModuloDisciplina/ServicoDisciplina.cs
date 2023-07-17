@@ -29,7 +29,7 @@ namespace GerardorDeDisciplinas.Aplicacao.ModuloDisciplina
                 string mensagemErro = "Falha ao tentar excluir matéria";
 
                 if (ex.Message.Contains("TbMateria"))
-                    mensagemErro = "Esta disciplina está relacionada com uma questão e não pode ser excluída";
+                    mensagemErro = "Esta disciplina está relacionada com uma matéroa e não pode ser excluída";
 
                 Log.Error(ex, mensagemErro + "{m}", disciplina);
 
