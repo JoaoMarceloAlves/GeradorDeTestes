@@ -2,6 +2,10 @@
 using FluentValidation;
 using GeradorDeTestes.Dominio.Compartilhado;
 using GeradorDeTestes.Dominio.ModuloCompartilhado;
+using GeradorDeTestes.Dominio.ModuloDisciplina;
+using Microsoft.Data.SqlClient;
+using Microsoft.Win32;
+using Serilog;
 
 namespace GerardorDeTestes.Aplicacao.ModuloCompartilhado
 {
@@ -21,44 +25,76 @@ namespace GerardorDeTestes.Aplicacao.ModuloCompartilhado
 
         public virtual Result Inserir(T registro)
         {
+            Log.Debug("Tentando inserir registro...{@r}", registro);
+
             List<string> erros = ValidarRegistro(registro);
 
             if (erros.Count() > 0)
                 return Result.Fail(erros);
+            try
+            {
+                repositorioBase.Inserir(registro);
 
-            repositorioBase.Inserir(registro);
+                Log.Debug("Registro {registroId} inserido com sucesso", registro.id);
+            }
+            catch(SqlException ex) {
+                string mensagemErro = "Falha ao tentar inserir registro";
+
+                Log.Error(ex, mensagemErro + "{r}", registro);
+
+                return Result.Fail(mensagemErro);
+            }
 
             return Result.Ok();
         }
 
         public virtual Result Editar(T registro)
         {
+            Log.Debug("Tentando editar registro...{@r}", registro);
+
             List<string> erros = ValidarRegistro(registro);
 
             if (erros.Count() > 0)
                 return Result.Fail(erros);
 
-            repositorioBase.Editar(registro.id, registro);
+            try
+            {
+                repositorioBase.Editar(registro.id, registro);
+
+                Log.Debug("Registro {registroId} editado com sucesso", registro.id);
+            }
+            catch (SqlException ex)
+            {
+                string mensagemErro = "Falha ao tentar editar registro";
+
+                Log.Error(ex, mensagemErro + "{r}", registro);
+
+                return Result.Fail(mensagemErro);
+            }
 
             return Result.Ok();
         }
 
-        public virtual Result Excluir(T registroSelecionado)
+        public virtual Result Excluir(T registro)
         {
-            List<string> erros = new List<string>();
+            Log.Debug("Tentando excluir registro...{@r}", registro);
 
             try
             {
-                repositorioBase.Excluir(registroSelecionado);
+                repositorioBase.Excluir(registro);
 
-                return Result.Ok();
+                Log.Debug("Registro {registroId} excluído com sucesso", registro.id);
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                    erros.Add("O registro não pode ser excluído");
+                string mensagemErro = "Falha ao tentar excluir registro";
 
-                return Result.Fail(erros);
+                Log.Error(ex, mensagemErro + "{r}", registro);
+
+                return Result.Fail(mensagemErro);
             }
+
+            return Result.Ok();
         }
 
         protected virtual List<string> ValidarRegistro(T registro)

@@ -2,6 +2,8 @@
 using GeradorDeTestes.Dominio.ModuloQuestao;
 using GerardorDeTestes.Aplicacao.ModuloCompartilhado;
 using Microsoft.Data.SqlClient;
+using Microsoft.Win32;
+using Serilog;
 
 namespace GerardorDeTestes.Aplicacao.ModuloQuestao
 {
@@ -14,23 +16,30 @@ namespace GerardorDeTestes.Aplicacao.ModuloQuestao
             this.validadorAlternativa = new ValidadorAlternativa();
         } 
 
-        public override Result Excluir(Questao questaoSelecionada)
+        public override Result Excluir(Questao questao)
         {
-            List<string> erros = new List<string>();
+
+            Log.Debug("Tentando excluir questão...{@q}", questao);
 
             try
             {
-                repositorioBase.Excluir(questaoSelecionada);
+                repositorioBase.Excluir(questao);
 
-                return Result.Ok();
+                Log.Debug("Questão {questaoId} excluída com sucesso", questao.id);
             }
             catch (SqlException ex)
             {
-                if(ex.Message.Contains("TbTeste"))
-                    erros.Add("Esta questao está relacionada com um teste e não pode ser excluída");
+                string mensagemErro = "Falha ao tentar excluir questão";
 
-                return Result.Fail(erros);
+                if (ex.Message.Contains("TbTeste"))
+                    mensagemErro = "Esta questao está relacionada com um teste e não pode ser excluída";
+
+                Log.Error(ex, mensagemErro + "{r}", questao);
+
+                return Result.Fail(mensagemErro);
             }
+
+            return Result.Ok();
         }
 
         public Result AdicionarAlternativa(Alternativa alternativa)
